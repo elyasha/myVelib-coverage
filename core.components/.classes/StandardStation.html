@@ -1,0 +1,119 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: StandardStation</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">core.components</a> ]
+</div>
+
+<h1>Coverage Summary for Class: StandardStation (core.components)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">StandardStation</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 4)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package core.components;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.awt.*;
+<i>4</i>&nbsp;import java.util.List;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;/**
+<i>7</i>&nbsp; * The StandardStation class : This class defines what is a standard station on the application
+<i>8</i>&nbsp; */
+<i>9</i>&nbsp;public class StandardStation extends Station {
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    /**
+<i>12</i>&nbsp;     * A StandardStation constructor
+<i>13</i>&nbsp;     *
+<i>14</i>&nbsp;     * @param coordinate        coordinate that will be used to place a plus station
+<i>15</i>&nbsp;     * @param onService         a boolean parameter to know if the station will be on service
+<i>16</i>&nbsp;     * @param parkingSlots      a list of parking slots that will populate the plus station
+<i>17</i>&nbsp;     * @param money             the initial money that the station will have
+<i>18</i>&nbsp;     * @param numberOfDroppings the number of droppings (or locations)
+<i>19</i>&nbsp;     */
+<i>20</i>&nbsp;    public StandardStation(Point coordinate, boolean onService, List&lt;ParkingSlot&gt; parkingSlots, double money, int numberOfDroppings) {
+<b class="nc"><i>21</i>&nbsp;        super(coordinate, onService, parkingSlots, money, numberOfDroppings);</b>
+<b class="nc"><i>22</i>&nbsp;    }</b>
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    /**
+<i>25</i>&nbsp;     * A (simpler) StandardStation constructor
+<i>26</i>&nbsp;     *
+<i>27</i>&nbsp;     * @param coordinate   coordinate that will be used to place a plus station
+<i>28</i>&nbsp;     * @param onService    a boolean parameter to know if the station will be on service
+<i>29</i>&nbsp;     * @param parkingSlots a list of parking slots that will populate the plus station
+<i>30</i>&nbsp;     */
+<i>31</i>&nbsp;    public StandardStation(Point coordinate, boolean onService, List&lt;ParkingSlot&gt; parkingSlots) {
+<b class="nc"><i>32</i>&nbsp;        super(coordinate, onService, parkingSlots);</b>
+<b class="nc"><i>33</i>&nbsp;    }</b>
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-06-01 15:42</div>
+</div>
+</body>
+</html>

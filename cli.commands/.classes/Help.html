@@ -1,0 +1,227 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Help</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">cli.commands</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Help (cli.commands)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Help</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 73)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package cli.commands;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.Arrays;
+<i>4</i>&nbsp;import java.util.List;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;/**
+<i>7</i>&nbsp; * This is the Help class that implements the help command of the CLI.
+<i>8</i>&nbsp; */
+<b class="nc"><i>9</i>&nbsp;public class Help implements Command {</b>
+<i>10</i>&nbsp;    /**
+<i>11</i>&nbsp;     * main() is the implementation of the command. It will interact with the core.Main application
+<i>12</i>&nbsp;     * help command
+<i>13</i>&nbsp;     *
+<i>14</i>&nbsp;     * @param args the arguments of the command
+<i>15</i>&nbsp;     */
+<i>16</i>&nbsp;    public static void main(String[] args) {
+<i>17</i>&nbsp;
+<b class="nc"><i>18</i>&nbsp;        if (!hasGoodInput(args)) {</b>
+<b class="nc"><i>19</i>&nbsp;            wrongArgumentHelp();</b>
+<i>20</i>&nbsp;        } else {
+<b class="nc"><i>21</i>&nbsp;            if (args.length == 0) {</b>
+<b class="nc"><i>22</i>&nbsp;                helpCommand(args);</b>
+<i>23</i>&nbsp;            } else {
+<i>24</i>&nbsp;                // sout the help for the particular command
+<i>25</i>&nbsp;                // Check the type of first argument and delegate the work for each class
+<b class="nc"><i>26</i>&nbsp;                switch (args[0]) {</b>
+<i>27</i>&nbsp;                    case &quot;addUser&quot;:
+<b class="nc"><i>28</i>&nbsp;                        AddUser.helpCommand(args);</b>
+<b class="nc"><i>29</i>&nbsp;                        break;</b>
+<i>30</i>&nbsp;                    case &quot;addManager&quot;:
+<b class="nc"><i>31</i>&nbsp;                        AddManager.helpCommand(args);</b>
+<i>32</i>&nbsp;                    case &quot;display&quot;:
+<b class="nc"><i>33</i>&nbsp;                        Display.helpCommand(args);</b>
+<b class="nc"><i>34</i>&nbsp;                        break;</b>
+<i>35</i>&nbsp;                    case &quot;displayStation&quot;:
+<b class="nc"><i>36</i>&nbsp;                        DisplayStation.helpCommand(args);</b>
+<b class="nc"><i>37</i>&nbsp;                        break;</b>
+<i>38</i>&nbsp;                    case &quot;displayUser&quot;:
+<b class="nc"><i>39</i>&nbsp;                        DisplayUser.helpCommand(args);</b>
+<b class="nc"><i>40</i>&nbsp;                        break;</b>
+<i>41</i>&nbsp;                    case &quot;exit&quot;:
+<b class="nc"><i>42</i>&nbsp;                        Exit.helpCommand(args);</b>
+<b class="nc"><i>43</i>&nbsp;                        break;</b>
+<i>44</i>&nbsp;                    case &quot;help&quot;:
+<b class="nc"><i>45</i>&nbsp;                        Help.helpCommand(args);</b>
+<b class="nc"><i>46</i>&nbsp;                        break;</b>
+<i>47</i>&nbsp;                    case &quot;offline&quot;:
+<b class="nc"><i>48</i>&nbsp;                        Offline.helpCommand(args);</b>
+<b class="nc"><i>49</i>&nbsp;                        break;</b>
+<i>50</i>&nbsp;                    case &quot;online&quot;:
+<b class="nc"><i>51</i>&nbsp;                        Online.helpCommand(args);</b>
+<b class="nc"><i>52</i>&nbsp;                        break;</b>
+<i>53</i>&nbsp;                    case &quot;rentBicycle&quot;:
+<b class="nc"><i>54</i>&nbsp;                        RentBicycle.helpCommand(args);</b>
+<b class="nc"><i>55</i>&nbsp;                        break;</b>
+<i>56</i>&nbsp;                    case &quot;returnBicycle&quot;:
+<b class="nc"><i>57</i>&nbsp;                        ReturnBicycle.helpCommand(args);</b>
+<b class="nc"><i>58</i>&nbsp;                        break;</b>
+<i>59</i>&nbsp;                    case &quot;runTest&quot;:
+<b class="nc"><i>60</i>&nbsp;                        RunTest.helpCommand(args);</b>
+<b class="nc"><i>61</i>&nbsp;                        break;</b>
+<i>62</i>&nbsp;                    case &quot;setup&quot;:
+<b class="nc"><i>63</i>&nbsp;                        Setup.helpCommand(args);</b>
+<b class="nc"><i>64</i>&nbsp;                        break;</b>
+<i>65</i>&nbsp;                    case &quot;sortStation&quot;:
+<b class="nc"><i>66</i>&nbsp;                        SortStation.helpCommand(args);</b>
+<b class="nc"><i>67</i>&nbsp;                        break;</b>
+<i>68</i>&nbsp;                    default:
+<b class="nc"><i>69</i>&nbsp;                        System.out.println(&quot;Not the good usage of the myVelib program. Please see the documentation [myvelib help [COMMAND]]&quot;);</b>
+<i>70</i>&nbsp;                        // TODO: Learn how to use exceptions and error in Java
+<b class="nc"><i>71</i>&nbsp;                        System.exit(1);</b>
+<i>72</i>&nbsp;                }
+<i>73</i>&nbsp;
+<i>74</i>&nbsp;            }
+<i>75</i>&nbsp;        }
+<i>76</i>&nbsp;
+<b class="nc"><i>77</i>&nbsp;    }</b>
+<i>78</i>&nbsp;
+<i>79</i>&nbsp;    /**
+<i>80</i>&nbsp;     * This method implements all the help that will be displayed to the user if he enters a wrong input
+<i>81</i>&nbsp;     */
+<i>82</i>&nbsp;    public static void wrongArgumentHelp() {
+<b class="nc"><i>83</i>&nbsp;        System.out.println(&quot;There is a problem with the arguments passed!&quot;);</b>
+<b class="nc"><i>84</i>&nbsp;        System.out.println(&quot;Please add some (consistent) argument! For help: myvelib help [COMMAND]&quot;);</b>
+<b class="nc"><i>85</i>&nbsp;    }</b>
+<i>86</i>&nbsp;
+<i>87</i>&nbsp;    /**
+<i>88</i>&nbsp;     * This methods is used to check if the command has good input from the user
+<i>89</i>&nbsp;     *
+<i>90</i>&nbsp;     * @param args the arguments of the command
+<i>91</i>&nbsp;     * @return true, if the command has good input. false, otherwise
+<i>92</i>&nbsp;     */
+<i>93</i>&nbsp;    public static boolean hasGoodInput(String[] args) {
+<b class="nc"><i>94</i>&nbsp;        if (args.length == 0) {</b>
+<b class="nc"><i>95</i>&nbsp;            return true;</b>
+<b class="nc"><i>96</i>&nbsp;        } else if (args.length == 1) {</b>
+<i>97</i>&nbsp;            // Check if the input is a real command
+<i>98</i>&nbsp;            // TODO: Create a file to store constants (list of commands)
+<b class="nc"><i>99</i>&nbsp;            List&lt;String&gt; commandList = Arrays.asList(&quot;addManager&quot;, &quot;addUser&quot;, &quot;display&quot;, &quot;displayStation&quot;, &quot;displayUser&quot;, &quot;exit&quot;, &quot;help&quot;, &quot;offline&quot;, &quot;online&quot;, &quot;rentBicycle&quot;, &quot;returnBicycle&quot;, &quot;runTest&quot;, &quot;setup&quot;, &quot;sortStation&quot;);</b>
+<b class="nc"><i>100</i>&nbsp;            if (commandList.contains(args[0])) {</b>
+<b class="nc"><i>101</i>&nbsp;                return true;</b>
+<i>102</i>&nbsp;            } else {
+<b class="nc"><i>103</i>&nbsp;                return false;</b>
+<i>104</i>&nbsp;            }
+<i>105</i>&nbsp;        }
+<b class="nc"><i>106</i>&nbsp;        return false;</b>
+<i>107</i>&nbsp;    }
+<i>108</i>&nbsp;
+<i>109</i>&nbsp;    /**
+<i>110</i>&nbsp;     * This is the help command: it displays a message to better explain the command itself
+<i>111</i>&nbsp;     *
+<i>112</i>&nbsp;     * @param args the arguments of the command
+<i>113</i>&nbsp;     */
+<i>114</i>&nbsp;    public static void helpCommand(String[] args) {
+<b class="nc"><i>115</i>&nbsp;        System.out.println();</b>
+<b class="nc"><i>116</i>&nbsp;        System.out.println(&quot;CLI to interact with myVelib&quot;);</b>
+<b class="nc"><i>117</i>&nbsp;        System.out.println();</b>
+<i>118</i>&nbsp;
+<b class="nc"><i>119</i>&nbsp;        System.out.println(&quot;VERSION&quot;);</b>
+<b class="nc"><i>120</i>&nbsp;        System.out.println(&quot;myVelib Framework v1.0 win32-x64 java11.0.7&quot;);</b>
+<b class="nc"><i>121</i>&nbsp;        System.out.println();</b>
+<i>122</i>&nbsp;
+<b class="nc"><i>123</i>&nbsp;        System.out.println(&quot;USAGE&quot;);</b>
+<b class="nc"><i>124</i>&nbsp;        System.out.println(&quot;$ myvelib [COMMAND]&quot;);</b>
+<b class="nc"><i>125</i>&nbsp;        System.out.println();</b>
+<i>126</i>&nbsp;
+<b class="nc"><i>127</i>&nbsp;        System.out.println(&quot;COMMANDS&quot;);</b>
+<b class="nc"><i>128</i>&nbsp;        System.out.println(&quot;addManager:&quot; + &quot;       &quot; + &quot;add a manager to a myvelib system&quot;);</b>
+<b class="nc"><i>129</i>&nbsp;        System.out.println(&quot;addUser:&quot; + &quot;          &quot; + &quot;add a user to a myvelib system&quot;);</b>
+<b class="nc"><i>130</i>&nbsp;        System.out.println(&quot;display:&quot; + &quot;          &quot; + &quot;display the entire status of a myvelib system&quot;);</b>
+<b class="nc"><i>131</i>&nbsp;        System.out.println(&quot;displayStation:&quot; + &quot;   &quot; + &quot;display informations of a station&quot;);</b>
+<b class="nc"><i>132</i>&nbsp;        System.out.println(&quot;exit&quot; + &quot;              &quot; + &quot;exit command&quot;);</b>
+<b class="nc"><i>133</i>&nbsp;        System.out.println(&quot;help&quot; + &quot;              &quot; + &quot;see informations related to the CLI&quot;);</b>
+<b class="nc"><i>134</i>&nbsp;        System.out.println(&quot;offline&quot; + &quot;           &quot; + &quot;to put offline a station of a myvelib network&quot;);</b>
+<b class="nc"><i>135</i>&nbsp;        System.out.println(&quot;online&quot; + &quot;            &quot; + &quot;to put online a station of a myvelib network&quot;);</b>
+<b class="nc"><i>136</i>&nbsp;        System.out.println(&quot;rentBicycle&quot; + &quot;       &quot; + &quot;rent a bicycle&quot;);</b>
+<b class="nc"><i>137</i>&nbsp;        System.out.println(&quot;returnBicycle&quot; + &quot;     &quot; + &quot;to drop a bicycle&quot;);</b>
+<b class="nc"><i>138</i>&nbsp;        System.out.println(&quot;runTest&quot; + &quot;           &quot; + &quot;run test suite for this version of the CLI&quot;);</b>
+<b class="nc"><i>139</i>&nbsp;        System.out.println(&quot;setup&quot; + &quot;             &quot; + &quot;setup a myvelib network&quot;);</b>
+<b class="nc"><i>140</i>&nbsp;        System.out.println(&quot;sortStation&quot; + &quot;       &quot; + &quot;sort stations with different kinds of policies&quot;);</b>
+<b class="nc"><i>141</i>&nbsp;        System.out.println();</b>
+<b class="nc"><i>142</i>&nbsp;        System.out.println();</b>
+<b class="nc"><i>143</i>&nbsp;    }</b>
+<i>144</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-06-01 15:42</div>
+</div>
+</body>
+</html>
