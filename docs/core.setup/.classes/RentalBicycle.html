@@ -82,12 +82,12 @@
 <i>8</i>&nbsp;
 <i>9</i>&nbsp;import java.util.List;
 <i>10</i>&nbsp;
-<b class="nc"><i>11</i>&nbsp;/**</b>
+<i>11</i>&nbsp;/**
 <i>12</i>&nbsp; * The RentalBicycle class : This class is responsible to implement and test the basic packages that implement the renting system
 <i>13</i>&nbsp; */
-<i>14</i>&nbsp;public class RentalBicycle {
+<b class="nc"><i>14</i>&nbsp;public class RentalBicycle {</b>
 <i>15</i>&nbsp;
-<b class="nc"><i>16</i>&nbsp;    /**</b>
+<i>16</i>&nbsp;    /**
 <i>17</i>&nbsp;     * The main method that executes the rentBicycle methods to test whether or not the rentBicycle algorithm works
 <i>18</i>&nbsp;     * @param args the command line arguments
 <i>19</i>&nbsp;     */
@@ -95,29 +95,29 @@
 <i>21</i>&nbsp;
 <i>22</i>&nbsp;        // Setup
 <b class="nc"><i>23</i>&nbsp;        MyVelibSystem system0 = InitialSetup.getInitialSetupSystem(args);</b>
-<b class="nc"><i>24</i>&nbsp;</b>
-<b class="nc"><i>25</i>&nbsp;        // Rental of a bike</b>
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;        // Rental of a bike
 <i>26</i>&nbsp;        // 1. a user (card holder or not) rent a bike of a given type from a given station at a given
 <i>27</i>&nbsp;        //        moment in time
-<b class="nc"><i>28</i>&nbsp;</b>
-<b class="nc"><i>29</i>&nbsp;        // See the system</b>
-<i>30</i>&nbsp;        System.out.println(system0);
-<i>31</i>&nbsp;        List&lt;User&gt; users = system0.getUsers();
-<i>32</i>&nbsp;        System.out.println(users);
-<b class="nc"><i>33</i>&nbsp;</b>
-<b class="nc"><i>34</i>&nbsp;        // User without card</b>
-<i>35</i>&nbsp;        User userWithoutCard = users.get(0);
-<i>36</i>&nbsp;        userWithoutCard.rentBicyclePlanning(system0, PointFactory.addPoint(0, 0), PointFactory.addPoint(20, 20), BicycleFactory.createElectricalBicycle());
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;        // See the system
+<b class="nc"><i>30</i>&nbsp;        System.out.println(system0);</b>
+<b class="nc"><i>31</i>&nbsp;        List&lt;User&gt; users = system0.getUsers();</b>
+<b class="nc"><i>32</i>&nbsp;        System.out.println(users);</b>
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;        // User without card
+<b class="nc"><i>35</i>&nbsp;        User userWithoutCard = users.get(0);</b>
+<b class="nc"><i>36</i>&nbsp;        userWithoutCard.rentBicyclePlanning(system0, PointFactory.addPoint(0, 0), PointFactory.addPoint(20, 20), BicycleFactory.createElectricalBicycle());</b>
 <i>37</i>&nbsp;
-<b class="nc"><i>38</i>&nbsp;</b>
-<b class="nc"><i>39</i>&nbsp;        // User with Vmax</b>
-<i>40</i>&nbsp;        User userVmax = users.get(1);
-<i>41</i>&nbsp;        userVmax.rentBicyclePlanning(system0, PointFactory.addPoint(234, 234), PointFactory.addPoint(0, 0), BicycleFactory.createMechanicalBicycle());
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;        // User with Vmax
+<b class="nc"><i>40</i>&nbsp;        User userVmax = users.get(1);</b>
+<b class="nc"><i>41</i>&nbsp;        userVmax.rentBicyclePlanning(system0, PointFactory.addPoint(234, 234), PointFactory.addPoint(0, 0), BicycleFactory.createMechanicalBicycle());</b>
 <i>42</i>&nbsp;
 <i>43</i>&nbsp;
 <i>44</i>&nbsp;        // User with Vlibre
-<i>45</i>&nbsp;        User userVlibre = users.get(2);
-<i>46</i>&nbsp;        userVlibre.rentBicyclePlanning(system0, PointFactory.addPoint(234, 234), PointFactory.addPoint(0, 0), BicycleFactory.createMechanicalBicycle());
+<b class="nc"><i>45</i>&nbsp;        User userVlibre = users.get(2);</b>
+<b class="nc"><i>46</i>&nbsp;        userVlibre.rentBicyclePlanning(system0, PointFactory.addPoint(234, 234), PointFactory.addPoint(0, 0), BicycleFactory.createMechanicalBicycle());</b>
 <i>47</i>&nbsp;
 <i>48</i>&nbsp;        // TESTS
 <i>49</i>&nbsp;//        for (User user: users
@@ -125,24 +125,24 @@
 <i>51</i>&nbsp;//            System.out.println(user);
 <i>52</i>&nbsp;//            System.out.println(user.getRentTime());
 <i>53</i>&nbsp;//            System.out.println(user.getBicycle());
-<b class="nc"><i>54</i>&nbsp;//        }</b>
-<b class="nc"><i>55</i>&nbsp;</b>
+<i>54</i>&nbsp;//        }
+<i>55</i>&nbsp;
 <i>56</i>&nbsp;
 <i>57</i>&nbsp;        //        2. the user returns the bike to another station after a given duration (expressed in
 <i>58</i>&nbsp;        //        minutes).
-<b class="nc"><i>59</i>&nbsp;</b>
-<b class="nc"><i>60</i>&nbsp;        // User without card</b>
-<i>61</i>&nbsp;        double RENT_TIME_FOR_USER_WITHOUT_CARD = 200;
-<i>62</i>&nbsp;        userWithoutCard.dropBicyclePlanningWithIntervalOfTime(system0, PointFactory.addPoint(0, 0), PointFactory.addPoint(20, 20), RENT_TIME_FOR_USER_WITHOUT_CARD);
+<i>59</i>&nbsp;
+<i>60</i>&nbsp;        // User without card
+<b class="nc"><i>61</i>&nbsp;        double RENT_TIME_FOR_USER_WITHOUT_CARD = 200;</b>
+<b class="nc"><i>62</i>&nbsp;        userWithoutCard.dropBicyclePlanningWithIntervalOfTime(system0, PointFactory.addPoint(0, 0), PointFactory.addPoint(20, 20), RENT_TIME_FOR_USER_WITHOUT_CARD);</b>
 <i>63</i>&nbsp;
-<b class="nc"><i>64</i>&nbsp;</b>
-<b class="nc"><i>65</i>&nbsp;        // User with Vmax</b>
-<i>66</i>&nbsp;        double RENT_TIME_FOR_USER_WITH_VMAX = 600;
-<i>67</i>&nbsp;        userVmax.dropBicyclePlanningWithIntervalOfTime(system0, PointFactory.addPoint(234, 234), PointFactory.addPoint(0, 0), RENT_TIME_FOR_USER_WITH_VMAX);
+<i>64</i>&nbsp;
+<i>65</i>&nbsp;        // User with Vmax
+<b class="nc"><i>66</i>&nbsp;        double RENT_TIME_FOR_USER_WITH_VMAX = 600;</b>
+<b class="nc"><i>67</i>&nbsp;        userVmax.dropBicyclePlanningWithIntervalOfTime(system0, PointFactory.addPoint(234, 234), PointFactory.addPoint(0, 0), RENT_TIME_FOR_USER_WITH_VMAX);</b>
 <i>68</i>&nbsp;
 <i>69</i>&nbsp;
 <i>70</i>&nbsp;        // User with Vlibre
-<i>71</i>&nbsp;        double RENT_TIME_FOR_USER_WITH_VLIBRE = 240;
+<b class="nc"><i>71</i>&nbsp;        double RENT_TIME_FOR_USER_WITH_VLIBRE = 240;</b>
 <b class="nc"><i>72</i>&nbsp;        userVlibre.dropBicyclePlanningWithIntervalOfTime(system0, PointFactory.addPoint(234, 234), PointFactory.addPoint(0, 0), RENT_TIME_FOR_USER_WITH_VLIBRE);</b>
 <i>73</i>&nbsp;
 <i>74</i>&nbsp;
@@ -150,14 +150,14 @@
 <i>76</i>&nbsp;        //        a time-credit (possibly 0)
 <i>77</i>&nbsp;
 <i>78</i>&nbsp;
-<i>79</i>&nbsp;    }
+<b class="nc"><i>79</i>&nbsp;    }</b>
 <i>80</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-01 15:52</div>
+    <div style="float:right;">generated on 2020-06-04 00:38</div>
 </div>
 </body>
 </html>

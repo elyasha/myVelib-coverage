@@ -53,7 +53,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 1)
+    (0/ 2)
   </span>
 </td>
 <td class="coverageStat">
@@ -61,7 +61,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 1)
+    (0/ 19)
   </span>
 </td>
 </tr>
@@ -74,17 +74,75 @@
 
 <div class="sourceCode"><i>1</i>&nbsp;package core.setup;
 <i>2</i>&nbsp;
-<b class="nc"><i>3</i>&nbsp;/**</b>
-<i>4</i>&nbsp; * The VisualizationStatistics class : It is responsible to test and implement the visualization part of the project
-<i>5</i>&nbsp; */
-<i>6</i>&nbsp;public class VisualizationStatistics {
-<i>7</i>&nbsp;}
+<i>3</i>&nbsp;import core.components.Station;
+<i>4</i>&nbsp;import core.components.User;
+<i>5</i>&nbsp;import core.system.MyVelibSystem;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import java.lang.reflect.Array;
+<i>8</i>&nbsp;import java.util.Arrays;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;/**
+<i>11</i>&nbsp; * The VisualizationStatistics class : It is responsible to test and implement the visualization part of the project
+<i>12</i>&nbsp; */
+<b class="nc"><i>13</i>&nbsp;public class VisualizationStatistics {</b>
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    public static void main(String[] args) {
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;        // Setup the system
+<b class="nc"><i>20</i>&nbsp;        String[] setupArgs = {&quot;myvelib&quot;, &quot;10&quot;, &quot;10&quot;, &quot;1010&quot;, &quot;5&quot;};</b>
+<b class="nc"><i>21</i>&nbsp;        MyVelibSystem system = InitialSetup.getInitialSetupSystem(setupArgs);</b>
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;//    Visualisation of user, station and system state
+<i>24</i>&nbsp;//1. a manager (or a user) of myVelib request to see the current state of a user with given
+<i>25</i>&nbsp;//    ID
+<i>26</i>&nbsp;
+<b class="nc"><i>27</i>&nbsp;        int userID1 = Integer.parseInt(args[0]);</b>
+<i>28</i>&nbsp;
+<b class="nc"><i>29</i>&nbsp;        User user1 = null;</b>
+<b class="nc"><i>30</i>&nbsp;        for (User user_i: system.getUsers()) {</b>
+<b class="nc"><i>31</i>&nbsp;            if (user_i.getId() == userID1) {</b>
+<b class="nc"><i>32</i>&nbsp;                user1 = user_i;</b>
+<i>33</i>&nbsp;            }
+<b class="nc"><i>34</i>&nbsp;        }</b>
+<b class="nc"><i>35</i>&nbsp;        system.displayUserReport(user1);</b>
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;//2. the system displays a report of the requested user (including its balance, time credit,
+<i>38</i>&nbsp;//                                                       number of rides, etc).
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;//            3. a manager (or a user) of myVelib request to see the current state of a station with
+<i>42</i>&nbsp;//    given ID
+<b class="nc"><i>43</i>&nbsp;        int stationID1 = Integer.parseInt(args[1]);</b>
+<b class="nc"><i>44</i>&nbsp;        Station station1 = null;</b>
+<b class="nc"><i>45</i>&nbsp;        for (Station station_i: system.getStations()) {</b>
+<b class="nc"><i>46</i>&nbsp;            if (station_i.getId() == stationID1) {</b>
+<b class="nc"><i>47</i>&nbsp;                station1 = station_i;</b>
+<i>48</i>&nbsp;            }
+<b class="nc"><i>49</i>&nbsp;        }</b>
+<b class="nc"><i>50</i>&nbsp;        system.displayStationReport(station1);</b>
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;//4. the system displays a report of the requested station (including num. of free/occupied
+<i>53</i>&nbsp;//            slots, current state, its occupation etc)
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;//5. a manager (or a user) of myVelib request to see the current state of a the entire
+<i>57</i>&nbsp;//    system
+<i>58</i>&nbsp;
+<b class="nc"><i>59</i>&nbsp;        system.displaySystemReport();</b>
+<i>60</i>&nbsp;//6. the system displays a summary report of the system (including list of online/offine
+<i>61</i>&nbsp;//            stations, list of users of myVelib , etc.)
+<i>62</i>&nbsp;
+<b class="nc"><i>63</i>&nbsp;    }</b>
+<i>64</i>&nbsp;
+<i>65</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-01 15:52</div>
+    <div style="float:right;">generated on 2020-06-04 00:38</div>
 </div>
 </body>
 </html>

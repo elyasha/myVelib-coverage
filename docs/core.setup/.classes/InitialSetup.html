@@ -61,7 +61,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 52)
+    (0/ 53)
   </span>
 </td>
 </tr>
@@ -91,151 +91,153 @@
 <i>17</i>&nbsp;import java.util.stream.Stream;
 <i>18</i>&nbsp;import java.util.Random;
 <i>19</i>&nbsp;
-<b class="nc"><i>20</i>&nbsp;/**</b>
+<i>20</i>&nbsp;/**
 <i>21</i>&nbsp; * The InitialSetup class : This is the class to implement the initial setup when creating a new myvelib system or network
 <i>22</i>&nbsp; */
-<i>23</i>&nbsp;public class InitialSetup {
+<b class="nc"><i>23</i>&nbsp;public class InitialSetup {</b>
 <i>24</i>&nbsp;
 <i>25</i>&nbsp;    /**
 <i>26</i>&nbsp;     * Constant of station occupied percentage
 <i>27</i>&nbsp;     */
 <i>28</i>&nbsp;    private static final double STATION_OCCUPIED_PERCENTAGE = 0.7;
-<b class="nc"><i>29</i>&nbsp;</b>
+<i>29</i>&nbsp;
 <i>30</i>&nbsp;    /**
 <i>31</i>&nbsp;     * Constant of percentage of electrical bicycles
-<b class="nc"><i>32</i>&nbsp;     */</b>
+<i>32</i>&nbsp;     */
 <i>33</i>&nbsp;    private static final double PERCENTAGE_OF_ELECTRICAL_BICYCLE = 0.3;
 <i>34</i>&nbsp;
-<b class="nc"><i>35</i>&nbsp;    /**</b>
+<i>35</i>&nbsp;    /**
 <i>36</i>&nbsp;     * Constant of percentage of plus stations
 <i>37</i>&nbsp;     */
-<b class="nc"><i>38</i>&nbsp;    private static final double PERCENTAGE_OF_PLUS_STATIONS = 0.5;</b>
+<i>38</i>&nbsp;    private static final double PERCENTAGE_OF_PLUS_STATIONS = 0.5;
 <i>39</i>&nbsp;
 <i>40</i>&nbsp;    /**
-<b class="nc"><i>41</i>&nbsp;     * This method will be used when running the initialSetup command to get an initial system with some stations, and even maybe users</b>
+<i>41</i>&nbsp;     * This method will be used when running the initialSetup command to get an initial system with some stations, and even maybe users
 <i>42</i>&nbsp;     * @param args the command line arguments
-<b class="nc"><i>43</i>&nbsp;     * @return the new system (with setup)</b>
+<i>43</i>&nbsp;     * @return the new system (with setup)
 <i>44</i>&nbsp;     */
-<b class="nc"><i>45</i>&nbsp;    public static MyVelibSystem getInitialSetupSystem(String[] args) {</b>
+<i>45</i>&nbsp;    public static MyVelibSystem getInitialSetupSystem(String[] args) {
 <i>46</i>&nbsp;
 <i>47</i>&nbsp;        // Creation of the myVelib system
 <b class="nc"><i>48</i>&nbsp;        MyVelibSystem system0 = MyVelibSystemFactory.createMyVelibSystem();</b>
 <i>49</i>&nbsp;
-<b class="nc"><i>50</i>&nbsp;        // Name of the myVelib system</b>
-<i>51</i>&nbsp;        String name = args[0];
-<b class="nc"><i>52</i>&nbsp;</b>
-<i>53</i>&nbsp;        // Quantity of stations
-<b class="nc"><i>54</i>&nbsp;        int numberOfStations = Integer.parseInt(args[1]);</b>
-<i>55</i>&nbsp;
-<b class="nc"><i>56</i>&nbsp;        // Quantity of parking slots</b>
-<i>57</i>&nbsp;        int numberOfSlots = Integer.parseInt(args[2]);
-<b class="nc"><i>58</i>&nbsp;</b>
-<i>59</i>&nbsp;        // Station occupied percentage
-<i>60</i>&nbsp;        double stationOccupiedPercentage = STATION_OCCUPIED_PERCENTAGE;
-<b class="nc"><i>61</i>&nbsp;</b>
-<i>62</i>&nbsp;        int numberOfOccupiedSlots = (int) (STATION_OCCUPIED_PERCENTAGE * numberOfSlots);
+<i>50</i>&nbsp;        // Name of the myVelib system
+<b class="nc"><i>51</i>&nbsp;        String name = args[0];</b>
+<i>52</i>&nbsp;
+<b class="nc"><i>53</i>&nbsp;        system0.setName(name);</b>
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;        // Quantity of stations
+<b class="nc"><i>56</i>&nbsp;        int numberOfStations = Integer.parseInt(args[1]);</b>
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;        // Quantity of parking slots
+<b class="nc"><i>59</i>&nbsp;        int numberOfSlots = Integer.parseInt(args[2]);</b>
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;        // Station occupied percentage
+<b class="nc"><i>62</i>&nbsp;        double stationOccupiedPercentage = STATION_OCCUPIED_PERCENTAGE;</b>
 <i>63</i>&nbsp;
-<b class="nc"><i>64</i>&nbsp;        int numberOfFreeSlots = numberOfSlots - numberOfOccupiedSlots;</b>
+<b class="nc"><i>64</i>&nbsp;        int numberOfOccupiedSlots = (int) (STATION_OCCUPIED_PERCENTAGE * numberOfSlots);</b>
 <i>65</i>&nbsp;
-<i>66</i>&nbsp;        // Percentage of electrical bicycle
-<i>67</i>&nbsp;        double percentageOfElectricalBicycle = PERCENTAGE_OF_ELECTRICAL_BICYCLE;
-<i>68</i>&nbsp;
-<i>69</i>&nbsp;        double percentageOfPlusStations = PERCENTAGE_OF_PLUS_STATIONS;
-<b class="nc"><i>70</i>&nbsp;</b>
-<b class="nc"><i>71</i>&nbsp;        int numberOfPlusStations = (int) (PERCENTAGE_OF_PLUS_STATIONS * numberOfStations);</b>
-<b class="nc"><i>72</i>&nbsp;</b>
-<b class="nc"><i>73</i>&nbsp;        int numberOfStandardStations = numberOfStations - numberOfPlusStations;</b>
-<b class="nc"><i>74</i>&nbsp;</b>
-<i>75</i>&nbsp;        int numberOfElectricalBicycleSlots = (int) (PERCENTAGE_OF_ELECTRICAL_BICYCLE * numberOfOccupiedSlots);
+<b class="nc"><i>66</i>&nbsp;        int numberOfFreeSlots = numberOfSlots - numberOfOccupiedSlots;</b>
+<i>67</i>&nbsp;
+<i>68</i>&nbsp;        // Percentage of electrical bicycle
+<b class="nc"><i>69</i>&nbsp;        double percentageOfElectricalBicycle = PERCENTAGE_OF_ELECTRICAL_BICYCLE;</b>
+<i>70</i>&nbsp;
+<b class="nc"><i>71</i>&nbsp;        double percentageOfPlusStations = PERCENTAGE_OF_PLUS_STATIONS;</b>
+<i>72</i>&nbsp;
+<b class="nc"><i>73</i>&nbsp;        int numberOfPlusStations = (int) (PERCENTAGE_OF_PLUS_STATIONS * numberOfStations);</b>
+<i>74</i>&nbsp;
+<b class="nc"><i>75</i>&nbsp;        int numberOfStandardStations = numberOfStations - numberOfPlusStations;</b>
 <i>76</i>&nbsp;
-<b class="nc"><i>77</i>&nbsp;        int numberOfMechanicalBicycleSlots = numberOfOccupiedSlots - numberOfElectricalBicycleSlots;</b>
-<b class="nc"><i>78</i>&nbsp;</b>
-<b class="nc"><i>79</i>&nbsp;        // Area of the myVelib system</b>
-<i>80</i>&nbsp;        double squareSide = Double.parseDouble(args[3]);
-<b class="nc"><i>81</i>&nbsp;</b>
-<i>82</i>&nbsp;        // Number of bicycles
-<i>83</i>&nbsp;        int numberOfBicycles = Integer.parseInt(args[4]);
-<b class="nc"><i>84</i>&nbsp;</b>
-<i>85</i>&nbsp;
-<i>86</i>&nbsp;        // Creating of input parameters to createMyVelibSystem
-<b class="nc"><i>87</i>&nbsp;</b>
-<b class="nc"><i>88</i>&nbsp;        // parkingSlots</b>
-<b class="nc"><i>89</i>&nbsp;        List&lt;ParkingSlot&gt; electricalSlots = ParkingSlotsFactory.createElectricalBicycleSlots(numberOfElectricalBicycleSlots);</b>
-<b class="nc"><i>90</i>&nbsp;        List&lt;ParkingSlot&gt; mechanicalSlots = ParkingSlotsFactory.createMechanicalBicycleSlots(numberOfMechanicalBicycleSlots);</b>
-<b class="nc"><i>91</i>&nbsp;        List&lt;ParkingSlot&gt; freeSlots = ParkingSlotsFactory.createFreeParkingSlots(numberOfFreeSlots);</b>
-<i>92</i>&nbsp;        List&lt;ParkingSlot&gt; allSlots = Stream.concat(freeSlots.stream(), mechanicalSlots.stream()).collect(Collectors.toList());
-<i>93</i>&nbsp;        allSlots = Stream.concat(allSlots.stream(), electricalSlots.stream()).collect(Collectors.toList());
-<b class="nc"><i>94</i>&nbsp;</b>
-<i>95</i>&nbsp;        // stations
-<b class="nc"><i>96</i>&nbsp;        List&lt;Station&gt; stations = new ArrayList&lt;Station&gt;();</b>
-<i>97</i>&nbsp;        Station station = null;
-<i>98</i>&nbsp;        Random rand = new Random();
-<b class="nc"><i>99</i>&nbsp;</b>
-<b class="nc"><i>100</i>&nbsp;        for (int i = 0; i &lt; numberOfPlusStations; i++) {</b>
-<b class="nc"><i>101</i>&nbsp;</b>
-<b class="nc"><i>102</i>&nbsp;            // Create the standard stations and be sure two stations are not at the same place</b>
-<b class="nc"><i>103</i>&nbsp;            while (station == null) {</b>
-<i>104</i>&nbsp;                // Coordinate x will be an integer between 0 and squareSide
-<i>105</i>&nbsp;                // Coordinate y will be an integer between 0 and squareSide
-<i>106</i>&nbsp;                int x = rand.nextInt((int) squareSide);
-<i>107</i>&nbsp;                int y = rand.nextInt((int) squareSide);
-<i>108</i>&nbsp;                station = StationFactory.addPlusStation(system0, PointFactory.addPoint(x, y), true, allSlots);
-<i>109</i>&nbsp;            }
-<i>110</i>&nbsp;            station = null;
-<b class="nc"><i>111</i>&nbsp;        }</b>
-<b class="nc"><i>112</i>&nbsp;</b>
-<b class="nc"><i>113</i>&nbsp;        for (int i = 0; i &lt; numberOfStandardStations; i++) {</b>
-<i>114</i>&nbsp;            // Create the standard stations and be sure two stations are not at the same place
-<i>115</i>&nbsp;            while (station == null) {
-<b class="nc"><i>116</i>&nbsp;                // Coordinate x will be an integer between 0 and squareSide</b>
-<b class="nc"><i>117</i>&nbsp;                // Coordinate y will be an integer between 0 and squareSide</b>
-<b class="nc"><i>118</i>&nbsp;                int x = rand.nextInt((int) squareSide);</b>
-<b class="nc"><i>119</i>&nbsp;                int y = rand.nextInt((int) squareSide);</b>
-<i>120</i>&nbsp;                station = StationFactory.addStandardStation(system0, PointFactory.addPoint(x, y), true, allSlots);
-<i>121</i>&nbsp;            }
-<b class="nc"><i>122</i>&nbsp;            station = null;</b>
-<b class="nc"><i>123</i>&nbsp;</b>
-<b class="nc"><i>124</i>&nbsp;</b>
-<b class="nc"><i>125</i>&nbsp;        }</b>
+<b class="nc"><i>77</i>&nbsp;        int numberOfElectricalBicycleSlots = (int) (PERCENTAGE_OF_ELECTRICAL_BICYCLE * numberOfOccupiedSlots);</b>
+<i>78</i>&nbsp;
+<b class="nc"><i>79</i>&nbsp;        int numberOfMechanicalBicycleSlots = numberOfOccupiedSlots - numberOfElectricalBicycleSlots;</b>
+<i>80</i>&nbsp;
+<i>81</i>&nbsp;        // Area of the myVelib system
+<b class="nc"><i>82</i>&nbsp;        double squareSide = Double.parseDouble(args[3]);</b>
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;        // Number of bicycles
+<b class="nc"><i>85</i>&nbsp;        int numberOfBicycles = Integer.parseInt(args[4]);</b>
+<i>86</i>&nbsp;
+<i>87</i>&nbsp;
+<i>88</i>&nbsp;        // Creating of input parameters to createMyVelibSystem
+<i>89</i>&nbsp;
+<i>90</i>&nbsp;        // parkingSlots
+<b class="nc"><i>91</i>&nbsp;        List&lt;ParkingSlot&gt; electricalSlots = ParkingSlotsFactory.createElectricalBicycleSlots(numberOfElectricalBicycleSlots);</b>
+<b class="nc"><i>92</i>&nbsp;        List&lt;ParkingSlot&gt; mechanicalSlots = ParkingSlotsFactory.createMechanicalBicycleSlots(numberOfMechanicalBicycleSlots);</b>
+<b class="nc"><i>93</i>&nbsp;        List&lt;ParkingSlot&gt; freeSlots = ParkingSlotsFactory.createFreeParkingSlots(numberOfFreeSlots);</b>
+<b class="nc"><i>94</i>&nbsp;        List&lt;ParkingSlot&gt; allSlots = Stream.concat(freeSlots.stream(), mechanicalSlots.stream()).collect(Collectors.toList());</b>
+<b class="nc"><i>95</i>&nbsp;        allSlots = Stream.concat(allSlots.stream(), electricalSlots.stream()).collect(Collectors.toList());</b>
+<i>96</i>&nbsp;
+<i>97</i>&nbsp;        // stations
+<b class="nc"><i>98</i>&nbsp;        List&lt;Station&gt; stations = new ArrayList&lt;Station&gt;();</b>
+<b class="nc"><i>99</i>&nbsp;        Station station = null;</b>
+<b class="nc"><i>100</i>&nbsp;        Random rand = new Random();</b>
+<i>101</i>&nbsp;
+<b class="nc"><i>102</i>&nbsp;        for (int i = 0; i &lt; numberOfPlusStations; i++) {</b>
+<i>103</i>&nbsp;
+<i>104</i>&nbsp;            // Create the standard stations and be sure two stations are not at the same place
+<b class="nc"><i>105</i>&nbsp;            while (station == null) {</b>
+<i>106</i>&nbsp;                // Coordinate x will be an integer between 0 and squareSide
+<i>107</i>&nbsp;                // Coordinate y will be an integer between 0 and squareSide
+<b class="nc"><i>108</i>&nbsp;                int x = rand.nextInt((int) squareSide);</b>
+<b class="nc"><i>109</i>&nbsp;                int y = rand.nextInt((int) squareSide);</b>
+<b class="nc"><i>110</i>&nbsp;                station = StationFactory.addPlusStation(system0, PointFactory.addPoint(x, y), true, allSlots);</b>
+<b class="nc"><i>111</i>&nbsp;            }</b>
+<b class="nc"><i>112</i>&nbsp;            station = null;</b>
+<i>113</i>&nbsp;        }
+<i>114</i>&nbsp;
+<b class="nc"><i>115</i>&nbsp;        for (int i = 0; i &lt; numberOfStandardStations; i++) {</b>
+<i>116</i>&nbsp;            // Create the standard stations and be sure two stations are not at the same place
+<b class="nc"><i>117</i>&nbsp;            while (station == null) {</b>
+<i>118</i>&nbsp;                // Coordinate x will be an integer between 0 and squareSide
+<i>119</i>&nbsp;                // Coordinate y will be an integer between 0 and squareSide
+<b class="nc"><i>120</i>&nbsp;                int x = rand.nextInt((int) squareSide);</b>
+<b class="nc"><i>121</i>&nbsp;                int y = rand.nextInt((int) squareSide);</b>
+<b class="nc"><i>122</i>&nbsp;                station = StationFactory.addStandardStation(system0, PointFactory.addPoint(x, y), true, allSlots);</b>
+<b class="nc"><i>123</i>&nbsp;            }</b>
+<b class="nc"><i>124</i>&nbsp;            station = null;</b>
+<i>125</i>&nbsp;
 <i>126</i>&nbsp;
-<i>127</i>&nbsp;
-<i>128</i>&nbsp;        // Add User without card
-<i>129</i>&nbsp;        int x, y;
-<b class="nc"><i>130</i>&nbsp;        x = rand.nextInt((int) squareSide);</b>
-<i>131</i>&nbsp;        y = rand.nextInt((int) squareSide);
-<i>132</i>&nbsp;        UserFactory.addUser(system0, &quot;Matheus&quot;, PointFactory.addPoint(x, y), 30109903, 1000);
-<i>133</i>&nbsp;
-<i>134</i>&nbsp;        // Add User with Vmax
-<b class="nc"><i>135</i>&nbsp;        x = rand.nextInt((int) squareSide);</b>
-<b class="nc"><i>136</i>&nbsp;        y = rand.nextInt((int) squareSide);</b>
-<i>137</i>&nbsp;        User user = UserFactory.addUser(system0, &quot;Charlito&quot;, PointFactory.addPoint(x, y), 192340, 0);
-<i>138</i>&nbsp;        CardFactory.addVmax(system0, user);
-<i>139</i>&nbsp;
-<i>140</i>&nbsp;        // Add User with Vlibre
-<i>141</i>&nbsp;        x = rand.nextInt((int) squareSide);
-<i>142</i>&nbsp;        y = rand.nextInt((int) squareSide);
-<i>143</i>&nbsp;        User user2 = UserFactory.addUser(system0, &quot;Valdisa&quot;, PointFactory.addPoint(x, y), 124340, 0);
-<i>144</i>&nbsp;        CardFactory.addVlibre(system0, user2);
-<i>145</i>&nbsp;
-<i>146</i>&nbsp;        return system0;
+<i>127</i>&nbsp;        }
+<i>128</i>&nbsp;
+<i>129</i>&nbsp;
+<i>130</i>&nbsp;        // Add User without card
+<i>131</i>&nbsp;        int x, y;
+<b class="nc"><i>132</i>&nbsp;        x = rand.nextInt((int) squareSide);</b>
+<b class="nc"><i>133</i>&nbsp;        y = rand.nextInt((int) squareSide);</b>
+<b class="nc"><i>134</i>&nbsp;        UserFactory.addUser(system0, &quot;Matheus&quot;, PointFactory.addPoint(x, y), 30109903, 1000);</b>
+<i>135</i>&nbsp;
+<i>136</i>&nbsp;        // Add User with Vmax
+<b class="nc"><i>137</i>&nbsp;        x = rand.nextInt((int) squareSide);</b>
+<b class="nc"><i>138</i>&nbsp;        y = rand.nextInt((int) squareSide);</b>
+<b class="nc"><i>139</i>&nbsp;        User user = UserFactory.addUser(system0, &quot;Charlito&quot;, PointFactory.addPoint(x, y), 192340, 0);</b>
+<b class="nc"><i>140</i>&nbsp;        CardFactory.addVmax(system0, user);</b>
+<i>141</i>&nbsp;
+<i>142</i>&nbsp;        // Add User with Vlibre
+<b class="nc"><i>143</i>&nbsp;        x = rand.nextInt((int) squareSide);</b>
+<b class="nc"><i>144</i>&nbsp;        y = rand.nextInt((int) squareSide);</b>
+<b class="nc"><i>145</i>&nbsp;        User user2 = UserFactory.addUser(system0, &quot;Valdisa&quot;, PointFactory.addPoint(x, y), 124340, 0);</b>
+<b class="nc"><i>146</i>&nbsp;        CardFactory.addVlibre(system0, user2);</b>
 <i>147</i>&nbsp;
-<i>148</i>&nbsp;    }
+<b class="nc"><i>148</i>&nbsp;        return system0;</b>
 <i>149</i>&nbsp;
-<i>150</i>&nbsp;    /**
-<i>151</i>&nbsp;     * The main method that will just run the initial setup and save the system
-<i>152</i>&nbsp;     * @param args the command-line arguments
-<i>153</i>&nbsp;     */
-<i>154</i>&nbsp;    public static void main(String[] args) {
-<i>155</i>&nbsp;        MyVelibSystem system0 = getInitialSetupSystem(args);
-<i>156</i>&nbsp;    }
-<i>157</i>&nbsp;
-<i>158</i>&nbsp;}
+<i>150</i>&nbsp;    }
+<i>151</i>&nbsp;
+<i>152</i>&nbsp;    /**
+<i>153</i>&nbsp;     * The main method that will just run the initial setup and save the system
+<i>154</i>&nbsp;     * @param args the command-line arguments
+<i>155</i>&nbsp;     */
+<i>156</i>&nbsp;    public static void main(String[] args) {
+<b class="nc"><i>157</i>&nbsp;        MyVelibSystem system0 = getInitialSetupSystem(args);</b>
+<b class="nc"><i>158</i>&nbsp;    }</b>
+<i>159</i>&nbsp;
+<i>160</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-01 15:52</div>
+    <div style="float:right;">generated on 2020-06-04 00:38</div>
 </div>
 </body>
 </html>

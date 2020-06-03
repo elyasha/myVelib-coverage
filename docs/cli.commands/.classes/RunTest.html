@@ -42,26 +42,26 @@
   <td class="name">RunTest</td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/ 1)
+    (1/ 1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    16.7%
   </span>
   <span class="absValue">
-    (0/ 5)
+    (1/ 6)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    12.2%
   </span>
   <span class="absValue">
-    (0/ 12)
+    (6/ 49)
   </span>
 </td>
 </tr>
@@ -74,61 +74,157 @@
 
 <div class="sourceCode"><i>1</i>&nbsp;package cli.commands;
 <i>2</i>&nbsp;
-<i>3</i>&nbsp;/**
-<i>4</i>&nbsp; * This is the RunTest class that implements the runTest command of the CLI.
-<i>5</i>&nbsp; */
-<b class="nc"><i>6</i>&nbsp;public class RunTest implements Command {</b>
-<i>7</i>&nbsp;    /**
-<i>8</i>&nbsp;     * main() is the implementation of the command. It will interact with the core.Main application
-<i>9</i>&nbsp;     * the runTest command: Run the test suite of the myVelib framework
-<i>10</i>&nbsp;     *
-<i>11</i>&nbsp;     * @param args the arguments of the command
-<i>12</i>&nbsp;     */
-<i>13</i>&nbsp;    public static void main(String[] args) {
-<b class="nc"><i>14</i>&nbsp;        if (!hasGoodInput(args)) {</b>
-<b class="nc"><i>15</i>&nbsp;            wrongArgumentHelp();</b>
-<i>16</i>&nbsp;        } else {
-<b class="nc"><i>17</i>&nbsp;            System.out.println(&quot;The runTest command&quot;);</b>
-<i>18</i>&nbsp;            // TODO: Design command
-<i>19</i>&nbsp;        }
-<b class="nc"><i>20</i>&nbsp;    }</b>
-<i>21</i>&nbsp;
-<i>22</i>&nbsp;    /**
-<i>23</i>&nbsp;     * This is the help command: it displays a message to better explain the command itself
-<i>24</i>&nbsp;     *
-<i>25</i>&nbsp;     * @param args the arguments of the command
-<i>26</i>&nbsp;     */
-<i>27</i>&nbsp;    public static void helpCommand(String[] args) {
-<b class="nc"><i>28</i>&nbsp;        System.out.println(&quot;The runTest command&quot;);</b>
-<b class="nc"><i>29</i>&nbsp;        System.out.println(&quot;the runTest command: Run the test suite of the myVelib framework&quot;);</b>
-<b class="nc"><i>30</i>&nbsp;    }</b>
-<i>31</i>&nbsp;
-<i>32</i>&nbsp;    /**
-<i>33</i>&nbsp;     * This method implements all the help that will be displayed to the user if he enters a wrong input
-<i>34</i>&nbsp;     */
-<i>35</i>&nbsp;    public static void wrongArgumentHelp() {
-<b class="nc"><i>36</i>&nbsp;        System.out.println(&quot;There is a problem with the arguments passed!&quot;);</b>
-<b class="nc"><i>37</i>&nbsp;        System.out.println(&quot;Please add some (consistent) argument! For help: myvelib help [COMMAND]&quot;);</b>
-<b class="nc"><i>38</i>&nbsp;    }</b>
-<i>39</i>&nbsp;
-<i>40</i>&nbsp;    /**
-<i>41</i>&nbsp;     * This methods is used to check if the command has good input from the user
-<i>42</i>&nbsp;     *
-<i>43</i>&nbsp;     * @param args the arguments of the command
-<i>44</i>&nbsp;     * @return true, if the command has good input. false, otherwise
-<i>45</i>&nbsp;     */
-<i>46</i>&nbsp;    public static boolean hasGoodInput(String[] args) {
-<b class="nc"><i>47</i>&nbsp;        return args.length &lt;= 1;</b>
-<i>48</i>&nbsp;    }
+<i>3</i>&nbsp;import cli.RunCommand;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import java.io.BufferedReader;
+<i>6</i>&nbsp;import java.io.FileReader;
+<i>7</i>&nbsp;import java.io.IOException;
+<i>8</i>&nbsp;import java.util.ArrayList;
+<i>9</i>&nbsp;import java.util.List;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;/**
+<i>12</i>&nbsp; * This is the RunTest class that implements the runTest command of the CLI.
+<i>13</i>&nbsp; * runTest [FileName.txt] :
+<i>14</i>&nbsp; * to run a test (sequence of commands) from a file name fileName.txt
+<i>15</i>&nbsp; */
+<b class="nc"><i>16</i>&nbsp;public class RunTest implements Command {</b>
+<i>17</i>&nbsp;    /**
+<i>18</i>&nbsp;     * main() is the implementation of the command. It will interact with the core.Main application
+<i>19</i>&nbsp;     * the runTest command: Run the test suite of the myVelib framework
+<i>20</i>&nbsp;     *
+<i>21</i>&nbsp;     * @param args the arguments of the command
+<i>22</i>&nbsp;     */
+<i>23</i>&nbsp;    public static void main(String[] args) {
+<b class="nc"><i>24</i>&nbsp;        if (!hasGoodInput(args)) {</b>
+<b class="nc"><i>25</i>&nbsp;            wrongArgumentHelp();</b>
+<i>26</i>&nbsp;        } else {
+<i>27</i>&nbsp;//            System.out.println(&quot;The runTest command&quot;);
+<b class="nc"><i>28</i>&nbsp;            if (args.length == 0) {</b>
+<i>29</i>&nbsp;                // While loop to run commands
+<b class="nc"><i>30</i>&nbsp;                System.out.println(&quot;Please add an argument with the path to the file that you are going to test!&quot;);</b>
+<b class="nc"><i>31</i>&nbsp;                System.out.println(&quot;Usage: runTest [fileName.txt]&quot;);</b>
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;            }
+<i>34</i>&nbsp;            else {
+<i>35</i>&nbsp;
+<b class="nc"><i>36</i>&nbsp;                String fileName = args[0];</b>
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;                // Read file.txt and execute commands
+<i>39</i>&nbsp;                // TODO: check commands
+<b class="nc"><i>40</i>&nbsp;                List&lt;String&gt; textFile = readTextFile(fileName);</b>
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;//            System.out.println(textFile.get(2));
+<i>43</i>&nbsp;                // Read file line by line (check if the first word is a command)
+<i>44</i>&nbsp;
+<b class="nc"><i>45</i>&nbsp;                boolean fileHasProblem = false; // We assume the file is correct</b>
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;                // Check line by line
+<i>48</i>&nbsp;                // TODO: Create the cli interactive functionality
 <i>49</i>&nbsp;
 <i>50</i>&nbsp;
-<i>51</i>&nbsp;}
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;                // If success : run the file line by line
+<b class="nc"><i>54</i>&nbsp;                if (!fileHasProblem) {</b>
+<i>55</i>&nbsp;                    // run the file
+<b class="nc"><i>56</i>&nbsp;                    for (int i = 0; i &lt; textFile.size(); i++) {</b>
+<i>57</i>&nbsp;                        // Execute the line
+<b class="nc"><i>58</i>&nbsp;                        String command = textFile.get(i).split(&quot; &quot;)[0];</b>
+<i>59</i>&nbsp;//                    System.out.println(command);
+<b class="nc"><i>60</i>&nbsp;                        String[] argsCommand = textFile.get(i).split(&quot; &quot;);</b>
+<i>61</i>&nbsp;
+<b class="nc"><i>62</i>&nbsp;                        for (int j = 0; j &lt; argsCommand.length; j++) {</b>
+<b class="nc"><i>63</i>&nbsp;                            System.out.println(argsCommand[j]);</b>
+<i>64</i>&nbsp;                        }
+<b class="nc"><i>65</i>&nbsp;                        RunCommand.main(argsCommand);</b>
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;                    }
+<i>68</i>&nbsp;                }
+<i>69</i>&nbsp;                else {
+<b class="nc"><i>70</i>&nbsp;                    System.out.println(&quot;You file has a syntax error!&quot;);</b>
+<i>71</i>&nbsp;                }
+<i>72</i>&nbsp;            }
+<i>73</i>&nbsp;        }
+<b class="nc"><i>74</i>&nbsp;    }</b>
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;    /**
+<i>77</i>&nbsp;     * This is the help command: it displays a message to better explain the command itself
+<i>78</i>&nbsp;     *
+<i>79</i>&nbsp;     * @param args the arguments of the command
+<i>80</i>&nbsp;     */
+<i>81</i>&nbsp;    public static void helpCommand(String[] args) {
+<b class="nc"><i>82</i>&nbsp;        System.out.println(&quot;The runTest command&quot;);</b>
+<b class="nc"><i>83</i>&nbsp;        System.out.println(&quot;the runTest command: Run the test suite of the myVelib framework&quot;);</b>
+<b class="nc"><i>84</i>&nbsp;    }</b>
+<i>85</i>&nbsp;
+<i>86</i>&nbsp;    /**
+<i>87</i>&nbsp;     * This method implements all the help that will be displayed to the user if he enters a wrong input
+<i>88</i>&nbsp;     */
+<i>89</i>&nbsp;    public static void wrongArgumentHelp() {
+<b class="nc"><i>90</i>&nbsp;        System.out.println(&quot;There is a problem with the arguments passed!&quot;);</b>
+<b class="nc"><i>91</i>&nbsp;        System.out.println(&quot;Please add some (consistent) argument! For help: myvelib help [COMMAND]&quot;);</b>
+<b class="nc"><i>92</i>&nbsp;    }</b>
+<i>93</i>&nbsp;
+<i>94</i>&nbsp;    /**
+<i>95</i>&nbsp;     * This methods is used to check if the command has good input from the user
+<i>96</i>&nbsp;     *
+<i>97</i>&nbsp;     * @param args the arguments of the command
+<i>98</i>&nbsp;     * @return true, if the command has good input. false, otherwise
+<i>99</i>&nbsp;     */
+<i>100</i>&nbsp;    public static boolean hasGoodInput(String[] args) {
+<b class="fc"><i>101</i>&nbsp;        if (args.length &gt; 1) {</b>
+<b class="nc"><i>102</i>&nbsp;            return false;</b>
+<i>103</i>&nbsp;        }
+<i>104</i>&nbsp;        try {
+<b class="fc"><i>105</i>&nbsp;            int integerValue1 = Integer.parseInt(args[0]);</b>
+<b class="fc"><i>106</i>&nbsp;            System.out.println(&quot;Wrong data type. Expecting a string! Please see your file.txt ;)&quot;);</b>
+<b class="fc"><i>107</i>&nbsp;            return false;</b>
+<b class="fc"><i>108</i>&nbsp;        } catch (NumberFormatException numberFormatException) {</b>
+<b class="fc"><i>109</i>&nbsp;            return true;</b>
+<i>110</i>&nbsp;        }
+<i>111</i>&nbsp;    }
+<i>112</i>&nbsp;
+<i>113</i>&nbsp;    public static List&lt;String&gt; readTextFile(String fileName) {
+<i>114</i>&nbsp;
+<b class="nc"><i>115</i>&nbsp;        List&lt;String&gt; returnValue = new ArrayList&lt;String&gt;();</b>
+<b class="nc"><i>116</i>&nbsp;        FileReader file = null;</b>
+<b class="nc"><i>117</i>&nbsp;        BufferedReader reader = null;</b>
+<i>118</i>&nbsp;
+<i>119</i>&nbsp;        try {
+<i>120</i>&nbsp;            // open input stream pointing at fileName
+<b class="nc"><i>121</i>&nbsp;            file = new FileReader(fileName);</b>
+<i>122</i>&nbsp;
+<i>123</i>&nbsp;            // open input buffered reader to read file line by line
+<b class="nc"><i>124</i>&nbsp;            reader = new BufferedReader(file);</b>
+<b class="nc"><i>125</i>&nbsp;            String line = &quot;&quot;;</b>
+<i>126</i>&nbsp;
+<i>127</i>&nbsp;            // reading input file line by line
+<b class="nc"><i>128</i>&nbsp;            while ((line = reader.readLine()) != null) {</b>
+<b class="nc"><i>129</i>&nbsp;                returnValue.add(line);</b>
+<i>130</i>&nbsp;            }
+<b class="nc"><i>131</i>&nbsp;        } catch (Exception e) {</b>
+<b class="nc"><i>132</i>&nbsp;            throw new RuntimeException(e);</b>
+<i>133</i>&nbsp;        } finally {
+<b class="nc"><i>134</i>&nbsp;            if (file != null) {</b>
+<i>135</i>&nbsp;                try {
+<b class="nc"><i>136</i>&nbsp;                    file.close();</b>
+<b class="nc"><i>137</i>&nbsp;                    reader.close();</b>
+<i>138</i>&nbsp;
+<b class="nc"><i>139</i>&nbsp;                } catch (IOException e) {</b>
+<b class="nc"><i>140</i>&nbsp;                    System.out.println(&quot;File not found: &quot; + fileName);</b>
+<i>141</i>&nbsp;                    // Ignore issues during closing
+<b class="nc"><i>142</i>&nbsp;                }</b>
+<i>143</i>&nbsp;            }
+<b class="nc"><i>144</i>&nbsp;        }</b>
+<b class="nc"><i>145</i>&nbsp;        return returnValue;</b>
+<i>146</i>&nbsp;    }
+<i>147</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-01 15:52</div>
+    <div style="float:right;">generated on 2020-06-04 00:38</div>
 </div>
 </body>
 </html>

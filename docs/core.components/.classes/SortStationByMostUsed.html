@@ -42,26 +42,26 @@
   <td class="name">SortStationByMostUsed</td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/ 1)
+    (1/ 1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/ 2)
+    (2/ 2)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/ 2)
+    (2/ 2)
   </span>
 </td>
 </tr>
@@ -79,7 +79,7 @@
 <i>5</i>&nbsp;/**
 <i>6</i>&nbsp; * The SortStationByMostUsed class : this class implements an algorithm to sort the stations by the most used strategy
 <i>7</i>&nbsp; */
-<b class="nc"><i>8</i>&nbsp;public class SortStationByMostUsed implements Comparator&lt;Station&gt; {</b>
+<b class="fc"><i>8</i>&nbsp;public class SortStationByMostUsed implements Comparator&lt;Station&gt; {</b>
 <i>9</i>&nbsp;
 <i>10</i>&nbsp;    /**
 <i>11</i>&nbsp;     * This method is used to compare two stations
@@ -90,7 +90,7 @@
 <i>16</i>&nbsp;     */
 <i>17</i>&nbsp;    @Override
 <i>18</i>&nbsp;    public int compare(Station o1, Station o2) {
-<b class="nc"><i>19</i>&nbsp;        return o1.getNumberOfDroppings() + o1.getNumberOfRentings() - o2.getNumberOfDroppings() - o2.getNumberOfRentings();</b>
+<b class="fc"><i>19</i>&nbsp;        return -o1.getNumberOfDroppings() - o1.getNumberOfRentings() + o2.getNumberOfDroppings() + o2.getNumberOfRentings();</b>
 <i>20</i>&nbsp;    }
 <i>21</i>&nbsp;}
 </div>
@@ -98,7 +98,7 @@
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-01 15:52</div>
+    <div style="float:right;">generated on 2020-06-04 00:38</div>
 </div>
 </body>
 </html>

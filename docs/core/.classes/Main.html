@@ -53,7 +53,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 5)
+    (0/ 6)
   </span>
 </td>
 <td class="coverageStat">
@@ -61,7 +61,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 7)
+    (0/ 8)
   </span>
 </td>
 </tr>
@@ -81,32 +81,32 @@
 <i>7</i>&nbsp;
 <i>8</i>&nbsp;/**
 <i>9</i>&nbsp; * The Main class: This class is responsible to be the core class that executes the core package when running the java myVelib framework
-<b class="nc"><i>10</i>&nbsp; * It is indeed the core main application itself</b>
+<i>10</i>&nbsp; * It is indeed the core main application itself
 <i>11</i>&nbsp; */
-<i>12</i>&nbsp;public class Main {
+<b class="nc"><i>12</i>&nbsp;public class Main {</b>
 <i>13</i>&nbsp;
 <i>14</i>&nbsp;    /**
 <i>15</i>&nbsp;     * This is where all systems will be saved when running the application
 <i>16</i>&nbsp;     */
-<i>17</i>&nbsp;    private static List&lt;MyVelibSystem&gt; systems = new ArrayList&lt;MyVelibSystem&gt;();
+<b class="nc"><i>17</i>&nbsp;    private static List&lt;MyVelibSystem&gt; systems = new ArrayList&lt;MyVelibSystem&gt;();</b>
 <i>18</i>&nbsp;
 <i>19</i>&nbsp;    /**
 <i>20</i>&nbsp;     * a getter for systems
 <i>21</i>&nbsp;     *
 <i>22</i>&nbsp;     * @return All systems of the myVelib app
-<b class="nc"><i>23</i>&nbsp;     */</b>
+<i>23</i>&nbsp;     */
 <i>24</i>&nbsp;    public static List&lt;MyVelibSystem&gt; getSystems() {
-<i>25</i>&nbsp;        return systems;
+<b class="nc"><i>25</i>&nbsp;        return systems;</b>
 <i>26</i>&nbsp;    }
 <i>27</i>&nbsp;
 <i>28</i>&nbsp;    /**
 <i>29</i>&nbsp;     * A setter for systems
 <i>30</i>&nbsp;     *
 <i>31</i>&nbsp;     * @param systems A list of systems that is used to set all systems in the application
-<b class="nc"><i>32</i>&nbsp;     */</b>
-<b class="nc"><i>33</i>&nbsp;    public static void setSystems(List&lt;MyVelibSystem&gt; systems) {</b>
-<i>34</i>&nbsp;        Main.systems = systems;
-<i>35</i>&nbsp;    }
+<i>32</i>&nbsp;     */
+<i>33</i>&nbsp;    public static void setSystems(List&lt;MyVelibSystem&gt; systems) {
+<b class="nc"><i>34</i>&nbsp;        Main.systems = systems;</b>
+<b class="nc"><i>35</i>&nbsp;    }</b>
 <i>36</i>&nbsp;
 <i>37</i>&nbsp;    /**
 <i>38</i>&nbsp;     * This is the main() method of our myVelib application. The myVelib application itself
@@ -131,25 +131,25 @@
 <i>57</i>&nbsp;        // TODO : We need to code the fact that the application will read a txt file
 <i>58</i>&nbsp;        // Usage: myvelib file.txt
 <i>59</i>&nbsp;        // Output: Execute the commands in file.txt
-<b class="nc"><i>60</i>&nbsp;</b>
+<i>60</i>&nbsp;
 <i>61</i>&nbsp;
-<i>62</i>&nbsp;    }
+<b class="nc"><i>62</i>&nbsp;    }</b>
 <i>63</i>&nbsp;
 <i>64</i>&nbsp;    /**
 <i>65</i>&nbsp;     * A method to add a new system to the systems variable
 <i>66</i>&nbsp;     *
 <i>67</i>&nbsp;     * @param system A system that will be added to the Main class (of the myVelib app)
-<b class="nc"><i>68</i>&nbsp;     */</b>
-<b class="nc"><i>69</i>&nbsp;    public static void addMyVelibSystem(MyVelibSystem system) {</b>
-<i>70</i>&nbsp;        systems.add(system);
-<i>71</i>&nbsp;    }
+<i>68</i>&nbsp;     */
+<i>69</i>&nbsp;    public static void addMyVelibSystem(MyVelibSystem system) {
+<b class="nc"><i>70</i>&nbsp;        systems.add(system);</b>
+<b class="nc"><i>71</i>&nbsp;    }</b>
 <i>72</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-01 15:52</div>
+    <div style="float:right;">generated on 2020-06-04 00:38</div>
 </div>
 </body>
 </html>

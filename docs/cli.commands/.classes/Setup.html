@@ -42,26 +42,26 @@
   <td class="name">Setup</td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/ 1)
+    (1/ 1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    20%
   </span>
   <span class="absValue">
-    (0/ 5)
+    (1/ 5)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    37.1%
   </span>
   <span class="absValue">
-    (0/ 22)
+    (13/ 35)
   </span>
 </td>
 </tr>
@@ -74,85 +74,109 @@
 
 <div class="sourceCode"><i>1</i>&nbsp;package cli.commands;
 <i>2</i>&nbsp;
-<i>3</i>&nbsp;/**
-<i>4</i>&nbsp; * This is the Setup class that implements the setup command of the CLI.
-<i>5</i>&nbsp; */
-<b class="nc"><i>6</i>&nbsp;public class Setup implements Command {</b>
-<i>7</i>&nbsp;    /**
-<i>8</i>&nbsp;     * main() is the implementation of the command. It will interact with the core.Main application
-<i>9</i>&nbsp;     * setup [velibnetworkName]: to create a myVelib network with given name and
-<i>10</i>&nbsp;     * consisting of 10 stations each of which has 10 parking slots and such that stations
-<i>11</i>&nbsp;     * are arranged on a square grid whose of side 4km and initially populated with a 75%
-<i>12</i>&nbsp;     * bikes randomly distributed over the 10 stations
-<i>13</i>&nbsp;     * &lt;p&gt;
-<i>14</i>&nbsp;     * setup [name, nstations, nslots, s, nbikes]: to create a myVelib net-
-<i>15</i>&nbsp;     * work with given name and consisting of nstations stations each of which has nslots
-<i>16</i>&nbsp;     * parking slots and such that stations are arranged in as uniform as possible manner
-<i>17</i>&nbsp;     * over an area you may assume either being circular of radium s or squared of side s
-<i>18</i>&nbsp;     * (please document what kind of area your implementation of this command takes into
-<i>19</i>&nbsp;     * account and how stations are distributed over it).Furthermore the network should
-<i>20</i>&nbsp;     * be initially populated with a nbikes bikes randomly distributed over the nstations
-<i>21</i>&nbsp;     * stations
-<i>22</i>&nbsp;     *
-<i>23</i>&nbsp;     * @param args the arguments of the command
-<i>24</i>&nbsp;     */
-<i>25</i>&nbsp;    public static void main(String[] args) {
-<b class="nc"><i>26</i>&nbsp;        if (!hasGoodInput(args)) {</b>
-<b class="nc"><i>27</i>&nbsp;            wrongArgumentHelp();</b>
-<i>28</i>&nbsp;        } else {
-<b class="nc"><i>29</i>&nbsp;            System.out.println(&quot;The setup command!&quot;);</b>
-<i>30</i>&nbsp;            // TODO: Design command
-<i>31</i>&nbsp;        }
-<b class="nc"><i>32</i>&nbsp;    }</b>
-<i>33</i>&nbsp;
-<i>34</i>&nbsp;    /**
-<i>35</i>&nbsp;     * This is the help command: it displays a message to better explain the command itself
-<i>36</i>&nbsp;     *
-<i>37</i>&nbsp;     * @param args the arguments of the command
-<i>38</i>&nbsp;     */
-<i>39</i>&nbsp;    public static void helpCommand(String[] args) {
-<b class="nc"><i>40</i>&nbsp;        System.out.println(&quot;The setup command!&quot;);</b>
-<b class="nc"><i>41</i>&nbsp;        System.out.println();</b>
-<b class="nc"><i>42</i>&nbsp;        System.out.println(&quot;setup &lt;velibnetworkName&gt;: to create a myVelib network with given name and&quot;);</b>
-<b class="nc"><i>43</i>&nbsp;        System.out.println(&quot;consisting of 10 stations each of which has 10 parking slots and such that stations&quot;);</b>
-<b class="nc"><i>44</i>&nbsp;        System.out.println(&quot;are arranged on a square grid whose of side 4km and initially populated with a 75%&quot;);</b>
-<b class="nc"><i>45</i>&nbsp;        System.out.println(&quot;bikes randomly distributed over the 10 stations&quot;);</b>
-<b class="nc"><i>46</i>&nbsp;        System.out.println();</b>
-<b class="nc"><i>47</i>&nbsp;        System.out.println(&quot;setup &lt;name&gt; &lt;nstations&gt; &lt;nslots&gt; &lt;s&gt; &lt;nbikes&gt;: to create a myVelib network&quot;);</b>
-<b class="nc"><i>48</i>&nbsp;        System.out.println(&quot;with given name and consisting of nstations stations each of which has nslots&quot;);</b>
-<b class="nc"><i>49</i>&nbsp;        System.out.println(&quot;parking slots and such that stations are arranged in as uniform as possible manner&quot;);</b>
-<b class="nc"><i>50</i>&nbsp;        System.out.println(&quot;over an area you may assume either being circular of radium s or squared of side s&quot;);</b>
-<b class="nc"><i>51</i>&nbsp;        System.out.println(&quot;&quot;);</b>
-<i>52</i>&nbsp;
-<i>53</i>&nbsp;
-<b class="nc"><i>54</i>&nbsp;    }</b>
-<i>55</i>&nbsp;
-<i>56</i>&nbsp;    /**
-<i>57</i>&nbsp;     * This method implements all the help that will be displayed to the user if he enters a wrong input
-<i>58</i>&nbsp;     */
-<i>59</i>&nbsp;    public static void wrongArgumentHelp() {
-<b class="nc"><i>60</i>&nbsp;        System.out.println(&quot;There is a problem with the arguments passed!&quot;);</b>
-<b class="nc"><i>61</i>&nbsp;        System.out.println(&quot;Please add some (consistent) argument! For help: myvelib help [COMMAND]&quot;);</b>
-<b class="nc"><i>62</i>&nbsp;    }</b>
-<i>63</i>&nbsp;
-<i>64</i>&nbsp;    /**
-<i>65</i>&nbsp;     * This methods is used to check if the command has good input from the user
-<i>66</i>&nbsp;     *
-<i>67</i>&nbsp;     * @param args the arguments of the command
-<i>68</i>&nbsp;     * @return true, if the command has good input. false, otherwise
-<i>69</i>&nbsp;     */
-<i>70</i>&nbsp;    public static boolean hasGoodInput(String[] args) {
-<b class="nc"><i>71</i>&nbsp;        return args.length == 1 || args.length == 5;</b>
-<i>72</i>&nbsp;        // TODO: Check to see if it is an integer
-<i>73</i>&nbsp;
-<i>74</i>&nbsp;    }
-<i>75</i>&nbsp;}
+<i>3</i>&nbsp;import core.system.MyVelibSystem;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import static core.setup.InitialSetup.getInitialSetupSystem;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;/**
+<i>8</i>&nbsp; * This is the Setup class that implements the setup command of the CLI.
+<i>9</i>&nbsp; */
+<b class="nc"><i>10</i>&nbsp;public class Setup implements Command {</b>
+<i>11</i>&nbsp;    /**
+<i>12</i>&nbsp;     * main() is the implementation of the command. It will interact with the core.Main application
+<i>13</i>&nbsp;     * setup [velibnetworkName]: to create a myVelib network with given name and
+<i>14</i>&nbsp;     * consisting of 10 stations each of which has 10 parking slots and such that stations
+<i>15</i>&nbsp;     * are arranged on a square grid whose of side 4km and initially populated with a 75%
+<i>16</i>&nbsp;     * bikes randomly distributed over the 10 stations
+<i>17</i>&nbsp;     * &lt;p&gt;
+<i>18</i>&nbsp;     * setup [name, nstations, nslots, s, nbikes]: to create a myVelib net-
+<i>19</i>&nbsp;     * work with given name and consisting of nstations stations each of which has nslots
+<i>20</i>&nbsp;     * parking slots and such that stations are arranged in as uniform as possible manner
+<i>21</i>&nbsp;     * over an area you may assume either being circular of radium s or squared of side s
+<i>22</i>&nbsp;     * (please document what kind of area your implementation of this command takes into
+<i>23</i>&nbsp;     * account and how stations are distributed over it).Furthermore the network should
+<i>24</i>&nbsp;     * be initially populated with a nbikes bikes randomly distributed over the nstations
+<i>25</i>&nbsp;     * stations
+<i>26</i>&nbsp;     *
+<i>27</i>&nbsp;     * @param args the arguments of the command
+<i>28</i>&nbsp;     */
+<i>29</i>&nbsp;    public static void main(String[] args) {
+<b class="nc"><i>30</i>&nbsp;        if (!hasGoodInput(args)) {</b>
+<b class="nc"><i>31</i>&nbsp;            wrongArgumentHelp();</b>
+<i>32</i>&nbsp;        } else {
+<b class="nc"><i>33</i>&nbsp;            System.out.println(&quot;The setup command!&quot;);</b>
+<b class="nc"><i>34</i>&nbsp;            MyVelibSystem system = getInitialSetupSystem(args);</b>
+<i>35</i>&nbsp;        }
+<b class="nc"><i>36</i>&nbsp;    }</b>
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;    /**
+<i>39</i>&nbsp;     * This is the help command: it displays a message to better explain the command itself
+<i>40</i>&nbsp;     *
+<i>41</i>&nbsp;     * @param args the arguments of the command
+<i>42</i>&nbsp;     */
+<i>43</i>&nbsp;    public static void helpCommand(String[] args) {
+<b class="nc"><i>44</i>&nbsp;        System.out.println(&quot;The setup command!&quot;);</b>
+<b class="nc"><i>45</i>&nbsp;        System.out.println();</b>
+<b class="nc"><i>46</i>&nbsp;        System.out.println(&quot;setup &lt;velibnetworkName&gt;: to create a myVelib network with given name and&quot;);</b>
+<b class="nc"><i>47</i>&nbsp;        System.out.println(&quot;consisting of 10 stations each of which has 10 parking slots and such that stations&quot;);</b>
+<b class="nc"><i>48</i>&nbsp;        System.out.println(&quot;are arranged on a square grid whose of side 4km and initially populated with a 75%&quot;);</b>
+<b class="nc"><i>49</i>&nbsp;        System.out.println(&quot;bikes randomly distributed over the 10 stations&quot;);</b>
+<b class="nc"><i>50</i>&nbsp;        System.out.println();</b>
+<b class="nc"><i>51</i>&nbsp;        System.out.println(&quot;setup &lt;name&gt; &lt;nstations&gt; &lt;nslots&gt; &lt;s&gt; &lt;nbikes&gt;: to create a myVelib network&quot;);</b>
+<b class="nc"><i>52</i>&nbsp;        System.out.println(&quot;with given name and consisting of nstations stations each of which has nslots&quot;);</b>
+<b class="nc"><i>53</i>&nbsp;        System.out.println(&quot;parking slots and such that stations are arranged in as uniform as possible manner&quot;);</b>
+<b class="nc"><i>54</i>&nbsp;        System.out.println(&quot;over an area you may assume either being circular of radium s or squared of side s&quot;);</b>
+<b class="nc"><i>55</i>&nbsp;        System.out.println(&quot;&quot;);</b>
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;
+<b class="nc"><i>58</i>&nbsp;    }</b>
+<i>59</i>&nbsp;
+<i>60</i>&nbsp;    /**
+<i>61</i>&nbsp;     * This method implements all the help that will be displayed to the user if he enters a wrong input
+<i>62</i>&nbsp;     */
+<i>63</i>&nbsp;    public static void wrongArgumentHelp() {
+<b class="nc"><i>64</i>&nbsp;        System.out.println(&quot;There is a problem with the arguments passed!&quot;);</b>
+<b class="nc"><i>65</i>&nbsp;        System.out.println(&quot;Please add some (consistent) argument! For help: myvelib help [COMMAND]&quot;);</b>
+<b class="nc"><i>66</i>&nbsp;    }</b>
+<i>67</i>&nbsp;
+<i>68</i>&nbsp;    /**
+<i>69</i>&nbsp;     * This methods is used to check if the command has good input from the user
+<i>70</i>&nbsp;     *
+<i>71</i>&nbsp;     * @param args the arguments of the command
+<i>72</i>&nbsp;     * @return true, if the command has good input. false, otherwise
+<i>73</i>&nbsp;     */
+<i>74</i>&nbsp;    public static boolean hasGoodInput(String[] args) {
+<i>75</i>&nbsp;
+<b class="fc"><i>76</i>&nbsp;        if (args.length == 5) {</b>
+<i>77</i>&nbsp;            try {
+<b class="fc"><i>78</i>&nbsp;                int integerValue = Integer.parseInt(args[1]);</b>
+<b class="fc"><i>79</i>&nbsp;                int integerValue2 = Integer.parseInt(args[2]);</b>
+<b class="fc"><i>80</i>&nbsp;                integerValue = Integer.parseInt(args[3]);</b>
+<b class="fc"><i>81</i>&nbsp;                int integerValue4 = Integer.parseInt(args[4]);</b>
+<i>82</i>&nbsp;
+<b class="fc"><i>83</i>&nbsp;                if(integerValue4 &gt; integerValue2){</b>
+<b class="fc"><i>84</i>&nbsp;                    return false;</b>
+<i>85</i>&nbsp;                }
+<i>86</i>&nbsp;
+<b class="fc"><i>87</i>&nbsp;            } catch (NumberFormatException numberFormatException) {</b>
+<b class="fc"><i>88</i>&nbsp;                System.out.println(numberFormatException.getMessage());</b>
+<b class="fc"><i>89</i>&nbsp;                System.out.println(&quot;Wrong data type. Expecting an integer! Please see your file.txt ;)&quot;);</b>
+<b class="fc"><i>90</i>&nbsp;                return false;</b>
+<b class="fc"><i>91</i>&nbsp;            }</b>
+<i>92</i>&nbsp;        }
+<i>93</i>&nbsp;
+<b class="fc"><i>94</i>&nbsp;        return args.length == 1 || args.length == 5;</b>
+<i>95</i>&nbsp;
+<i>96</i>&nbsp;    }
+<i>97</i>&nbsp;}
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-01 15:52</div>
+    <div style="float:right;">generated on 2020-06-04 00:38</div>
 </div>
 </body>
 </html>
