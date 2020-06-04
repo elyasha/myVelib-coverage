@@ -50,18 +50,18 @@
 </td>
 <td class="coverageStat">
   <span class="percent">
-    23.5%
+    64.7%
   </span>
   <span class="absValue">
-    (12/ 51)
+    (33/ 51)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    22.4%
+    55.2%
   </span>
   <span class="absValue">
-    (32/ 143)
+    (79/ 143)
   </span>
 </td>
 </tr>
@@ -221,7 +221,7 @@
 <i>147</i>&nbsp;     * @return the name of the User
 <i>148</i>&nbsp;     */
 <i>149</i>&nbsp;    public String getName() {
-<b class="nc"><i>150</i>&nbsp;        return name;</b>
+<b class="fc"><i>150</i>&nbsp;        return name;</b>
 <i>151</i>&nbsp;    }
 <i>152</i>&nbsp;
 <i>153</i>&nbsp;    /**
@@ -256,7 +256,7 @@
 <i>182</i>&nbsp;     * @return All the money the user has been charged
 <i>183</i>&nbsp;     */
 <i>184</i>&nbsp;    public float getAllMoneyCharged() {
-<b class="nc"><i>185</i>&nbsp;        return allMoneyCharged;</b>
+<b class="fc"><i>185</i>&nbsp;        return allMoneyCharged;</b>
 <i>186</i>&nbsp;    }
 <i>187</i>&nbsp;
 <i>188</i>&nbsp;    /**
@@ -271,7 +271,7 @@
 <i>197</i>&nbsp;     * is in a location
 <i>198</i>&nbsp;     */
 <i>199</i>&nbsp;    public Bicycle getBicycle() {
-<b class="nc"><i>200</i>&nbsp;        return bicycle;</b>
+<b class="fc"><i>200</i>&nbsp;        return bicycle;</b>
 <i>201</i>&nbsp;    }
 <i>202</i>&nbsp;
 <i>203</i>&nbsp;    /**
@@ -293,28 +293,28 @@
 <i>219</i>&nbsp;     * @return the money balace of the user
 <i>220</i>&nbsp;     */
 <i>221</i>&nbsp;    public double getMoney() {
-<b class="nc"><i>222</i>&nbsp;        return money;</b>
+<b class="fc"><i>222</i>&nbsp;        return money;</b>
 <i>223</i>&nbsp;    }
 <i>224</i>&nbsp;
 <i>225</i>&nbsp;    /**
 <i>226</i>&nbsp;     * @return the user&#39;s number of rentings
 <i>227</i>&nbsp;     */
 <i>228</i>&nbsp;    public int getNumberOfRentings() {
-<b class="nc"><i>229</i>&nbsp;        return numberOfRentings;</b>
+<b class="fc"><i>229</i>&nbsp;        return numberOfRentings;</b>
 <i>230</i>&nbsp;    }
 <i>231</i>&nbsp;
 <i>232</i>&nbsp;    /**
 <i>233</i>&nbsp;     * @return the time the user spent on a electical bicycle
 <i>234</i>&nbsp;     */
 <i>235</i>&nbsp;    public double getTimeSpentOnElectricalBicycle() {
-<b class="nc"><i>236</i>&nbsp;        return timeSpentOnElectricalBicycle;</b>
+<b class="fc"><i>236</i>&nbsp;        return timeSpentOnElectricalBicycle;</b>
 <i>237</i>&nbsp;    }
 <i>238</i>&nbsp;
 <i>239</i>&nbsp;    /**
 <i>240</i>&nbsp;     * @return the time the user spent on a mechanical bicycle
 <i>241</i>&nbsp;     */
 <i>242</i>&nbsp;    public double getTimeSpentOnMechanicalBicycle() {
-<b class="nc"><i>243</i>&nbsp;        return timeSpentOnMechanicalBicycle;</b>
+<b class="fc"><i>243</i>&nbsp;        return timeSpentOnMechanicalBicycle;</b>
 <i>244</i>&nbsp;    }
 <i>245</i>&nbsp;
 <i>246</i>&nbsp;    // Setters
@@ -370,8 +370,8 @@
 <i>296</i>&nbsp;     * @param allMoneyCharged the value of all money the user has been charged
 <i>297</i>&nbsp;     */
 <i>298</i>&nbsp;    public void setAllMoneyCharged(float allMoneyCharged) {
-<b class="nc"><i>299</i>&nbsp;        this.allMoneyCharged = allMoneyCharged;</b>
-<b class="nc"><i>300</i>&nbsp;    }</b>
+<b class="fc"><i>299</i>&nbsp;        this.allMoneyCharged = allMoneyCharged;</b>
+<b class="fc"><i>300</i>&nbsp;    }</b>
 <i>301</i>&nbsp;
 <i>302</i>&nbsp;    /**
 <i>303</i>&nbsp;     * Update the current money the user is charged
@@ -388,8 +388,8 @@
 <i>314</i>&nbsp;     * @param bicycle the bicycle of the user (can be none)
 <i>315</i>&nbsp;     */
 <i>316</i>&nbsp;    public void setBicycle(Bicycle bicycle) {
-<b class="nc"><i>317</i>&nbsp;        this.bicycle = bicycle;</b>
-<b class="nc"><i>318</i>&nbsp;    }</b>
+<b class="fc"><i>317</i>&nbsp;        this.bicycle = bicycle;</b>
+<b class="fc"><i>318</i>&nbsp;    }</b>
 <i>319</i>&nbsp;
 <i>320</i>&nbsp;    /**
 <i>321</i>&nbsp;     * Update the last renting station ID of the user
@@ -397,8 +397,8 @@
 <i>323</i>&nbsp;     * @param rentStationID the last renting station ID of the user
 <i>324</i>&nbsp;     */
 <i>325</i>&nbsp;    public void setRentStationID(int rentStationID) {
-<b class="nc"><i>326</i>&nbsp;        this.rentStationID = rentStationID;</b>
-<b class="nc"><i>327</i>&nbsp;    }</b>
+<b class="fc"><i>326</i>&nbsp;        this.rentStationID = rentStationID;</b>
+<b class="fc"><i>327</i>&nbsp;    }</b>
 <i>328</i>&nbsp;
 <i>329</i>&nbsp;    /**
 <i>330</i>&nbsp;     * Update the actual renting time of the user
@@ -477,9 +477,9 @@
 <i>403</i>&nbsp;    @Override
 <i>404</i>&nbsp;    public boolean equals(Object o) {
 <b class="fc"><i>405</i>&nbsp;        if (this == o) return true;</b>
-<b class="nc"><i>406</i>&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
-<b class="nc"><i>407</i>&nbsp;        User user = (User) o;</b>
-<b class="nc"><i>408</i>&nbsp;        return id == user.id;</b>
+<b class="fc"><i>406</i>&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
+<b class="fc"><i>407</i>&nbsp;        User user = (User) o;</b>
+<b class="fc"><i>408</i>&nbsp;        return id == user.id;</b>
 <i>409</i>&nbsp;    }
 <i>410</i>&nbsp;
 <i>411</i>&nbsp;    /**
@@ -489,7 +489,7 @@
 <i>415</i>&nbsp;     */
 <i>416</i>&nbsp;    @Override
 <i>417</i>&nbsp;    public int hashCode() {
-<b class="nc"><i>418</i>&nbsp;        return Objects.hash(id, name, coordinate, card, creditCardNumber, timeCreditBalance, allMoneyCharged, currentMoneyCharged);</b>
+<b class="fc"><i>418</i>&nbsp;        return Objects.hash(id, name, coordinate, card, creditCardNumber, timeCreditBalance, allMoneyCharged, currentMoneyCharged);</b>
 <i>419</i>&nbsp;    }
 <i>420</i>&nbsp;
 <i>421</i>&nbsp;    // Written methods
@@ -501,14 +501,14 @@
 <i>427</i>&nbsp;     */
 <i>428</i>&nbsp;    public void addCard(String cardType) {
 <i>429</i>&nbsp;
-<b class="nc"><i>430</i>&nbsp;        if (cardType.equals(&quot;Vlible&quot;)) {</b>
+<b class="fc"><i>430</i>&nbsp;        if (cardType.equals(&quot;Vlible&quot;)) {</b>
 <b class="nc"><i>431</i>&nbsp;            this.card = new Vlibre();</b>
-<b class="nc"><i>432</i>&nbsp;        } else if (cardType.equals(&quot;Vmax&quot;)) {</b>
-<b class="nc"><i>433</i>&nbsp;            this.card = new Vmax();</b>
+<b class="fc"><i>432</i>&nbsp;        } else if (cardType.equals(&quot;Vmax&quot;)) {</b>
+<b class="fc"><i>433</i>&nbsp;            this.card = new Vmax();</b>
 <i>434</i>&nbsp;        } else {
 <b class="nc"><i>435</i>&nbsp;            System.out.println(&quot;Error! The type does not exist.&quot;);</b>
 <i>436</i>&nbsp;        }
-<b class="nc"><i>437</i>&nbsp;    }</b>
+<b class="fc"><i>437</i>&nbsp;    }</b>
 <i>438</i>&nbsp;
 <i>439</i>&nbsp;    /**
 <i>440</i>&nbsp;     * Add money balance
@@ -516,8 +516,8 @@
 <i>442</i>&nbsp;     * @param money the money that will be added
 <i>443</i>&nbsp;     */
 <i>444</i>&nbsp;    public void addMoney(double money) {
-<b class="nc"><i>445</i>&nbsp;        this.money += money;</b>
-<b class="nc"><i>446</i>&nbsp;    }</b>
+<b class="fc"><i>445</i>&nbsp;        this.money += money;</b>
+<b class="fc"><i>446</i>&nbsp;    }</b>
 <i>447</i>&nbsp;
 <i>448</i>&nbsp;    /**
 <i>449</i>&nbsp;     * Remove money balance after droping the bicycle
@@ -525,12 +525,12 @@
 <i>451</i>&nbsp;     * @param money the money that will be removed
 <i>452</i>&nbsp;     */
 <i>453</i>&nbsp;    public void removeMoney(double money) {
-<b class="nc"><i>454</i>&nbsp;        if (this.money - money &lt; 0) {</b>
+<b class="fc"><i>454</i>&nbsp;        if (this.money - money &lt; 0) {</b>
 <b class="nc"><i>455</i>&nbsp;            System.out.println(&quot;ATTENTION! You are negative.&quot;);</b>
 <i>456</i>&nbsp;        }
-<b class="nc"><i>457</i>&nbsp;        this.money -= money;</b>
+<b class="fc"><i>457</i>&nbsp;        this.money -= money;</b>
 <i>458</i>&nbsp;
-<b class="nc"><i>459</i>&nbsp;    }</b>
+<b class="fc"><i>459</i>&nbsp;    }</b>
 <i>460</i>&nbsp;
 <i>461</i>&nbsp;    /**
 <i>462</i>&nbsp;     * Add some time credit after the user had dropped the bicycle in a good station
@@ -538,8 +538,8 @@
 <i>464</i>&nbsp;     * @param time some time credit (in minutes)
 <i>465</i>&nbsp;     */
 <i>466</i>&nbsp;    public void addTimeCredit(double time) {
-<b class="nc"><i>467</i>&nbsp;        this.timeCreditBalance += time;</b>
-<b class="nc"><i>468</i>&nbsp;    }</b>
+<b class="fc"><i>467</i>&nbsp;        this.timeCreditBalance += time;</b>
+<b class="fc"><i>468</i>&nbsp;    }</b>
 <i>469</i>&nbsp;
 <i>470</i>&nbsp;    /**
 <i>471</i>&nbsp;     * Remove time balance after the computation of the location cost
@@ -547,13 +547,13 @@
 <i>473</i>&nbsp;     * @param time time balance after the computation of the location cost
 <i>474</i>&nbsp;     */
 <i>475</i>&nbsp;    public void removeTimeCredit(double time) {
-<b class="nc"><i>476</i>&nbsp;        if (this.timeCreditBalance - time &lt; 0) {</b>
+<b class="fc"><i>476</i>&nbsp;        if (this.timeCreditBalance - time &lt; 0) {</b>
 <b class="nc"><i>477</i>&nbsp;            System.out.println(&quot;You cannot have a negative time credit balance!&quot;);</b>
 <i>478</i>&nbsp;        } else {
-<b class="nc"><i>479</i>&nbsp;            this.timeCreditBalance -= time;</b>
+<b class="fc"><i>479</i>&nbsp;            this.timeCreditBalance -= time;</b>
 <i>480</i>&nbsp;        }
 <i>481</i>&nbsp;
-<b class="nc"><i>482</i>&nbsp;    }</b>
+<b class="fc"><i>482</i>&nbsp;    }</b>
 <i>483</i>&nbsp;
 <i>484</i>&nbsp;    /**
 <i>485</i>&nbsp;     * Renting a bicycle
@@ -568,16 +568,16 @@
 <i>494</i>&nbsp;        Terminal termStart;
 <i>495</i>&nbsp;
 <i>496</i>&nbsp;        // Get best start and end stations
-<b class="nc"><i>497</i>&nbsp;        allStations = Main.getBestStation(system, coordsStart, coordsEnd, bicycle);</b>
+<b class="fc"><i>497</i>&nbsp;        allStations = Main.getBestStation(system, coordsStart, coordsEnd, bicycle);</b>
 <i>498</i>&nbsp;//        System.out.println(allStations);  // [null, null]
 <i>499</i>&nbsp;        // Get terminals of start and end stations
-<b class="nc"><i>500</i>&nbsp;        termStart = allStations.get(0).getStationTerminal();</b>
+<b class="fc"><i>500</i>&nbsp;        termStart = allStations.get(0).getStationTerminal();</b>
 <i>501</i>&nbsp;//        System.out.println(termStart);
 <i>502</i>&nbsp;        // Rent on terminal start
-<b class="nc"><i>503</i>&nbsp;        termStart.rentBicycle(bicycle, this, allStations.get(0));</b>
+<b class="fc"><i>503</i>&nbsp;        termStart.rentBicycle(bicycle, this, allStations.get(0));</b>
 <i>504</i>&nbsp;
 <i>505</i>&nbsp;        // Drop on terminal end ? How can we know the time ?
-<b class="nc"><i>506</i>&nbsp;    }</b>
+<b class="fc"><i>506</i>&nbsp;    }</b>
 <i>507</i>&nbsp;
 <i>508</i>&nbsp;    // TODO: Refactor this method (we need to divide this method - start and end stations)
 <i>509</i>&nbsp;    // TODO: Remove bicycle, because it is redundant
@@ -592,25 +592,25 @@
 <i>518</i>&nbsp;    public void dropBicyclePlanning(MyVelibSystem system, Point coordsStart, Point coordsEnd) {
 <i>519</i>&nbsp;        List&lt;Station&gt; allStations;
 <i>520</i>&nbsp;        Terminal termEnd;
-<b class="nc"><i>521</i>&nbsp;        Bicycle bicycle = this.bicycle;</b>
+<b class="fc"><i>521</i>&nbsp;        Bicycle bicycle = this.bicycle;</b>
 <i>522</i>&nbsp;
 <i>523</i>&nbsp;        // Check if the user has indeed a bicycle
-<b class="nc"><i>524</i>&nbsp;        if (this.bicycle == null) {</b>
+<b class="fc"><i>524</i>&nbsp;        if (this.bicycle == null) {</b>
 <b class="nc"><i>525</i>&nbsp;            System.out.println(&quot;You have not a bicycle!!!&quot;);</b>
 <i>526</i>&nbsp;        } else {
 <i>527</i>&nbsp;            // Get best start and end stations
-<b class="nc"><i>528</i>&nbsp;            allStations = Main.getBestStation(system, coordsStart, coordsEnd, this.bicycle);</b>
+<b class="fc"><i>528</i>&nbsp;            allStations = Main.getBestStation(system, coordsStart, coordsEnd, this.bicycle);</b>
 <i>529</i>&nbsp;
 <i>530</i>&nbsp;            // Get terminals of start and end stations
-<b class="nc"><i>531</i>&nbsp;            termEnd = allStations.get(1).getStationTerminal();</b>
+<b class="fc"><i>531</i>&nbsp;            termEnd = allStations.get(1).getStationTerminal();</b>
 <i>532</i>&nbsp;            // Rent on terminal start
-<b class="nc"><i>533</i>&nbsp;            termEnd.dropBicycle(bicycle, this, allStations.get(1));</b>
+<b class="fc"><i>533</i>&nbsp;            termEnd.dropBicycle(bicycle, this, allStations.get(1));</b>
 <i>534</i>&nbsp;
 <i>535</i>&nbsp;            // Drop on terminal end ? How can we know the time ?
 <i>536</i>&nbsp;        }
 <i>537</i>&nbsp;
 <i>538</i>&nbsp;
-<b class="nc"><i>539</i>&nbsp;    }</b>
+<b class="fc"><i>539</i>&nbsp;    }</b>
 <i>540</i>&nbsp;
 <i>541</i>&nbsp;    /**
 <i>542</i>&nbsp;     * Droping a bicycle after using it
@@ -648,8 +648,8 @@
 <i>574</i>&nbsp;     * It used to compute statistics
 <i>575</i>&nbsp;     */
 <i>576</i>&nbsp;    public void addRenting() {
-<b class="nc"><i>577</i>&nbsp;        this.numberOfRentings += 1;</b>
-<b class="nc"><i>578</i>&nbsp;    }</b>
+<b class="fc"><i>577</i>&nbsp;        this.numberOfRentings += 1;</b>
+<b class="fc"><i>578</i>&nbsp;    }</b>
 <i>579</i>&nbsp;
 <i>580</i>&nbsp;    /**
 <i>581</i>&nbsp;     * Update the time spent on electrical bicycles
@@ -657,8 +657,8 @@
 <i>583</i>&nbsp;     * @param intervalOfTime an interval of time (in minutes)
 <i>584</i>&nbsp;     */
 <i>585</i>&nbsp;    public void addSpentTimeOnElectricalBicycle(double intervalOfTime) {
-<b class="nc"><i>586</i>&nbsp;        this.timeSpentOnElectricalBicycle += intervalOfTime;</b>
-<b class="nc"><i>587</i>&nbsp;    }</b>
+<b class="fc"><i>586</i>&nbsp;        this.timeSpentOnElectricalBicycle += intervalOfTime;</b>
+<b class="fc"><i>587</i>&nbsp;    }</b>
 <i>588</i>&nbsp;
 <i>589</i>&nbsp;    /**
 <i>590</i>&nbsp;     * Update the time spent on mechanical bicycles
@@ -666,8 +666,8 @@
 <i>592</i>&nbsp;     * @param intervalOfTime an interval of time (in minutes)
 <i>593</i>&nbsp;     */
 <i>594</i>&nbsp;    public void addSpentTimeOnMechanicalBicycle(double intervalOfTime) {
-<b class="nc"><i>595</i>&nbsp;        this.timeSpentOnMechanicalBicycle += intervalOfTime;</b>
-<b class="nc"><i>596</i>&nbsp;    }</b>
+<b class="fc"><i>595</i>&nbsp;        this.timeSpentOnMechanicalBicycle += intervalOfTime;</b>
+<b class="fc"><i>596</i>&nbsp;    }</b>
 <i>597</i>&nbsp;
 <i>598</i>&nbsp;    /**
 <i>599</i>&nbsp;     * Used to see the status of the user
@@ -755,7 +755,7 @@
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-04 00:38</div>
+    <div style="float:right;">generated on 2020-06-04 12:06</div>
 </div>
 </body>
 </html>

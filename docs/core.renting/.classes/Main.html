@@ -50,18 +50,18 @@
 </td>
 <td class="coverageStat">
   <span class="percent">
-    60%
+    80%
   </span>
   <span class="absValue">
-    (3/ 5)
+    (4/ 5)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    63.5%
+    76.9%
   </span>
   <span class="absValue">
-    (33/ 52)
+    (40/ 52)
   </span>
 </td>
 </tr>
@@ -161,7 +161,7 @@
 <b class="nc"><i>87</i>&nbsp;            System.out.println(&quot;ERROR ! TIME CREDIT MUST BE POSITIVE&quot;);</b>
 <i>88</i>&nbsp;        }
 <b class="fc"><i>89</i>&nbsp;        if (timeCredit == 0) {</b>
-<b class="nc"><i>90</i>&nbsp;            cost = getCostWithoutTimeCredit(bicycle, card, intervalOfTime);</b>
+<b class="fc"><i>90</i>&nbsp;            cost = getCostWithoutTimeCredit(bicycle, card, intervalOfTime);</b>
 <i>91</i>&nbsp;        } else {
 <b class="fc"><i>92</i>&nbsp;            if (intervalOfTime.getHours() * 60 + intervalOfTime.getMinutes() - timeCredit &gt; 0) {</b>
 <b class="fc"><i>93</i>&nbsp;                hours = (intervalOfTime.getHours() * 60 + intervalOfTime.getMinutes() - timeCredit) / 60;</b>
@@ -217,13 +217,13 @@
 <i>143</i>&nbsp;     */
 <i>144</i>&nbsp;    public static void chargingUser(User user, double priceToBePayed, Station station) {
 <i>145</i>&nbsp;        // We assume the client is rich
-<b class="nc"><i>146</i>&nbsp;        user.setAllMoneyCharged((float) (user.getAllMoneyCharged() + priceToBePayed));</b>
-<b class="nc"><i>147</i>&nbsp;        user.removeMoney(priceToBePayed);</b>
-<b class="nc"><i>148</i>&nbsp;        station.addMoney(priceToBePayed);</b>
-<b class="nc"><i>149</i>&nbsp;        if (station instanceof PlusStation) {</b>
-<b class="nc"><i>150</i>&nbsp;            user.addTimeCredit(TIME_ADDED_BY_PLUS_STATION);</b>
+<b class="fc"><i>146</i>&nbsp;        user.setAllMoneyCharged((float) (user.getAllMoneyCharged() + priceToBePayed));</b>
+<b class="fc"><i>147</i>&nbsp;        user.removeMoney(priceToBePayed);</b>
+<b class="fc"><i>148</i>&nbsp;        station.addMoney(priceToBePayed);</b>
+<b class="fc"><i>149</i>&nbsp;        if (station instanceof PlusStation) {</b>
+<b class="fc"><i>150</i>&nbsp;            user.addTimeCredit(TIME_ADDED_BY_PLUS_STATION);</b>
 <i>151</i>&nbsp;        }
-<b class="nc"><i>152</i>&nbsp;    }</b>
+<b class="fc"><i>152</i>&nbsp;    }</b>
 <i>153</i>&nbsp;
 <i>154</i>&nbsp;
 <i>155</i>&nbsp;}
@@ -232,7 +232,7 @@
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-04 00:38</div>
+    <div style="float:right;">generated on 2020-06-04 12:06</div>
 </div>
 </body>
 </html>
