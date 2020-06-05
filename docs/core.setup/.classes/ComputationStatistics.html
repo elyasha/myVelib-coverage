@@ -78,90 +78,95 @@
 <i>4</i>&nbsp;import core.components.User;
 <i>5</i>&nbsp;import core.components.factories.BicycleFactory;
 <i>6</i>&nbsp;import core.components.factories.PointFactory;
-<i>7</i>&nbsp;import core.statistics.balance.station.Main;
+<i>7</i>&nbsp;import core.statistics.balance.station.StationApp;
 <i>8</i>&nbsp;import core.system.MyVelibSystem;
 <i>9</i>&nbsp;
 <i>10</i>&nbsp;import java.util.List;
 <i>11</i>&nbsp;
 <i>12</i>&nbsp;/**
-<i>13</i>&nbsp; * The InitialSetup class : This is the class to implement the computation statistics of a myvelib system or network
+<i>13</i>&nbsp; * The ComputationStatistics class : This is the class to implement the computation statistics of a myvelib system or network
 <i>14</i>&nbsp; */
 <b class="nc"><i>15</i>&nbsp;public class ComputationStatistics {</b>
 <i>16</i>&nbsp;
-<i>17</i>&nbsp;    public static void main(String[] args) {
-<i>18</i>&nbsp;
-<i>19</i>&nbsp;        // Setup the system
-<b class="nc"><i>20</i>&nbsp;        String[] setupArgs = {args[0], &quot;10&quot;, &quot;10&quot;, &quot;1010&quot;, &quot;5&quot;};</b>
-<b class="nc"><i>21</i>&nbsp;        MyVelibSystem system = InitialSetup.getInitialSetupSystem(setupArgs);</b>
-<i>22</i>&nbsp;
-<i>23</i>&nbsp;//        Computation of statistics
-<i>24</i>&nbsp;//        1. the myVelib system stores relevant data in form of records representing N rental bike
-<i>25</i>&nbsp;//        simulations (by diferent users, on diferent stations, and with diferent duration)
-<i>26</i>&nbsp;        // User without card
-<b class="nc"><i>27</i>&nbsp;        User userWithoutCard = system.getUsers().get(0);</b>
-<b class="nc"><i>28</i>&nbsp;        userWithoutCard.rentBicyclePlanning(system, PointFactory.addPoint(0, 0), PointFactory.addPoint(20, 20), BicycleFactory.createElectricalBicycle());</b>
-<i>29</i>&nbsp;
-<i>30</i>&nbsp;
-<i>31</i>&nbsp;        // User with Vmax
-<b class="nc"><i>32</i>&nbsp;        User userVmax = system.getUsers().get(1);</b>
-<b class="nc"><i>33</i>&nbsp;        userVmax.rentBicyclePlanning(system, PointFactory.addPoint(234, 234), PointFactory.addPoint(0, 0), BicycleFactory.createMechanicalBicycle());</b>
+<i>17</i>&nbsp;    /**
+<i>18</i>&nbsp;     * The main method for the computation statistics
+<i>19</i>&nbsp;     *
+<i>20</i>&nbsp;     * @param args arguments
+<i>21</i>&nbsp;     */
+<i>22</i>&nbsp;    public static void main(String[] args) {
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;        // Setup the system
+<b class="nc"><i>25</i>&nbsp;        String[] setupArgs = {args[0], &quot;10&quot;, &quot;10&quot;, &quot;1010&quot;, &quot;5&quot;};</b>
+<b class="nc"><i>26</i>&nbsp;        MyVelibSystem system = InitialSetup.getInitialSetupSystem(setupArgs);</b>
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;//        Computation of statistics
+<i>29</i>&nbsp;//        1. the myVelib system stores relevant data in form of records representing N rental bike
+<i>30</i>&nbsp;//        simulations (by different users, on different stations, and with different duration)
+<i>31</i>&nbsp;        // User without card
+<b class="nc"><i>32</i>&nbsp;        User userWithoutCard = system.getUsers().get(0);</b>
+<b class="nc"><i>33</i>&nbsp;        userWithoutCard.rentBicyclePlanning(system, PointFactory.addPoint(0, 0), PointFactory.addPoint(20, 20), BicycleFactory.createElectricalBicycle());</b>
 <i>34</i>&nbsp;
 <i>35</i>&nbsp;
-<i>36</i>&nbsp;        // User with Vlibre
-<b class="nc"><i>37</i>&nbsp;        User userVlibre = system.getUsers().get(2);</b>
-<b class="nc"><i>38</i>&nbsp;        userVlibre.rentBicyclePlanning(system, PointFactory.addPoint(234, 234), PointFactory.addPoint(0, 0), BicycleFactory.createMechanicalBicycle());</b>
+<i>36</i>&nbsp;        // User with Vmax
+<b class="nc"><i>37</i>&nbsp;        User userVmax = system.getUsers().get(1);</b>
+<b class="nc"><i>38</i>&nbsp;        userVmax.rentBicyclePlanning(system, PointFactory.addPoint(234, 234), PointFactory.addPoint(0, 0), BicycleFactory.createMechanicalBicycle());</b>
 <i>39</i>&nbsp;
-<i>40</i>&nbsp;        // User without card
-<b class="nc"><i>41</i>&nbsp;        double RENT_TIME_FOR_USER_WITHOUT_CARD = 200;</b>
-<b class="nc"><i>42</i>&nbsp;        userWithoutCard.dropBicyclePlanningWithIntervalOfTime(system, PointFactory.addPoint(0, 0), PointFactory.addPoint(20, 20), RENT_TIME_FOR_USER_WITHOUT_CARD);</b>
-<i>43</i>&nbsp;
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;        // User with Vlibre
+<b class="nc"><i>42</i>&nbsp;        User userVlibre = system.getUsers().get(2);</b>
+<b class="nc"><i>43</i>&nbsp;        userVlibre.rentBicyclePlanning(system, PointFactory.addPoint(234, 234), PointFactory.addPoint(0, 0), BicycleFactory.createMechanicalBicycle());</b>
 <i>44</i>&nbsp;
-<i>45</i>&nbsp;        // User with Vmax
-<b class="nc"><i>46</i>&nbsp;        double RENT_TIME_FOR_USER_WITH_VMAX = 600;</b>
-<b class="nc"><i>47</i>&nbsp;        userVmax.dropBicyclePlanningWithIntervalOfTime(system, PointFactory.addPoint(234, 234), PointFactory.addPoint(0, 0), RENT_TIME_FOR_USER_WITH_VMAX);</b>
+<i>45</i>&nbsp;        // User without card
+<b class="nc"><i>46</i>&nbsp;        double RENT_TIME_FOR_USER_WITHOUT_CARD = 200;</b>
+<b class="nc"><i>47</i>&nbsp;        userWithoutCard.dropBicyclePlanningWithIntervalOfTime(system, PointFactory.addPoint(0, 0), PointFactory.addPoint(20, 20), RENT_TIME_FOR_USER_WITHOUT_CARD);</b>
 <i>48</i>&nbsp;
 <i>49</i>&nbsp;
-<i>50</i>&nbsp;        // User with Vlibre
-<b class="nc"><i>51</i>&nbsp;        double RENT_TIME_FOR_USER_WITH_VLIBRE = 240;</b>
-<b class="nc"><i>52</i>&nbsp;        userVlibre.dropBicyclePlanningWithIntervalOfTime(system, PointFactory.addPoint(234, 234), PointFactory.addPoint(0, 0), RENT_TIME_FOR_USER_WITH_VLIBRE);</b>
+<i>50</i>&nbsp;        // User with Vmax
+<b class="nc"><i>51</i>&nbsp;        double RENT_TIME_FOR_USER_WITH_VMAX = 600;</b>
+<b class="nc"><i>52</i>&nbsp;        userVmax.dropBicyclePlanningWithIntervalOfTime(system, PointFactory.addPoint(234, 234), PointFactory.addPoint(0, 0), RENT_TIME_FOR_USER_WITH_VMAX);</b>
 <i>53</i>&nbsp;
 <i>54</i>&nbsp;
-<i>55</i>&nbsp;//        2. the statistics (computed w.r.t. the rental records added in previous step) for each
-<i>56</i>&nbsp;//        user are displayed
-<i>57</i>&nbsp;
-<b class="nc"><i>58</i>&nbsp;        system.displayUserReport(userWithoutCard);</b>
-<b class="nc"><i>59</i>&nbsp;        system.displayUserReport(userVmax);</b>
-<b class="nc"><i>60</i>&nbsp;        system.displayUserReport(userVlibre);</b>
-<i>61</i>&nbsp;
+<i>55</i>&nbsp;        // User with Vlibre
+<b class="nc"><i>56</i>&nbsp;        double RENT_TIME_FOR_USER_WITH_VLIBRE = 240;</b>
+<b class="nc"><i>57</i>&nbsp;        userVlibre.dropBicyclePlanningWithIntervalOfTime(system, PointFactory.addPoint(234, 234), PointFactory.addPoint(0, 0), RENT_TIME_FOR_USER_WITH_VLIBRE);</b>
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;
+<i>60</i>&nbsp;//        2. the statistics (computed w.r.t. the rental records added in previous step) for each
+<i>61</i>&nbsp;//        user are displayed
 <i>62</i>&nbsp;
-<i>63</i>&nbsp;//        3. the statistics (computed w.r.t. the rental records added in previous step) for each
-<i>64</i>&nbsp;//        station are displayed
-<b class="nc"><i>65</i>&nbsp;        for (Station station : system.getStations()) {</b>
-<b class="nc"><i>66</i>&nbsp;            system.displayStationReport(station);</b>
-<b class="nc"><i>67</i>&nbsp;        }</b>
-<i>68</i>&nbsp;
-<i>69</i>&nbsp;
-<i>70</i>&nbsp;//        4. stations are displayed sorted w.r.t. the most used station (first)
-<i>71</i>&nbsp;
-<b class="nc"><i>72</i>&nbsp;        List&lt;Station&gt; mostUsedStations = Main.sortStationByMostUsed(system.getStations());</b>
+<b class="nc"><i>63</i>&nbsp;        system.displayUserReport(userWithoutCard);</b>
+<b class="nc"><i>64</i>&nbsp;        system.displayUserReport(userVmax);</b>
+<b class="nc"><i>65</i>&nbsp;        system.displayUserReport(userVlibre);</b>
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;
+<i>68</i>&nbsp;//        3. the statistics (computed w.r.t. the rental records added in previous step) for each
+<i>69</i>&nbsp;//        station are displayed
+<b class="nc"><i>70</i>&nbsp;        for (Station station : system.getStations()) {</b>
+<b class="nc"><i>71</i>&nbsp;            system.displayStationReport(station);</b>
+<b class="nc"><i>72</i>&nbsp;        }</b>
 <i>73</i>&nbsp;
-<b class="nc"><i>74</i>&nbsp;        System.out.println(&quot;MOST USED STATIONS&quot;);</b>
-<b class="nc"><i>75</i>&nbsp;        for (Station station : mostUsedStations) {</b>
-<b class="nc"><i>76</i>&nbsp;            System.out.println(station);</b>
-<b class="nc"><i>77</i>&nbsp;        }</b>
+<i>74</i>&nbsp;
+<i>75</i>&nbsp;//        4. stations are displayed sorted w.r.t. the most used station (first)
+<i>76</i>&nbsp;
+<b class="nc"><i>77</i>&nbsp;        List&lt;Station&gt; mostUsedStations = StationApp.sortStationByMostUsed(system.getStations());</b>
 <i>78</i>&nbsp;
-<i>79</i>&nbsp;
-<i>80</i>&nbsp;//        5. stations are displayed sorted w.r.t. the least occupied station (first)
-<i>81</i>&nbsp;
-<i>82</i>&nbsp;        // TODO : Implement this !
-<b class="nc"><i>83</i>&nbsp;    }</b>
-<i>84</i>&nbsp;}
+<b class="nc"><i>79</i>&nbsp;        System.out.println(&quot;MOST USED STATIONS&quot;);</b>
+<b class="nc"><i>80</i>&nbsp;        for (Station station : mostUsedStations) {</b>
+<b class="nc"><i>81</i>&nbsp;            System.out.println(station);</b>
+<b class="nc"><i>82</i>&nbsp;        }</b>
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;
+<i>85</i>&nbsp;//        5. stations are displayed sorted w.r.t. the least occupied station (first)
+<i>86</i>&nbsp;
+<i>87</i>&nbsp;        // TODO : Implement the leastOccupied report
+<b class="nc"><i>88</i>&nbsp;    }</b>
+<i>89</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-04 12:06</div>
+    <div style="float:right;">generated on 2020-06-05 18:56</div>
 </div>
 </body>
 </html>

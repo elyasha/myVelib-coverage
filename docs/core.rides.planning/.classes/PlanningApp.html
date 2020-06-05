@@ -1,0 +1,169 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PlanningApp</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">core.rides.planning</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PlanningApp (core.rides.planning)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PlanningApp</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    95.2%
+  </span>
+  <span class="absValue">
+    (20/ 21)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package core.rides.planning;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.awt.*;
+<i>4</i>&nbsp;import java.util.ArrayList;
+<i>5</i>&nbsp;import java.util.List;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import core.components.*;
+<i>8</i>&nbsp;import core.system.MyVelibSystem;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;/**
+<i>11</i>&nbsp; * The PlanningApp class of rides.planning module : This class contains all algorithms that are needed to plan a ride given two points.
+<i>12</i>&nbsp; * This class is used by any user when he needs to plan a ride. It will return, in general, the stationID.
+<i>13</i>&nbsp; */
+<b class="nc"><i>14</i>&nbsp;public class PlanningApp {</b>
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    /**
+<i>17</i>&nbsp;     * Compute the best start and end station according to the least start and end distances strategy.
+<i>18</i>&nbsp;     *
+<i>19</i>&nbsp;     * @param system:      system the user is using
+<i>20</i>&nbsp;     * @param coordsStart: where the user wants to start the location
+<i>21</i>&nbsp;     * @param coordsEnd:   where the user wants to stop the location
+<i>22</i>&nbsp;     * @param bicycle:     the bicycle the user want to rent
+<i>23</i>&nbsp;     * @return best start and end stations
+<i>24</i>&nbsp;     */
+<i>25</i>&nbsp;    public static List&lt;Station&gt; getBestStation(MyVelibSystem system, Point coordsStart, Point coordsEnd, Bicycle bicycle) {
+<i>26</i>&nbsp;        Point coords;
+<i>27</i>&nbsp;        double distance;
+<b class="fc"><i>28</i>&nbsp;        double bestDistanceStart = Double.POSITIVE_INFINITY;</b>
+<b class="fc"><i>29</i>&nbsp;        double bestDistanceEnd = Double.POSITIVE_INFINITY;</b>
+<b class="fc"><i>30</i>&nbsp;        Station bestStationStart = null;</b>
+<b class="fc"><i>31</i>&nbsp;        Station bestStationEnd = null;</b>
+<b class="fc"><i>32</i>&nbsp;        List&lt;Station&gt; allStations = system.getStations();</b>
+<b class="fc"><i>33</i>&nbsp;        List&lt;Station&gt; bestStations = new ArrayList&lt;&gt;(2);</b>
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;
+<b class="fc"><i>36</i>&nbsp;        for (Station station : allStations) {</b>
+<i>37</i>&nbsp;
+<b class="fc"><i>38</i>&nbsp;            coords = station.getCoordinate();</b>
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;            // Compute the nearest station for the starting point
+<b class="fc"><i>41</i>&nbsp;            distance = Math.sqrt(Math.pow(coords.getX() - coordsStart.getX(), 2) + Math.pow(coords.getY() - coordsStart.getY(), 2));</b>
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;//            System.out.println();
+<i>44</i>&nbsp;//            List&lt;ParkingSlot&gt; parkSlots = station.getParkingSlots();
+<i>45</i>&nbsp;//            for (ParkingSlot slot: parkSlots
+<i>46</i>&nbsp;//                 ) {
+<i>47</i>&nbsp;////                System.out.println(slot.getBicycle() instanceof MechanicalBicycle);
+<i>48</i>&nbsp;////                System.out.println();
+<i>49</i>&nbsp;//            }
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;//            System.out.println(station.getParkingSlots());
+<i>52</i>&nbsp;            // We want to be sure there exists &#39;our&#39; bike in the station
+<i>53</i>&nbsp;//            System.out.println();
+<i>54</i>&nbsp;//            System.out.println(station.getExistTypeBike(bicycle));
+<i>55</i>&nbsp;//            System.out.println(station.isOnService());
+<i>56</i>&nbsp;//            System.out.println();
+<b class="fc"><i>57</i>&nbsp;            if (distance &lt; bestDistanceStart &amp;&amp; station.getExistTypeBike(bicycle) &amp;&amp; station.isOnService()) {</b>
+<b class="fc"><i>58</i>&nbsp;                bestDistanceStart = distance;</b>
+<b class="fc"><i>59</i>&nbsp;                bestStationStart = station;</b>
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;            }
+<i>62</i>&nbsp;
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;            // Compute the nearest station for the ending point
+<b class="fc"><i>65</i>&nbsp;            distance = Math.sqrt(Math.pow(coords.getX() - coordsEnd.getX(), 2) + Math.pow(coords.getY() - coordsEnd.getY(), 2));</b>
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;            // We want to be sure there exists a free slot in the station
+<b class="fc"><i>68</i>&nbsp;            if (distance &lt; bestDistanceEnd &amp;&amp; station.hasOneSlotFree() &amp;&amp; station.isOnService()) {</b>
+<b class="fc"><i>69</i>&nbsp;                bestDistanceEnd = distance;</b>
+<b class="fc"><i>70</i>&nbsp;                bestStationEnd = station;</b>
+<i>71</i>&nbsp;            }
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;//            System.out.println(bestDistanceStart);
+<i>74</i>&nbsp;//            System.out.println(bestStationStart);
+<i>75</i>&nbsp;//            System.out.println(&quot;=====================&quot;);
+<i>76</i>&nbsp;//            System.out.println(bestDistanceEnd);
+<i>77</i>&nbsp;//            System.out.println(bestStationEnd);
+<i>78</i>&nbsp;//            System.out.println();
+<i>79</i>&nbsp;
+<b class="fc"><i>80</i>&nbsp;        }</b>
+<b class="fc"><i>81</i>&nbsp;        bestStations.add(bestStationStart);</b>
+<b class="fc"><i>82</i>&nbsp;        bestStations.add(bestStationEnd);</b>
+<i>83</i>&nbsp;
+<b class="fc"><i>84</i>&nbsp;        return bestStations;</b>
+<i>85</i>&nbsp;    }
+<i>86</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-06-05 18:56</div>
+</div>
+</body>
+</html>

@@ -58,10 +58,10 @@
 </td>
 <td class="coverageStat">
   <span class="percent">
-    37.1%
+    39.4%
   </span>
   <span class="absValue">
-    (13/ 35)
+    (13/ 33)
   </span>
 </td>
 </tr>
@@ -104,7 +104,7 @@
 <b class="nc"><i>30</i>&nbsp;        if (!hasGoodInput(args)) {</b>
 <b class="nc"><i>31</i>&nbsp;            wrongArgumentHelp();</b>
 <i>32</i>&nbsp;        } else {
-<b class="nc"><i>33</i>&nbsp;            System.out.println(&quot;The setup command!&quot;);</b>
+<b class="nc"><i>33</i>&nbsp;            System.out.println(&quot;The setup command&quot;);</b>
 <b class="nc"><i>34</i>&nbsp;            MyVelibSystem system = getInitialSetupSystem(args);</b>
 <i>35</i>&nbsp;        }
 <b class="nc"><i>36</i>&nbsp;    }</b>
@@ -115,68 +115,66 @@
 <i>41</i>&nbsp;     * @param args the arguments of the command
 <i>42</i>&nbsp;     */
 <i>43</i>&nbsp;    public static void helpCommand(String[] args) {
-<b class="nc"><i>44</i>&nbsp;        System.out.println(&quot;The setup command!&quot;);</b>
-<b class="nc"><i>45</i>&nbsp;        System.out.println();</b>
-<b class="nc"><i>46</i>&nbsp;        System.out.println(&quot;setup &lt;velibnetworkName&gt;: to create a myVelib network with given name and&quot;);</b>
-<b class="nc"><i>47</i>&nbsp;        System.out.println(&quot;consisting of 10 stations each of which has 10 parking slots and such that stations&quot;);</b>
-<b class="nc"><i>48</i>&nbsp;        System.out.println(&quot;are arranged on a square grid whose of side 4km and initially populated with a 75%&quot;);</b>
-<b class="nc"><i>49</i>&nbsp;        System.out.println(&quot;bikes randomly distributed over the 10 stations&quot;);</b>
-<b class="nc"><i>50</i>&nbsp;        System.out.println();</b>
-<b class="nc"><i>51</i>&nbsp;        System.out.println(&quot;setup &lt;name&gt; &lt;nstations&gt; &lt;nslots&gt; &lt;s&gt; &lt;nbikes&gt;: to create a myVelib network&quot;);</b>
-<b class="nc"><i>52</i>&nbsp;        System.out.println(&quot;with given name and consisting of nstations stations each of which has nslots&quot;);</b>
-<b class="nc"><i>53</i>&nbsp;        System.out.println(&quot;parking slots and such that stations are arranged in as uniform as possible manner&quot;);</b>
-<b class="nc"><i>54</i>&nbsp;        System.out.println(&quot;over an area you may assume either being circular of radium s or squared of side s&quot;);</b>
-<b class="nc"><i>55</i>&nbsp;        System.out.println(&quot;&quot;);</b>
-<i>56</i>&nbsp;
+<b class="nc"><i>44</i>&nbsp;        System.out.println(&quot;The setup command&quot;);</b>
+<b class="nc"><i>45</i>&nbsp;        System.out.println(&quot;setup &lt;velibnetworkName&gt;: to create a myVelib network with given name and&quot;);</b>
+<b class="nc"><i>46</i>&nbsp;        System.out.println(&quot;consisting of 10 stations each of which has 10 parking slots and such that stations&quot;);</b>
+<b class="nc"><i>47</i>&nbsp;        System.out.println(&quot;are arranged on a square grid whose of side 4km and initially populated with a 75%&quot;);</b>
+<b class="nc"><i>48</i>&nbsp;        System.out.println(&quot;bikes randomly distributed over the 10 stations&quot;);</b>
+<b class="nc"><i>49</i>&nbsp;        System.out.println();</b>
+<b class="nc"><i>50</i>&nbsp;        System.out.println(&quot;setup &lt;name&gt; &lt;nstations&gt; &lt;nslots&gt; &lt;s&gt; &lt;nbikes&gt;: to create a myVelib network&quot;);</b>
+<b class="nc"><i>51</i>&nbsp;        System.out.println(&quot;with given name and consisting of nstations stations each of which has nslots&quot;);</b>
+<b class="nc"><i>52</i>&nbsp;        System.out.println(&quot;parking slots and such that stations are arranged in as uniform as possible manner&quot;);</b>
+<b class="nc"><i>53</i>&nbsp;        System.out.println(&quot;over an area you may assume either being circular of radium s or squared of side s&quot;);</b>
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;
+<b class="nc"><i>56</i>&nbsp;    }</b>
 <i>57</i>&nbsp;
-<b class="nc"><i>58</i>&nbsp;    }</b>
-<i>59</i>&nbsp;
-<i>60</i>&nbsp;    /**
-<i>61</i>&nbsp;     * This method implements all the help that will be displayed to the user if he enters a wrong input
-<i>62</i>&nbsp;     */
-<i>63</i>&nbsp;    public static void wrongArgumentHelp() {
-<b class="nc"><i>64</i>&nbsp;        System.out.println(&quot;There is a problem with the arguments passed!&quot;);</b>
-<b class="nc"><i>65</i>&nbsp;        System.out.println(&quot;Please add some (consistent) argument! For help: myvelib help [COMMAND]&quot;);</b>
-<b class="nc"><i>66</i>&nbsp;    }</b>
-<i>67</i>&nbsp;
-<i>68</i>&nbsp;    /**
-<i>69</i>&nbsp;     * This methods is used to check if the command has good input from the user
-<i>70</i>&nbsp;     *
-<i>71</i>&nbsp;     * @param args the arguments of the command
-<i>72</i>&nbsp;     * @return true, if the command has good input. false, otherwise
-<i>73</i>&nbsp;     */
-<i>74</i>&nbsp;    public static boolean hasGoodInput(String[] args) {
-<i>75</i>&nbsp;
-<b class="fc"><i>76</i>&nbsp;        if (args.length == 5) {</b>
-<i>77</i>&nbsp;            try {
-<b class="fc"><i>78</i>&nbsp;                int integerValue = Integer.parseInt(args[1]);</b>
-<b class="fc"><i>79</i>&nbsp;                int integerValue2 = Integer.parseInt(args[2]);</b>
-<b class="fc"><i>80</i>&nbsp;                integerValue = Integer.parseInt(args[3]);</b>
-<b class="fc"><i>81</i>&nbsp;                int integerValue4 = Integer.parseInt(args[4]);</b>
-<i>82</i>&nbsp;
-<b class="fc"><i>83</i>&nbsp;                if(integerValue4 &gt; integerValue2){</b>
-<b class="fc"><i>84</i>&nbsp;                    return false;</b>
-<i>85</i>&nbsp;                }
-<i>86</i>&nbsp;
-<b class="fc"><i>87</i>&nbsp;            } catch (NumberFormatException numberFormatException) {</b>
-<b class="fc"><i>88</i>&nbsp;                System.out.println(numberFormatException.getMessage());</b>
-<b class="fc"><i>89</i>&nbsp;                System.out.println(&quot;Wrong data type. Expecting an integer! Please see your file.txt ;)&quot;);</b>
-<b class="fc"><i>90</i>&nbsp;                return false;</b>
-<b class="fc"><i>91</i>&nbsp;            }</b>
-<i>92</i>&nbsp;        }
+<i>58</i>&nbsp;    /**
+<i>59</i>&nbsp;     * This method implements all the help that will be displayed to the user if he enters a wrong input
+<i>60</i>&nbsp;     */
+<i>61</i>&nbsp;    public static void wrongArgumentHelp() {
+<b class="nc"><i>62</i>&nbsp;        System.out.println(&quot;There is a problem with the arguments passed&quot;);</b>
+<b class="nc"><i>63</i>&nbsp;        System.out.println(&quot;Please add some (consistent) argument. For help: myvelib help [COMMAND]&quot;);</b>
+<b class="nc"><i>64</i>&nbsp;    }</b>
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;    /**
+<i>67</i>&nbsp;     * This methods is used to check if the command has good input from the user
+<i>68</i>&nbsp;     *
+<i>69</i>&nbsp;     * @param args the arguments of the command
+<i>70</i>&nbsp;     * @return true, if the command has good input. false, otherwise
+<i>71</i>&nbsp;     */
+<i>72</i>&nbsp;    public static boolean hasGoodInput(String[] args) {
+<i>73</i>&nbsp;
+<b class="fc"><i>74</i>&nbsp;        if (args.length == 5) {</b>
+<i>75</i>&nbsp;            try {
+<b class="fc"><i>76</i>&nbsp;                int integerValue = Integer.parseInt(args[1]);</b>
+<b class="fc"><i>77</i>&nbsp;                int integerValue2 = Integer.parseInt(args[2]);</b>
+<b class="fc"><i>78</i>&nbsp;                integerValue = Integer.parseInt(args[3]);</b>
+<b class="fc"><i>79</i>&nbsp;                int integerValue4 = Integer.parseInt(args[4]);</b>
+<i>80</i>&nbsp;
+<b class="fc"><i>81</i>&nbsp;                if (integerValue4 &gt; integerValue2) {</b>
+<b class="fc"><i>82</i>&nbsp;                    return false;</b>
+<i>83</i>&nbsp;                }
+<i>84</i>&nbsp;
+<b class="fc"><i>85</i>&nbsp;            } catch (NumberFormatException numberFormatException) {</b>
+<b class="fc"><i>86</i>&nbsp;                System.out.println(numberFormatException.getMessage());</b>
+<b class="fc"><i>87</i>&nbsp;                System.out.println(&quot;Wrong data type. Expecting an integer. Please see your file.txt ;)&quot;);</b>
+<b class="fc"><i>88</i>&nbsp;                return false;</b>
+<b class="fc"><i>89</i>&nbsp;            }</b>
+<i>90</i>&nbsp;        }
+<i>91</i>&nbsp;
+<b class="fc"><i>92</i>&nbsp;        return args.length == 1 || args.length == 5;</b>
 <i>93</i>&nbsp;
-<b class="fc"><i>94</i>&nbsp;        return args.length == 1 || args.length == 5;</b>
-<i>95</i>&nbsp;
-<i>96</i>&nbsp;    }
-<i>97</i>&nbsp;}
-<i>98</i>&nbsp;
-<i>99</i>&nbsp;
+<i>94</i>&nbsp;    }
+<i>95</i>&nbsp;}
+<i>96</i>&nbsp;
+<i>97</i>&nbsp;
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-04 12:06</div>
+    <div style="float:right;">generated on 2020-06-05 18:56</div>
 </div>
 </body>
 </html>

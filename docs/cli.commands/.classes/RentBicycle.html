@@ -74,7 +74,7 @@
 
 <div class="sourceCode"><i>1</i>&nbsp;package cli.commands;
 <i>2</i>&nbsp;
-<i>3</i>&nbsp;import core.Main;
+<i>3</i>&nbsp;import core.CoreApp;
 <i>4</i>&nbsp;import core.components.Station;
 <i>5</i>&nbsp;import core.components.User;
 <i>6</i>&nbsp;import core.components.factories.BicycleFactory;
@@ -99,8 +99,8 @@
 <b class="nc"><i>25</i>&nbsp;        if (!hasGoodInput(args)) {</b>
 <b class="nc"><i>26</i>&nbsp;            wrongArgumentHelp();</b>
 <i>27</i>&nbsp;        } else {
-<b class="nc"><i>28</i>&nbsp;            System.out.println(&quot;The rentBicycle command!&quot;);</b>
-<b class="nc"><i>29</i>&nbsp;            List&lt;MyVelibSystem&gt; systems = Main.getSystems();</b>
+<b class="nc"><i>28</i>&nbsp;            System.out.println(&quot;The rentBicycle command&quot;);</b>
+<b class="nc"><i>29</i>&nbsp;            List&lt;MyVelibSystem&gt; systems = CoreApp.getSystems();</b>
 <b class="nc"><i>30</i>&nbsp;            boolean alreadyFind = false;</b>
 <b class="nc"><i>31</i>&nbsp;            for (MyVelibSystem system : systems) {</b>
 <b class="nc"><i>32</i>&nbsp;                for (User user : system.getUsers()) {</b>
@@ -118,57 +118,55 @@
 <b class="nc"><i>44</i>&nbsp;                System.out.println(&quot;You cannot rent a bicycle&quot;);</b>
 <b class="nc"><i>45</i>&nbsp;                System.out.println(&quot;The station id or/and user id do not exist&quot;);</b>
 <i>46</i>&nbsp;            }
-<i>47</i>&nbsp;            // TODO: Study parameters
-<i>48</i>&nbsp;        }
-<b class="nc"><i>49</i>&nbsp;    }</b>
-<i>50</i>&nbsp;
-<i>51</i>&nbsp;    /**
-<i>52</i>&nbsp;     * This is the help command: it displays a message to better explain the command itself
-<i>53</i>&nbsp;     *
-<i>54</i>&nbsp;     * @param args the arguments of the command
-<i>55</i>&nbsp;     */
-<i>56</i>&nbsp;    public static void helpCommand(String[] args) {
-<b class="nc"><i>57</i>&nbsp;        System.out.println(&quot;The rentBicycle command!&quot;);</b>
-<b class="nc"><i>58</i>&nbsp;        System.out.println(&quot;rentBicycle &lt;userID, stationID&gt; : to let the user userID renting a bike from station stationID (if no bikes are available should behave accordingly)&quot;);</b>
-<i>59</i>&nbsp;
-<b class="nc"><i>60</i>&nbsp;    }</b>
-<i>61</i>&nbsp;
-<i>62</i>&nbsp;    /**
-<i>63</i>&nbsp;     * This method implements all the help that will be displayed to the user if he enters a wrong input
-<i>64</i>&nbsp;     */
-<i>65</i>&nbsp;    public static void wrongArgumentHelp() {
-<b class="nc"><i>66</i>&nbsp;        System.out.println(&quot;There is a problem with the arguments passed!&quot;);</b>
-<b class="nc"><i>67</i>&nbsp;        System.out.println(&quot;Please add some (consistent) argument! For help: myvelib help [COMMAND]&quot;);</b>
-<b class="nc"><i>68</i>&nbsp;    }</b>
-<i>69</i>&nbsp;
-<i>70</i>&nbsp;    /**
-<i>71</i>&nbsp;     * This methods is used to check if the command has good input from the user
-<i>72</i>&nbsp;     *
-<i>73</i>&nbsp;     * @param args the arguments of the command
-<i>74</i>&nbsp;     * @return true, if the command has good input. false, otherwise
-<i>75</i>&nbsp;     */
-<i>76</i>&nbsp;    public static boolean hasGoodInput(String[] args) {
-<b class="fc"><i>77</i>&nbsp;        if (args.length != 2) {</b>
-<b class="fc"><i>78</i>&nbsp;            return false;</b>
-<i>79</i>&nbsp;        }
-<i>80</i>&nbsp;        try {
-<b class="fc"><i>81</i>&nbsp;            int integerValue1 = Integer.parseInt(args[0]);</b>
-<b class="fc"><i>82</i>&nbsp;            int integerValue2 = Integer.parseInt(args[1]);</b>
-<b class="fc"><i>83</i>&nbsp;        } catch (NumberFormatException numberFormatException) {</b>
-<b class="fc"><i>84</i>&nbsp;            System.out.println(numberFormatException.getMessage());</b>
-<i>85</i>&nbsp;            ;
-<b class="fc"><i>86</i>&nbsp;            System.out.println(&quot;Wrong data type. Expecting an integer! Please see your file.txt ;)&quot;);</b>
-<b class="fc"><i>87</i>&nbsp;            return false;</b>
-<b class="fc"><i>88</i>&nbsp;        }</b>
-<b class="fc"><i>89</i>&nbsp;        return args.length == 2;</b>
-<i>90</i>&nbsp;    }
-<i>91</i>&nbsp;}
+<i>47</i>&nbsp;        }
+<b class="nc"><i>48</i>&nbsp;    }</b>
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;    /**
+<i>51</i>&nbsp;     * This is the help command: it displays a message to better explain the command itself
+<i>52</i>&nbsp;     *
+<i>53</i>&nbsp;     * @param args the arguments of the command
+<i>54</i>&nbsp;     */
+<i>55</i>&nbsp;    public static void helpCommand(String[] args) {
+<b class="nc"><i>56</i>&nbsp;        System.out.println(&quot;The rentBicycle command&quot;);</b>
+<b class="nc"><i>57</i>&nbsp;        System.out.println(&quot;rentBicycle &lt;userID, stationID&gt; : to let the user userID renting a bike from station stationID (if no bikes are available should behave accordingly)&quot;);</b>
+<i>58</i>&nbsp;
+<b class="nc"><i>59</i>&nbsp;    }</b>
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;    /**
+<i>62</i>&nbsp;     * This method implements all the help that will be displayed to the user if he enters a wrong input
+<i>63</i>&nbsp;     */
+<i>64</i>&nbsp;    public static void wrongArgumentHelp() {
+<b class="nc"><i>65</i>&nbsp;        System.out.println(&quot;There is a problem with the arguments passed&quot;);</b>
+<b class="nc"><i>66</i>&nbsp;        System.out.println(&quot;Please add some (consistent) argument. For help: myvelib help [COMMAND]&quot;);</b>
+<b class="nc"><i>67</i>&nbsp;    }</b>
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;    /**
+<i>70</i>&nbsp;     * This methods is used to check if the command has good input from the user
+<i>71</i>&nbsp;     *
+<i>72</i>&nbsp;     * @param args the arguments of the command
+<i>73</i>&nbsp;     * @return true, if the command has good input. false, otherwise
+<i>74</i>&nbsp;     */
+<i>75</i>&nbsp;    public static boolean hasGoodInput(String[] args) {
+<b class="fc"><i>76</i>&nbsp;        if (args.length != 2) {</b>
+<b class="fc"><i>77</i>&nbsp;            return false;</b>
+<i>78</i>&nbsp;        }
+<i>79</i>&nbsp;        try {
+<b class="fc"><i>80</i>&nbsp;            int integerValue1 = Integer.parseInt(args[0]);</b>
+<b class="fc"><i>81</i>&nbsp;            int integerValue2 = Integer.parseInt(args[1]);</b>
+<b class="fc"><i>82</i>&nbsp;        } catch (NumberFormatException numberFormatException) {</b>
+<b class="fc"><i>83</i>&nbsp;            System.out.println(numberFormatException.getMessage());</b>
+<b class="fc"><i>84</i>&nbsp;            System.out.println(&quot;Wrong data type. Expecting an integer. Please see your file.txt ;)&quot;);</b>
+<b class="fc"><i>85</i>&nbsp;            return false;</b>
+<b class="fc"><i>86</i>&nbsp;        }</b>
+<b class="fc"><i>87</i>&nbsp;        return true;</b>
+<i>88</i>&nbsp;    }
+<i>89</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-04 12:06</div>
+    <div style="float:right;">generated on 2020-06-05 18:56</div>
 </div>
 </body>
 </html>

@@ -74,81 +74,78 @@
 
 <div class="sourceCode"><i>1</i>&nbsp;package cli.commands;
 <i>2</i>&nbsp;
-<i>3</i>&nbsp;import core.Main;
-<i>4</i>&nbsp;import core.components.User;
-<i>5</i>&nbsp;import core.components.factories.UserFactory;
-<i>6</i>&nbsp;import core.system.MyVelibSystem;
+<i>3</i>&nbsp;import core.CoreApp;
+<i>4</i>&nbsp;import core.system.MyVelibSystem;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;import java.util.List;
 <i>7</i>&nbsp;
-<i>8</i>&nbsp;import java.util.List;
-<i>9</i>&nbsp;
-<i>10</i>&nbsp;/**
-<i>11</i>&nbsp; * This is the Display class that implements the display command of the CLI.
-<i>12</i>&nbsp; */
-<b class="nc"><i>13</i>&nbsp;public class Display implements Command {</b>
-<i>14</i>&nbsp;    /**
-<i>15</i>&nbsp;     * main() is the implementation of the command. It will interact with the core.Main application
-<i>16</i>&nbsp;     * display [velibnetworkName]: to display the entire status (stations, parking bays,
-<i>17</i>&nbsp;     * users) of an a myVelib network velibnetworkName.
-<i>18</i>&nbsp;     *
-<i>19</i>&nbsp;     * @param args the arguments of the command
-<i>20</i>&nbsp;     */
-<i>21</i>&nbsp;    public static void main(String[] args) {
-<i>22</i>&nbsp;
-<b class="nc"><i>23</i>&nbsp;        if (!hasGoodInput(args)) {</b>
-<b class="nc"><i>24</i>&nbsp;            wrongArgumentHelp();</b>
-<i>25</i>&nbsp;        } else {
-<b class="nc"><i>26</i>&nbsp;            System.out.println(&quot;The display command!&quot;);</b>
-<b class="nc"><i>27</i>&nbsp;            List&lt;MyVelibSystem&gt; systems = Main.getSystems();</b>
-<b class="nc"><i>28</i>&nbsp;            MyVelibSystem currentSystem = null;</b>
-<b class="nc"><i>29</i>&nbsp;            for (MyVelibSystem system: systems){</b>
-<b class="nc"><i>30</i>&nbsp;                if (system.getName().equals(args[0])){</b>
-<b class="nc"><i>31</i>&nbsp;                    currentSystem = system;</b>
-<b class="nc"><i>32</i>&nbsp;                    break;</b>
-<i>33</i>&nbsp;                }
-<b class="nc"><i>34</i>&nbsp;            }</b>
-<b class="nc"><i>35</i>&nbsp;            if (currentSystem != null){</b>
-<b class="nc"><i>36</i>&nbsp;                currentSystem.displaySystemReport();</b>
+<i>8</i>&nbsp;/**
+<i>9</i>&nbsp; * This is the Display class that implements the display command of the CLI.
+<i>10</i>&nbsp; */
+<b class="nc"><i>11</i>&nbsp;public class Display implements Command {</b>
+<i>12</i>&nbsp;    /**
+<i>13</i>&nbsp;     * main() is the implementation of the command. It will interact with the core.Main application
+<i>14</i>&nbsp;     * display [velibnetworkName]: to display the entire status (stations, parking bays,
+<i>15</i>&nbsp;     * users) of an a myVelib network velibnetworkName.
+<i>16</i>&nbsp;     *
+<i>17</i>&nbsp;     * @param args the arguments of the command
+<i>18</i>&nbsp;     */
+<i>19</i>&nbsp;    public static void main(String[] args) {
+<i>20</i>&nbsp;
+<b class="nc"><i>21</i>&nbsp;        if (!hasGoodInput(args)) {</b>
+<b class="nc"><i>22</i>&nbsp;            wrongArgumentHelp();</b>
+<i>23</i>&nbsp;        } else {
+<b class="nc"><i>24</i>&nbsp;            System.out.println(&quot;The display command&quot;);</b>
+<b class="nc"><i>25</i>&nbsp;            List&lt;MyVelibSystem&gt; systems = CoreApp.getSystems();</b>
+<b class="nc"><i>26</i>&nbsp;            MyVelibSystem currentSystem = null;</b>
+<b class="nc"><i>27</i>&nbsp;            for (MyVelibSystem system : systems) {</b>
+<b class="nc"><i>28</i>&nbsp;                if (system.getName().equals(args[0])) {</b>
+<b class="nc"><i>29</i>&nbsp;                    currentSystem = system;</b>
+<b class="nc"><i>30</i>&nbsp;                    break;</b>
+<i>31</i>&nbsp;                }
+<b class="nc"><i>32</i>&nbsp;            }</b>
+<b class="nc"><i>33</i>&nbsp;            if (currentSystem != null) {</b>
+<b class="nc"><i>34</i>&nbsp;                currentSystem.displaySystemReport();</b>
+<i>35</i>&nbsp;            } else {
+<b class="nc"><i>36</i>&nbsp;                System.out.println(&quot;The system does not exist&quot;);</b>
 <i>37</i>&nbsp;            }
-<i>38</i>&nbsp;            else{
-<b class="nc"><i>39</i>&nbsp;                System.out.println(&quot;The system does not exist&quot;);</b>
-<i>40</i>&nbsp;            }
-<i>41</i>&nbsp;        }
-<b class="nc"><i>42</i>&nbsp;    }</b>
-<i>43</i>&nbsp;
-<i>44</i>&nbsp;    /**
-<i>45</i>&nbsp;     * This is the help command: it displays a message to better explain the command itself
-<i>46</i>&nbsp;     *
-<i>47</i>&nbsp;     * @param args the arguments of the command
-<i>48</i>&nbsp;     */
-<i>49</i>&nbsp;    public static void helpCommand(String[] args) {
-<b class="nc"><i>50</i>&nbsp;        System.out.println(&quot;The display command!&quot;);</b>
-<b class="nc"><i>51</i>&nbsp;        System.out.println(&quot;display &lt;velibnetworkName&gt;: to display the entire status (stations, parking bays, users) of an a myVelib network velibnetworkName.&quot;);</b>
-<b class="nc"><i>52</i>&nbsp;    }</b>
-<i>53</i>&nbsp;
-<i>54</i>&nbsp;    /**
-<i>55</i>&nbsp;     * This method implements all the help that will be displayed to the user if he enters a wrong input
-<i>56</i>&nbsp;     */
-<i>57</i>&nbsp;    public static void wrongArgumentHelp() {
-<b class="nc"><i>58</i>&nbsp;        System.out.println(&quot;There is a problem with the arguments passed!&quot;);</b>
-<b class="nc"><i>59</i>&nbsp;        System.out.println(&quot;Please add some (consistent) argument! For help: myvelib help [COMMAND]&quot;);</b>
-<b class="nc"><i>60</i>&nbsp;    }</b>
-<i>61</i>&nbsp;
-<i>62</i>&nbsp;    /**
-<i>63</i>&nbsp;     * This methods is used to check if the command has good input from the user
-<i>64</i>&nbsp;     *
-<i>65</i>&nbsp;     * @param args the arguments of the command
-<i>66</i>&nbsp;     * @return true, if the command has good input. false, otherwise
-<i>67</i>&nbsp;     */
-<i>68</i>&nbsp;    public static boolean hasGoodInput(String[] args) {
-<b class="fc"><i>69</i>&nbsp;        return args.length == 1;</b>
-<i>70</i>&nbsp;    }
-<i>71</i>&nbsp;}
+<i>38</i>&nbsp;        }
+<b class="nc"><i>39</i>&nbsp;    }</b>
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    /**
+<i>42</i>&nbsp;     * This is the help command: it displays a message to better explain the command itself
+<i>43</i>&nbsp;     *
+<i>44</i>&nbsp;     * @param args the arguments of the command
+<i>45</i>&nbsp;     */
+<i>46</i>&nbsp;    public static void helpCommand(String[] args) {
+<b class="nc"><i>47</i>&nbsp;        System.out.println(&quot;The display command&quot;);</b>
+<b class="nc"><i>48</i>&nbsp;        System.out.println(&quot;display &lt;velibnetworkName&gt;: to display the entire status (stations, parking bays, users) of an a myVelib network velibnetworkName.&quot;);</b>
+<b class="nc"><i>49</i>&nbsp;    }</b>
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;    /**
+<i>52</i>&nbsp;     * This method implements all the help that will be displayed to the user if he enters a wrong input
+<i>53</i>&nbsp;     */
+<i>54</i>&nbsp;    public static void wrongArgumentHelp() {
+<b class="nc"><i>55</i>&nbsp;        System.out.println(&quot;There is a problem with the arguments passed&quot;);</b>
+<b class="nc"><i>56</i>&nbsp;        System.out.println(&quot;Please add some (consistent) argument For help: myvelib help [COMMAND]&quot;);</b>
+<b class="nc"><i>57</i>&nbsp;    }</b>
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;    /**
+<i>60</i>&nbsp;     * This methods is used to check if the command has good input from the user
+<i>61</i>&nbsp;     *
+<i>62</i>&nbsp;     * @param args the arguments of the command
+<i>63</i>&nbsp;     * @return true, if the command has good input. false, otherwise
+<i>64</i>&nbsp;     */
+<i>65</i>&nbsp;    public static boolean hasGoodInput(String[] args) {
+<b class="fc"><i>66</i>&nbsp;        return args.length == 1;</b>
+<i>67</i>&nbsp;    }
+<i>68</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-04 12:06</div>
+    <div style="float:right;">generated on 2020-06-05 18:56</div>
 </div>
 </body>
 </html>

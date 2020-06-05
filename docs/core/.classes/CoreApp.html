@@ -5,7 +5,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html id="htmlId">
 <head>
-  <title>Coverage Report :: Main</title>
+  <title>Coverage Report :: CoreApp</title>
   <style type="text/css">
     @import "../../.css/coverage.css";
   </style>
@@ -20,7 +20,7 @@
     [ <a href="../index.html">core</a> ]
 </div>
 
-<h1>Coverage Summary for Class: Main (core)</h1>
+<h1>Coverage Summary for Class: CoreApp (core)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -39,7 +39,7 @@
 </th>
 </tr>
 <tr>
-  <td class="name">Main</td>
+  <td class="name">CoreApp</td>
 <td class="coverageStat">
   <span class="percent">
     100%
@@ -80,15 +80,15 @@
 <i>6</i>&nbsp;import java.util.List;
 <i>7</i>&nbsp;
 <i>8</i>&nbsp;/**
-<i>9</i>&nbsp; * The Main class: This class is responsible to be the core class that executes the core package when running the java myVelib framework
+<i>9</i>&nbsp; * The CoreApp class: This class is responsible to be the core class that executes the core package when running the java myVelib framework
 <i>10</i>&nbsp; * It is indeed the core main application itself
 <i>11</i>&nbsp; */
-<b class="nc"><i>12</i>&nbsp;public class Main {</b>
+<b class="nc"><i>12</i>&nbsp;public class CoreApp {</b>
 <i>13</i>&nbsp;
 <i>14</i>&nbsp;    /**
 <i>15</i>&nbsp;     * This is where all systems will be saved when running the application
 <i>16</i>&nbsp;     */
-<b class="fc"><i>17</i>&nbsp;    private static List&lt;MyVelibSystem&gt; systems = new ArrayList&lt;MyVelibSystem&gt;();</b>
+<b class="fc"><i>17</i>&nbsp;    private static List&lt;MyVelibSystem&gt; systems = new ArrayList&lt;&gt;();</b>
 <i>18</i>&nbsp;
 <i>19</i>&nbsp;    /**
 <i>20</i>&nbsp;     * a getter for systems
@@ -105,51 +105,33 @@
 <i>31</i>&nbsp;     * @param systems A list of systems that is used to set all systems in the application
 <i>32</i>&nbsp;     */
 <i>33</i>&nbsp;    public static void setSystems(List&lt;MyVelibSystem&gt; systems) {
-<b class="nc"><i>34</i>&nbsp;        Main.systems = systems;</b>
+<b class="nc"><i>34</i>&nbsp;        CoreApp.systems = systems;</b>
 <b class="nc"><i>35</i>&nbsp;    }</b>
 <i>36</i>&nbsp;
 <i>37</i>&nbsp;    /**
-<i>38</i>&nbsp;     * This is the main() method of our myVelib application. The myVelib application itself
+<i>38</i>&nbsp;     * This is the main() method of our myVelib core app. It is here only for consistence, but it is not required to run the cli application.
 <i>39</i>&nbsp;     *
 <i>40</i>&nbsp;     * @param args the arguments of our core myVelib application
 <i>41</i>&nbsp;     */
 <i>42</i>&nbsp;    public static void main(String[] args) {
-<i>43</i>&nbsp;
-<i>44</i>&nbsp;
-<i>45</i>&nbsp;        // Mode interpreter
-<i>46</i>&nbsp;        // Application
-<i>47</i>&nbsp;
-<i>48</i>&nbsp;        // It will run until the exit command is prompted
-<i>49</i>&nbsp;
-<i>50</i>&nbsp;        // State 1 : Waiting for a command to be prompted
-<i>51</i>&nbsp;
-<i>52</i>&nbsp;        // State 2 : Figuring out the command to be executed
-<i>53</i>&nbsp;
-<i>54</i>&nbsp;        // State 3 : Executing the command
-<i>55</i>&nbsp;
-<i>56</i>&nbsp;        // Mode read a file and execute
-<i>57</i>&nbsp;        // TODO : We need to code the fact that the application will read a txt file
-<i>58</i>&nbsp;        // Usage: myvelib file.txt
-<i>59</i>&nbsp;        // Output: Execute the commands in file.txt
-<i>60</i>&nbsp;
-<i>61</i>&nbsp;
-<b class="nc"><i>62</i>&nbsp;    }</b>
-<i>63</i>&nbsp;
-<i>64</i>&nbsp;    /**
-<i>65</i>&nbsp;     * A method to add a new system to the systems variable
-<i>66</i>&nbsp;     *
-<i>67</i>&nbsp;     * @param system A system that will be added to the Main class (of the myVelib app)
-<i>68</i>&nbsp;     */
-<i>69</i>&nbsp;    public static void addMyVelibSystem(MyVelibSystem system) {
-<b class="fc"><i>70</i>&nbsp;        systems.add(system);</b>
-<b class="fc"><i>71</i>&nbsp;    }</b>
-<i>72</i>&nbsp;}
+<i>43</i>&nbsp;        // This method does not need to be implemented. Actually the core package will be used by the cli package to run the cli application
+<b class="nc"><i>44</i>&nbsp;    }</b>
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    /**
+<i>47</i>&nbsp;     * A method to add a new system to the systems variable
+<i>48</i>&nbsp;     *
+<i>49</i>&nbsp;     * @param system A system that will be added to the Main class (of the myVelib app)
+<i>50</i>&nbsp;     */
+<i>51</i>&nbsp;    public static void addMyVelibSystem(MyVelibSystem system) {
+<b class="fc"><i>52</i>&nbsp;        systems.add(system);</b>
+<b class="fc"><i>53</i>&nbsp;    }</b>
+<i>54</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-04 12:06</div>
+    <div style="float:right;">generated on 2020-06-05 18:56</div>
 </div>
 </body>
 </html>

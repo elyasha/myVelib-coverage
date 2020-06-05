@@ -74,7 +74,7 @@
 
 <div class="sourceCode"><i>1</i>&nbsp;package cli.commands;
 <i>2</i>&nbsp;
-<i>3</i>&nbsp;import core.Main;
+<i>3</i>&nbsp;import core.CoreApp;
 <i>4</i>&nbsp;import core.components.Station;
 <i>5</i>&nbsp;import core.system.MyVelibSystem;
 <i>6</i>&nbsp;
@@ -95,81 +95,79 @@
 <b class="nc"><i>21</i>&nbsp;        if (!hasGoodInput(args)) {</b>
 <b class="nc"><i>22</i>&nbsp;            wrongArgumentHelp();</b>
 <i>23</i>&nbsp;        } else {
-<b class="nc"><i>24</i>&nbsp;            System.out.println(&quot;The online command!&quot;);</b>
-<b class="nc"><i>25</i>&nbsp;            List&lt;MyVelibSystem&gt; systems = Main.getSystems();</b>
+<b class="nc"><i>24</i>&nbsp;            System.out.println(&quot;The online command&quot;);</b>
+<b class="nc"><i>25</i>&nbsp;            List&lt;MyVelibSystem&gt; systems = CoreApp.getSystems();</b>
 <b class="nc"><i>26</i>&nbsp;            MyVelibSystem currentSystem = null;</b>
 <b class="nc"><i>27</i>&nbsp;            Station current_station = null;</b>
-<b class="nc"><i>28</i>&nbsp;            for (MyVelibSystem system: systems){</b>
-<b class="nc"><i>29</i>&nbsp;                if (system.getName().equalsIgnoreCase(args[0])){</b>
+<b class="nc"><i>28</i>&nbsp;            for (MyVelibSystem system : systems) {</b>
+<b class="nc"><i>29</i>&nbsp;                if (system.getName().equalsIgnoreCase(args[0])) {</b>
 <b class="nc"><i>30</i>&nbsp;                    currentSystem = system;</b>
 <b class="nc"><i>31</i>&nbsp;                    break;</b>
 <i>32</i>&nbsp;                }
 <b class="nc"><i>33</i>&nbsp;            }</b>
-<b class="nc"><i>34</i>&nbsp;            if (currentSystem != null){</b>
+<b class="nc"><i>34</i>&nbsp;            if (currentSystem != null) {</b>
 <b class="nc"><i>35</i>&nbsp;                List&lt;Station&gt; stations = currentSystem.getStations();</b>
-<b class="nc"><i>36</i>&nbsp;                for(Station station: stations){</b>
-<b class="nc"><i>37</i>&nbsp;                    if(station.getId() == Integer.parseInt(args[1])) {</b>
+<b class="nc"><i>36</i>&nbsp;                for (Station station : stations) {</b>
+<b class="nc"><i>37</i>&nbsp;                    if (station.getId() == Integer.parseInt(args[1])) {</b>
 <b class="nc"><i>38</i>&nbsp;                        current_station = station;</b>
 <b class="nc"><i>39</i>&nbsp;                        current_station.setOnService(true);</b>
 <b class="nc"><i>40</i>&nbsp;                        break;</b>
 <i>41</i>&nbsp;                    }
 <b class="nc"><i>42</i>&nbsp;                }</b>
-<b class="nc"><i>43</i>&nbsp;                if(current_station == null){</b>
+<b class="nc"><i>43</i>&nbsp;                if (current_station == null) {</b>
 <b class="nc"><i>44</i>&nbsp;                    System.out.println(&quot;The id of the station does not exist&quot;);</b>
 <i>45</i>&nbsp;                }
 <i>46</i>&nbsp;
-<b class="nc"><i>47</i>&nbsp;            }</b>
-<i>48</i>&nbsp;            else{
-<b class="nc"><i>49</i>&nbsp;                System.out.println(&quot;The system does not exist&quot;);</b>
-<i>50</i>&nbsp;            }
-<i>51</i>&nbsp;        }
-<b class="nc"><i>52</i>&nbsp;    }</b>
-<i>53</i>&nbsp;
-<i>54</i>&nbsp;    /**
-<i>55</i>&nbsp;     * This is the help command: it displays a message to better explain the command itself
-<i>56</i>&nbsp;     *
-<i>57</i>&nbsp;     * @param args the arguments of the command
-<i>58</i>&nbsp;     */
-<i>59</i>&nbsp;    public static void helpCommand(String[] args) {
-<b class="nc"><i>60</i>&nbsp;        System.out.println(&quot;The online command!&quot;);</b>
-<b class="nc"><i>61</i>&nbsp;        System.out.println(&quot;online &lt;velibnetworkName, stationID&gt; : to put online the station stationID of the myVelib network velibnetworkName&quot;);</b>
-<b class="nc"><i>62</i>&nbsp;    }</b>
-<i>63</i>&nbsp;
-<i>64</i>&nbsp;    /**
-<i>65</i>&nbsp;     * This method implements all the help that will be displayed to the user if he enters a wrong input
-<i>66</i>&nbsp;     */
-<i>67</i>&nbsp;    public static void wrongArgumentHelp() {
-<b class="nc"><i>68</i>&nbsp;        System.out.println(&quot;There is a problem with the arguments passed!&quot;);</b>
-<b class="nc"><i>69</i>&nbsp;        System.out.println(&quot;Please add some (consistent) argument! For help: myvelib help [COMMAND]&quot;);</b>
-<b class="nc"><i>70</i>&nbsp;    }</b>
-<i>71</i>&nbsp;
-<i>72</i>&nbsp;    /**
-<i>73</i>&nbsp;     * This methods is used to check if the command has good input from the user
-<i>74</i>&nbsp;     *
-<i>75</i>&nbsp;     * @param args the arguments of the command
-<i>76</i>&nbsp;     * @return true, if the command has good input. false, otherwise
-<i>77</i>&nbsp;     */
-<i>78</i>&nbsp;    public static boolean hasGoodInput(String[] args) {
-<b class="fc"><i>79</i>&nbsp;        if(args.length != 2){</b>
-<b class="fc"><i>80</i>&nbsp;            return false;</b>
-<i>81</i>&nbsp;        }
-<i>82</i>&nbsp;        try {
-<b class="fc"><i>83</i>&nbsp;            int integerValue = Integer.parseInt(args[1]);</b>
-<b class="fc"><i>84</i>&nbsp;        } catch (NumberFormatException numberFormatException) {</b>
-<b class="fc"><i>85</i>&nbsp;            System.out.println(numberFormatException.getMessage());</b>
-<i>86</i>&nbsp;            ;
-<b class="fc"><i>87</i>&nbsp;            System.out.println(&quot;Wrong data type. Expecting an integer! Please see your file.txt ;)&quot;);</b>
-<b class="fc"><i>88</i>&nbsp;            return false;</b>
-<b class="fc"><i>89</i>&nbsp;        }</b>
-<b class="fc"><i>90</i>&nbsp;        return args.length == 2;</b>
-<i>91</i>&nbsp;    }
-<i>92</i>&nbsp;}
+<b class="nc"><i>47</i>&nbsp;            } else {</b>
+<b class="nc"><i>48</i>&nbsp;                System.out.println(&quot;The system does not exist&quot;);</b>
+<i>49</i>&nbsp;            }
+<i>50</i>&nbsp;        }
+<b class="nc"><i>51</i>&nbsp;    }</b>
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;    /**
+<i>54</i>&nbsp;     * This is the help command: it displays a message to better explain the command itself
+<i>55</i>&nbsp;     *
+<i>56</i>&nbsp;     * @param args the arguments of the command
+<i>57</i>&nbsp;     */
+<i>58</i>&nbsp;    public static void helpCommand(String[] args) {
+<b class="nc"><i>59</i>&nbsp;        System.out.println(&quot;The online command&quot;);</b>
+<b class="nc"><i>60</i>&nbsp;        System.out.println(&quot;online &lt;velibnetworkName, stationID&gt; : to put online the station stationID of the myVelib network velibnetworkName&quot;);</b>
+<b class="nc"><i>61</i>&nbsp;    }</b>
+<i>62</i>&nbsp;
+<i>63</i>&nbsp;    /**
+<i>64</i>&nbsp;     * This method implements all the help that will be displayed to the user if he enters a wrong input
+<i>65</i>&nbsp;     */
+<i>66</i>&nbsp;    public static void wrongArgumentHelp() {
+<b class="nc"><i>67</i>&nbsp;        System.out.println(&quot;There is a problem with the arguments passed&quot;);</b>
+<b class="nc"><i>68</i>&nbsp;        System.out.println(&quot;Please add some (consistent) argument. For help: myvelib help [COMMAND]&quot;);</b>
+<b class="nc"><i>69</i>&nbsp;    }</b>
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;    /**
+<i>72</i>&nbsp;     * This methods is used to check if the command has good input from the user
+<i>73</i>&nbsp;     *
+<i>74</i>&nbsp;     * @param args the arguments of the command
+<i>75</i>&nbsp;     * @return true, if the command has good input. false, otherwise
+<i>76</i>&nbsp;     */
+<i>77</i>&nbsp;    public static boolean hasGoodInput(String[] args) {
+<b class="fc"><i>78</i>&nbsp;        if (args.length != 2) {</b>
+<b class="fc"><i>79</i>&nbsp;            return false;</b>
+<i>80</i>&nbsp;        }
+<i>81</i>&nbsp;        try {
+<b class="fc"><i>82</i>&nbsp;            int integerValue = Integer.parseInt(args[1]);</b>
+<b class="fc"><i>83</i>&nbsp;        } catch (NumberFormatException numberFormatException) {</b>
+<b class="fc"><i>84</i>&nbsp;            System.out.println(numberFormatException.getMessage());</b>
+<b class="fc"><i>85</i>&nbsp;            System.out.println(&quot;Wrong data type. Expecting an integer. Please see your file.txt ;)&quot;);</b>
+<b class="fc"><i>86</i>&nbsp;            return false;</b>
+<b class="fc"><i>87</i>&nbsp;        }</b>
+<b class="fc"><i>88</i>&nbsp;        return true;</b>
+<i>89</i>&nbsp;    }
+<i>90</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-04 12:06</div>
+    <div style="float:right;">generated on 2020-06-05 18:56</div>
 </div>
 </body>
 </html>

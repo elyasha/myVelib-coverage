@@ -74,7 +74,7 @@
 
 <div class="sourceCode"><i>1</i>&nbsp;package core.system;
 <i>2</i>&nbsp;
-<i>3</i>&nbsp;import core.Main;
+<i>3</i>&nbsp;import core.CoreApp;
 <i>4</i>&nbsp;import core.components.Station;
 <i>5</i>&nbsp;import core.components.User;
 <i>6</i>&nbsp;
@@ -88,46 +88,49 @@
 <i>14</i>&nbsp;
 <i>15</i>&nbsp;    /**
 <i>16</i>&nbsp;     * Method for creating a new system in the core main application
-<i>17</i>&nbsp;     * @param stations a list of stations
-<i>18</i>&nbsp;     * @param users a list of users
-<i>19</i>&nbsp;     * @param money an amount of money for the (new) system
-<i>20</i>&nbsp;     * @return the system created
-<i>21</i>&nbsp;     */
-<i>22</i>&nbsp;    public static MyVelibSystem createMyVelibSystem(List&lt;Station&gt; stations, List&lt;User&gt; users, double money) {
-<b class="nc"><i>23</i>&nbsp;        MyVelibSystem system = new MyVelibSystem(stations, users, money);</b>
-<b class="nc"><i>24</i>&nbsp;        Main.addMyVelibSystem(system);</b>
-<b class="nc"><i>25</i>&nbsp;        return system;</b>
-<i>26</i>&nbsp;    }
-<i>27</i>&nbsp;
-<i>28</i>&nbsp;    /**
-<i>29</i>&nbsp;     * (Simpler) method for creating a new system in the core main application
-<i>30</i>&nbsp;     * @return the system created
-<i>31</i>&nbsp;     */
-<i>32</i>&nbsp;    public static MyVelibSystem createMyVelibSystem() {
-<b class="nc"><i>33</i>&nbsp;        MyVelibSystem system = new MyVelibSystem();</b>
-<b class="nc"><i>34</i>&nbsp;        Main.addMyVelibSystem(system);</b>
-<b class="nc"><i>35</i>&nbsp;        return system;</b>
-<i>36</i>&nbsp;    }
-<i>37</i>&nbsp;
-<i>38</i>&nbsp;    /**
-<i>39</i>&nbsp;     * (Intermediate) method for creating a new system in the core main application
-<i>40</i>&nbsp;     * @param stations a list of stations
-<i>41</i>&nbsp;     * @return the (new) system
-<i>42</i>&nbsp;     */
-<i>43</i>&nbsp;    public static MyVelibSystem createMyVelibSystem(List&lt;Station&gt; stations) {
-<b class="fc"><i>44</i>&nbsp;        MyVelibSystem system = new MyVelibSystem(stations);</b>
-<b class="fc"><i>45</i>&nbsp;        Main.addMyVelibSystem(system);</b>
-<b class="fc"><i>46</i>&nbsp;        return system;</b>
-<i>47</i>&nbsp;    }
-<i>48</i>&nbsp;
-<i>49</i>&nbsp;
-<i>50</i>&nbsp;}
+<i>17</i>&nbsp;     *
+<i>18</i>&nbsp;     * @param stations a list of stations
+<i>19</i>&nbsp;     * @param users    a list of users
+<i>20</i>&nbsp;     * @param money    an amount of money for the (new) system
+<i>21</i>&nbsp;     * @return the system created
+<i>22</i>&nbsp;     */
+<i>23</i>&nbsp;    public static MyVelibSystem createMyVelibSystem(List&lt;Station&gt; stations, List&lt;User&gt; users, double money) {
+<b class="nc"><i>24</i>&nbsp;        MyVelibSystem system = new MyVelibSystem(stations, users, money);</b>
+<b class="nc"><i>25</i>&nbsp;        CoreApp.addMyVelibSystem(system);</b>
+<b class="nc"><i>26</i>&nbsp;        return system;</b>
+<i>27</i>&nbsp;    }
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    /**
+<i>30</i>&nbsp;     * (Simpler) method for creating a new system in the core main application
+<i>31</i>&nbsp;     *
+<i>32</i>&nbsp;     * @return the system created
+<i>33</i>&nbsp;     */
+<i>34</i>&nbsp;    public static MyVelibSystem createMyVelibSystem() {
+<b class="nc"><i>35</i>&nbsp;        MyVelibSystem system = new MyVelibSystem();</b>
+<b class="nc"><i>36</i>&nbsp;        CoreApp.addMyVelibSystem(system);</b>
+<b class="nc"><i>37</i>&nbsp;        return system;</b>
+<i>38</i>&nbsp;    }
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    /**
+<i>41</i>&nbsp;     * (Intermediate) method for creating a new system in the core main application
+<i>42</i>&nbsp;     *
+<i>43</i>&nbsp;     * @param stations a list of stations
+<i>44</i>&nbsp;     * @return the (new) system
+<i>45</i>&nbsp;     */
+<i>46</i>&nbsp;    public static MyVelibSystem createMyVelibSystem(List&lt;Station&gt; stations) {
+<b class="fc"><i>47</i>&nbsp;        MyVelibSystem system = new MyVelibSystem(stations);</b>
+<b class="fc"><i>48</i>&nbsp;        CoreApp.addMyVelibSystem(system);</b>
+<b class="fc"><i>49</i>&nbsp;        return system;</b>
+<i>50</i>&nbsp;    }
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-04 12:06</div>
+    <div style="float:right;">generated on 2020-06-05 18:56</div>
 </div>
 </body>
 </html>

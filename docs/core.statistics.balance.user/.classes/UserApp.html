@@ -1,0 +1,211 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: UserApp</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">core.statistics.balance.user</a> ]
+</div>
+
+<h1>Coverage Summary for Class: UserApp (core.statistics.balance.user)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UserApp</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 35)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package core.statistics.balance.user;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import core.components.Bicycle;
+<i>4</i>&nbsp;import core.components.ElectricalBicycle;
+<i>5</i>&nbsp;import core.components.MechanicalBicycle;
+<i>6</i>&nbsp;import core.components.User;
+<i>7</i>&nbsp;import core.system.MyVelibSystem;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;/**
+<i>10</i>&nbsp; * The Main class in statistics.balance.user : This class has all the algorithms and methods that we need to calculate the statistics
+<i>11</i>&nbsp; * in the application for users, that is to say, standard users or managers.
+<i>12</i>&nbsp; */
+<b class="nc"><i>13</i>&nbsp;public class UserApp {</b>
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    /**
+<i>16</i>&nbsp;     * Getter for the number of rides (or rentings). If the user is still with a bicycle, it will show here a message.
+<i>17</i>&nbsp;     *
+<i>18</i>&nbsp;     * @param user The user that is being studied
+<i>19</i>&nbsp;     * @return an integer that represents the number of rides (or rentings)
+<i>20</i>&nbsp;     */
+<i>21</i>&nbsp;    public static int getNumberOfRides(User user) {
+<b class="nc"><i>22</i>&nbsp;        if (user.getBicycle() == null) {</b>
+<b class="nc"><i>23</i>&nbsp;            return user.getNumberOfRentings();</b>
+<i>24</i>&nbsp;        } else {
+<b class="nc"><i>25</i>&nbsp;            System.out.println(&quot;You last ride is still active!&quot;);</b>
+<b class="nc"><i>26</i>&nbsp;            return user.getNumberOfRentings();</b>
+<i>27</i>&nbsp;        }
+<i>28</i>&nbsp;    }
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    /**
+<i>31</i>&nbsp;     * Getter for the time spend on bicycle type (Electrical, Mechanical, or other future types due to the Design Patterns used)
+<i>32</i>&nbsp;     *
+<i>33</i>&nbsp;     * @param user    the user
+<i>34</i>&nbsp;     * @param bicycle an instance of the bicycle type that we need
+<i>35</i>&nbsp;     * @return a double that represents the time spent [in minutes]
+<i>36</i>&nbsp;     */
+<i>37</i>&nbsp;    public static double getTimeSpentOnBicycle(User user, Bicycle bicycle) {
+<b class="nc"><i>38</i>&nbsp;        if (bicycle instanceof ElectricalBicycle) {</b>
+<b class="nc"><i>39</i>&nbsp;            return getTimeSpentOnElectricalBicycle(user);</b>
+<b class="nc"><i>40</i>&nbsp;        } else if (bicycle instanceof MechanicalBicycle) {</b>
+<b class="nc"><i>41</i>&nbsp;            return getTimeSpentOnMechanicalBicycle(user);</b>
+<i>42</i>&nbsp;        } else {
+<b class="nc"><i>43</i>&nbsp;            return 0;</b>
+<i>44</i>&nbsp;        }
+<i>45</i>&nbsp;    }
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    /**
+<i>48</i>&nbsp;     * Getter for the time credit earned by a user. It calls the getter in the user class
+<i>49</i>&nbsp;     *
+<i>50</i>&nbsp;     * @param user The used that is being studied
+<i>51</i>&nbsp;     * @return The time credit earned by the user in the current time of the application
+<i>52</i>&nbsp;     */
+<i>53</i>&nbsp;    public static double getTimeCreditEarned(User user) {
+<b class="nc"><i>54</i>&nbsp;        return user.getTimeCreditBalance();</b>
+<i>55</i>&nbsp;    }
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;    /**
+<i>58</i>&nbsp;     * This method is used to get the time spent on electrical bicycles.
+<i>59</i>&nbsp;     *
+<i>60</i>&nbsp;     * @param user the user that is being studied
+<i>61</i>&nbsp;     * @return the time spent on electrical bicycle
+<i>62</i>&nbsp;     */
+<i>63</i>&nbsp;    public static double getTimeSpentOnElectricalBicycle(User user) {
+<b class="nc"><i>64</i>&nbsp;        return user.getTimeSpentOnElectricalBicycle();</b>
+<i>65</i>&nbsp;    }
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;    /**
+<i>68</i>&nbsp;     * This method is used to get the time spent on mechanical bicycles.
+<i>69</i>&nbsp;     *
+<i>70</i>&nbsp;     * @param user the user that is being studied
+<i>71</i>&nbsp;     * @return the time spent on mechanical bicycle
+<i>72</i>&nbsp;     */
+<i>73</i>&nbsp;    public static double getTimeSpentOnMechanicalBicycle(User user) {
+<b class="nc"><i>74</i>&nbsp;        return user.getTimeSpentOnMechanicalBicycle();</b>
+<i>75</i>&nbsp;    }
+<i>76</i>&nbsp;
+<i>77</i>&nbsp;    /**
+<i>78</i>&nbsp;     * This method is used to get the informations of users and compute relevant parameters for the users in a give system
+<i>79</i>&nbsp;     * parameter 1 : average user balance
+<i>80</i>&nbsp;     * parameter 2 : average of all charged money
+<i>81</i>&nbsp;     * parameter 3 : user who paid the most in the system
+<i>82</i>&nbsp;     *
+<i>83</i>&nbsp;     * @param system the system that will be studied
+<i>84</i>&nbsp;     */
+<i>85</i>&nbsp;    public static void userBalance(MyVelibSystem system) {
+<i>86</i>&nbsp;
+<i>87</i>&nbsp;        // Calculate the average user balance
+<b class="nc"><i>88</i>&nbsp;        double averageUserBalance = 0; // Initialize the average to zero</b>
+<i>89</i>&nbsp;
+<b class="nc"><i>90</i>&nbsp;        for (User user : system.getUsers()) {</b>
+<b class="nc"><i>91</i>&nbsp;            averageUserBalance += user.getMoney();</b>
+<b class="nc"><i>92</i>&nbsp;        }</b>
+<b class="nc"><i>93</i>&nbsp;        averageUserBalance /= system.getUsers().size();</b>
+<i>94</i>&nbsp;
+<b class="nc"><i>95</i>&nbsp;        System.out.println(&quot;The average user balance is: &quot; + averageUserBalance + &quot;!&quot;);</b>
+<b class="nc"><i>96</i>&nbsp;        System.out.println(); // skip line</b>
+<i>97</i>&nbsp;
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;        // Calculate the average of all charged money
+<b class="nc"><i>100</i>&nbsp;        double averageOfAllChargedMoney = 0;</b>
+<i>101</i>&nbsp;
+<b class="nc"><i>102</i>&nbsp;        for (User user : system.getUsers()) {</b>
+<b class="nc"><i>103</i>&nbsp;            averageOfAllChargedMoney += user.getAllMoneyCharged();</b>
+<b class="nc"><i>104</i>&nbsp;        }</b>
+<i>105</i>&nbsp;
+<b class="nc"><i>106</i>&nbsp;        averageOfAllChargedMoney /= system.getUsers().size();</b>
+<i>107</i>&nbsp;
+<b class="nc"><i>108</i>&nbsp;        System.out.println(&quot;The average of all charged money is: &quot; + averageOfAllChargedMoney + &quot;!&quot;);</b>
+<b class="nc"><i>109</i>&nbsp;        System.out.println();</b>
+<i>110</i>&nbsp;
+<i>111</i>&nbsp;
+<i>112</i>&nbsp;        // Calculate the user that paid the most to the myVelib system
+<b class="nc"><i>113</i>&nbsp;        User userWhoPaidTheMost = system.getUsers().get(0); // Take the first user</b>
+<i>114</i>&nbsp;
+<b class="nc"><i>115</i>&nbsp;        for (User user : system.getUsers()) {</b>
+<i>116</i>&nbsp;
+<i>117</i>&nbsp;            // If user has a higher allChargedMoney parameter, we change
+<b class="nc"><i>118</i>&nbsp;            if (user.getAllMoneyCharged() &gt; userWhoPaidTheMost.getAllMoneyCharged()) {</b>
+<b class="nc"><i>119</i>&nbsp;                userWhoPaidTheMost = user;</b>
+<i>120</i>&nbsp;            }
+<i>121</i>&nbsp;
+<b class="nc"><i>122</i>&nbsp;        }</b>
+<i>123</i>&nbsp;
+<b class="nc"><i>124</i>&nbsp;        System.out.println(&quot;User who paid the most to the system is: &quot; + userWhoPaidTheMost + &quot;!&quot;);</b>
+<b class="nc"><i>125</i>&nbsp;        System.out.println();</b>
+<i>126</i>&nbsp;
+<b class="nc"><i>127</i>&nbsp;    }</b>
+<i>128</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-06-05 18:56</div>
+</div>
+</body>
+</html>

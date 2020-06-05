@@ -74,42 +74,42 @@
 
 <div class="sourceCode"><i>1</i>&nbsp;package core.components.factories;
 <i>2</i>&nbsp;
-<i>3</i>&nbsp;import core.components.Card;
-<i>4</i>&nbsp;import core.components.Manager;
-<i>5</i>&nbsp;import core.components.User;
-<i>6</i>&nbsp;import core.system.MyVelibSystem;
-<i>7</i>&nbsp;
+<i>3</i>&nbsp;import core.components.Manager;
+<i>4</i>&nbsp;import core.components.User;
+<i>5</i>&nbsp;import core.system.MyVelibSystem;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import java.awt.*;
 <i>8</i>&nbsp;import java.util.List;
 <i>9</i>&nbsp;
-<i>10</i>&nbsp;import java.awt.*;
-<i>11</i>&nbsp;
-<i>12</i>&nbsp;/**
-<i>13</i>&nbsp; * The UserFactory class : This is the factory to create and add new users. We will always add users to a given system
-<i>14</i>&nbsp; * It is uses the simple factory design pattern
-<i>15</i>&nbsp; */
-<b class="nc"><i>16</i>&nbsp;public class UserFactory {</b>
-<i>17</i>&nbsp;
-<i>18</i>&nbsp;    /**
-<i>19</i>&nbsp;     * This method is responsible for adding a (new) user to a system with some initial information.
-<i>20</i>&nbsp;     * @param system the system that the user is requesting to be inserted in
-<i>21</i>&nbsp;     * @param name the name of the new user
-<i>22</i>&nbsp;     * @param coordinate the (initial) coordinate of the user
-<i>23</i>&nbsp;     * @param creditCardNumber the credit card number of the new user
-<i>24</i>&nbsp;     * @param money the (initial) money of the user in the application
-<i>25</i>&nbsp;     * @return the User instance
-<i>26</i>&nbsp;     */
-<i>27</i>&nbsp;    public static User addUser(MyVelibSystem system, String name, Point coordinate, int creditCardNumber, double money) {
-<b class="fc"><i>28</i>&nbsp;        User user = new User(name, coordinate, creditCardNumber, money);</b>
-<b class="fc"><i>29</i>&nbsp;        List&lt;User&gt; users = system.getUsers();</b>
-<b class="fc"><i>30</i>&nbsp;        users.add(user);</b>
-<b class="fc"><i>31</i>&nbsp;        system.setUsers(users);</b>
-<b class="fc"><i>32</i>&nbsp;        return user;</b>
-<i>33</i>&nbsp;    }
-<i>34</i>&nbsp;
-<i>35</i>&nbsp;    /**
-<i>36</i>&nbsp;     * This method is responsible for adding a (new) user to a system with some initial information. It can be simpler in some cases.
-<i>37</i>&nbsp;     * @param system the system that the user is requesting to be inserted in
-<i>38</i>&nbsp;     * @param name the name of the new user
+<i>10</i>&nbsp;/**
+<i>11</i>&nbsp; * The UserFactory class : This is the factory to create and add new users. We will always add users to a given system
+<i>12</i>&nbsp; * It is uses the simple factory design pattern
+<i>13</i>&nbsp; */
+<b class="nc"><i>14</i>&nbsp;public class UserFactory {</b>
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    /**
+<i>17</i>&nbsp;     * This method is responsible for adding a (new) user to a system with some initial information.
+<i>18</i>&nbsp;     *
+<i>19</i>&nbsp;     * @param system           the system that the user is requesting to be inserted in
+<i>20</i>&nbsp;     * @param name             the name of the new user
+<i>21</i>&nbsp;     * @param coordinate       the (initial) coordinate of the user
+<i>22</i>&nbsp;     * @param creditCardNumber the credit card number of the new user
+<i>23</i>&nbsp;     * @param money            the (initial) money of the user in the application
+<i>24</i>&nbsp;     * @return the User instance
+<i>25</i>&nbsp;     */
+<i>26</i>&nbsp;    public static User addUser(MyVelibSystem system, String name, Point coordinate, int creditCardNumber, double money) {
+<b class="fc"><i>27</i>&nbsp;        User user = new User(name, coordinate, creditCardNumber, money);</b>
+<b class="fc"><i>28</i>&nbsp;        List&lt;User&gt; users = system.getUsers();</b>
+<b class="fc"><i>29</i>&nbsp;        users.add(user);</b>
+<b class="fc"><i>30</i>&nbsp;        system.setUsers(users);</b>
+<b class="fc"><i>31</i>&nbsp;        return user;</b>
+<i>32</i>&nbsp;    }
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    /**
+<i>35</i>&nbsp;     * This method is responsible for adding a (new) user to a system with some initial information. It can be simpler in some cases.
+<i>36</i>&nbsp;     *
+<i>37</i>&nbsp;     * @param system           the system that the user is requesting to be inserted in
+<i>38</i>&nbsp;     * @param name             the name of the new user
 <i>39</i>&nbsp;     * @param creditCardNumber the credit card number of the new user
 <i>40</i>&nbsp;     * @return the User instance
 <i>41</i>&nbsp;     */
@@ -124,46 +124,48 @@
 <i>50</i>&nbsp;
 <i>51</i>&nbsp;    /**
 <i>52</i>&nbsp;     * This method is responsible for adding a (new) manager to a system with some initial information.
-<i>53</i>&nbsp;     * @param system the system that the user is requesting to be inserted in
-<i>54</i>&nbsp;     * @param name the name of the new user
-<i>55</i>&nbsp;     * @param coordinate the (initial) coordinate of the manager
-<i>56</i>&nbsp;     * @param creditCardNumber the credit card number of the new user
-<i>57</i>&nbsp;     * @param money the (initial) money of the user in the application
-<i>58</i>&nbsp;     * @return the Manager instance
-<i>59</i>&nbsp;     */
-<i>60</i>&nbsp;    public static Manager addManager(MyVelibSystem system, String name, Point coordinate, int creditCardNumber, double money) {
-<b class="fc"><i>61</i>&nbsp;        Manager user = new Manager(name, coordinate, creditCardNumber, money);</b>
-<b class="fc"><i>62</i>&nbsp;        List&lt;User&gt; users = system.getUsers();</b>
-<b class="fc"><i>63</i>&nbsp;        users.add(user);</b>
-<b class="fc"><i>64</i>&nbsp;        system.setUsers(users);</b>
-<b class="fc"><i>65</i>&nbsp;        return user;</b>
-<i>66</i>&nbsp;    }
-<i>67</i>&nbsp;
-<i>68</i>&nbsp;    /**
-<i>69</i>&nbsp;     * This method is responsible for adding a (new) manager to a system with some initial information. It can be simpler in some cases.
-<i>70</i>&nbsp;     * @param system the system that the user is requesting to be inserted in
-<i>71</i>&nbsp;     * @param name the name of the new user
-<i>72</i>&nbsp;     * @param creditCardNumber the credit card number of the new manager
-<i>73</i>&nbsp;     * @return the Manager instance
-<i>74</i>&nbsp;     */
-<i>75</i>&nbsp;    public static Manager addManager(MyVelibSystem system, String name, int creditCardNumber) {
-<b class="nc"><i>76</i>&nbsp;        Manager user = new Manager(name, new Point(0, 0), creditCardNumber, 0);</b>
-<b class="nc"><i>77</i>&nbsp;        List&lt;User&gt; users = system.getUsers();</b>
-<b class="nc"><i>78</i>&nbsp;        users.add(user);</b>
-<b class="nc"><i>79</i>&nbsp;        system.setUsers(users);</b>
-<b class="nc"><i>80</i>&nbsp;        return user;</b>
-<i>81</i>&nbsp;    }
-<i>82</i>&nbsp;
-<i>83</i>&nbsp;
-<i>84</i>&nbsp;}
+<i>53</i>&nbsp;     *
+<i>54</i>&nbsp;     * @param system           the system that the user is requesting to be inserted in
+<i>55</i>&nbsp;     * @param name             the name of the new user
+<i>56</i>&nbsp;     * @param coordinate       the (initial) coordinate of the manager
+<i>57</i>&nbsp;     * @param creditCardNumber the credit card number of the new user
+<i>58</i>&nbsp;     * @param money            the (initial) money of the user in the application
+<i>59</i>&nbsp;     * @return the Manager instance
+<i>60</i>&nbsp;     */
+<i>61</i>&nbsp;    public static Manager addManager(MyVelibSystem system, String name, Point coordinate, int creditCardNumber, double money) {
+<b class="fc"><i>62</i>&nbsp;        Manager user = new Manager(name, coordinate, creditCardNumber, money);</b>
+<b class="fc"><i>63</i>&nbsp;        List&lt;User&gt; users = system.getUsers();</b>
+<b class="fc"><i>64</i>&nbsp;        users.add(user);</b>
+<b class="fc"><i>65</i>&nbsp;        system.setUsers(users);</b>
+<b class="fc"><i>66</i>&nbsp;        return user;</b>
+<i>67</i>&nbsp;    }
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;    /**
+<i>70</i>&nbsp;     * This method is responsible for adding a (new) manager to a system with some initial information. It can be simpler in some cases.
+<i>71</i>&nbsp;     *
+<i>72</i>&nbsp;     * @param system           the system that the user is requesting to be inserted in
+<i>73</i>&nbsp;     * @param name             the name of the new user
+<i>74</i>&nbsp;     * @param creditCardNumber the credit card number of the new manager
+<i>75</i>&nbsp;     * @return the Manager instance
+<i>76</i>&nbsp;     */
+<i>77</i>&nbsp;    public static Manager addManager(MyVelibSystem system, String name, int creditCardNumber) {
+<b class="nc"><i>78</i>&nbsp;        Manager user = new Manager(name, new Point(0, 0), creditCardNumber, 0);</b>
+<b class="nc"><i>79</i>&nbsp;        List&lt;User&gt; users = system.getUsers();</b>
+<b class="nc"><i>80</i>&nbsp;        users.add(user);</b>
+<b class="nc"><i>81</i>&nbsp;        system.setUsers(users);</b>
+<b class="nc"><i>82</i>&nbsp;        return user;</b>
+<i>83</i>&nbsp;    }
+<i>84</i>&nbsp;
 <i>85</i>&nbsp;
-<i>86</i>&nbsp;
+<i>86</i>&nbsp;}
+<i>87</i>&nbsp;
+<i>88</i>&nbsp;
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-04 12:06</div>
+    <div style="float:right;">generated on 2020-06-05 18:56</div>
 </div>
 </body>
 </html>

@@ -116,7 +116,7 @@
 <i>42</i>&nbsp;    /**
 <i>43</i>&nbsp;     * The terminal of the station, it is used by the users to rent or drop bicycles
 <i>44</i>&nbsp;     */
-<i>45</i>&nbsp;    private Terminal terminal;
+<i>45</i>&nbsp;    private final Terminal terminal;
 <i>46</i>&nbsp;
 <i>47</i>&nbsp;    /**
 <i>48</i>&nbsp;     * The amount of money that the user has in the application
@@ -174,7 +174,7 @@
 <b class="nc"><i>100</i>&nbsp;        this.coordinate = coordinate;</b>
 <b class="nc"><i>101</i>&nbsp;        this.onService = onService;</b>
 <b class="nc"><i>102</i>&nbsp;        this.parkingSlots = parkingSlots;</b>
-<b class="nc"><i>103</i>&nbsp;        this.terminal = new Terminal(onService, this.id); // TODO: Create a TerminalFactory</b>
+<b class="nc"><i>103</i>&nbsp;        this.terminal = new Terminal(onService, this.id);</b>
 <b class="nc"><i>104</i>&nbsp;        this.money = 0; // the initial money of the station is zero</b>
 <b class="nc"><i>105</i>&nbsp;        this.numberOfDroppings = 0; // the number of droppings is set to zero</b>
 <b class="nc"><i>106</i>&nbsp;    }</b>
@@ -319,242 +319,245 @@
 <i>245</i>&nbsp;
 <i>246</i>&nbsp;    /**
 <i>247</i>&nbsp;     * toString method for Station
-<i>248</i>&nbsp;     * @return a string that represents the station
-<i>249</i>&nbsp;     */
-<i>250</i>&nbsp;    @Override
-<i>251</i>&nbsp;    public String toString() {
-<b class="nc"><i>252</i>&nbsp;        return &quot;Station{&quot; +</b>
-<i>253</i>&nbsp;                &quot;id=&quot; + id +
-<i>254</i>&nbsp;                &quot;, coordinate=&quot; + coordinate +
-<i>255</i>&nbsp;                &quot;, onService=&quot; + onService +
-<i>256</i>&nbsp;                &quot;, parkingSlots=&quot; + parkingSlots +
-<i>257</i>&nbsp;                &quot;, terminal=&quot; + terminal +
-<i>258</i>&nbsp;                &quot;, money=&quot; + money +
-<i>259</i>&nbsp;                &quot;, numberOfDroppings=&quot; + numberOfDroppings +
-<i>260</i>&nbsp;                &quot;, numberOfRentings=&quot; + numberOfRentings +
-<i>261</i>&nbsp;                &#39;}&#39;;
-<i>262</i>&nbsp;    }
-<i>263</i>&nbsp;
-<i>264</i>&nbsp;    /**
-<i>265</i>&nbsp;     * equals method for Station
-<i>266</i>&nbsp;     * @param o an object
-<i>267</i>&nbsp;     * @return true or false
-<i>268</i>&nbsp;     */
-<i>269</i>&nbsp;    @Override
-<i>270</i>&nbsp;    public boolean equals(Object o) {
-<b class="nc"><i>271</i>&nbsp;        if (this == o) return true;</b>
-<b class="nc"><i>272</i>&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
-<b class="nc"><i>273</i>&nbsp;        Station station = (Station) o;</b>
-<b class="nc"><i>274</i>&nbsp;        return id == station.id &amp;&amp;</b>
-<i>275</i>&nbsp;                onService == station.onService &amp;&amp;
-<b class="nc"><i>276</i>&nbsp;                Double.compare(station.money, money) == 0 &amp;&amp;</b>
-<i>277</i>&nbsp;                numberOfDroppings == station.numberOfDroppings &amp;&amp;
-<i>278</i>&nbsp;                numberOfRentings == station.numberOfRentings &amp;&amp;
-<b class="nc"><i>279</i>&nbsp;                Objects.equals(coordinate, station.coordinate) &amp;&amp;</b>
-<b class="nc"><i>280</i>&nbsp;                Objects.equals(parkingSlots, station.parkingSlots) &amp;&amp;</b>
-<b class="nc"><i>281</i>&nbsp;                Objects.equals(terminal, station.terminal);</b>
-<i>282</i>&nbsp;    }
-<i>283</i>&nbsp;
-<i>284</i>&nbsp;    /**
-<i>285</i>&nbsp;     * hashCode method for Station
-<i>286</i>&nbsp;     * @return hash(id, coordinate, onService, parkingSlots, terminal, money, numberOfDroppings, numberOfRentings)
-<i>287</i>&nbsp;     */
-<i>288</i>&nbsp;    @Override
-<i>289</i>&nbsp;    public int hashCode() {
-<b class="nc"><i>290</i>&nbsp;        return Objects.hash(id, coordinate, onService, parkingSlots, terminal, money, numberOfDroppings, numberOfRentings);</b>
-<i>291</i>&nbsp;    }
-<i>292</i>&nbsp;
-<i>293</i>&nbsp;
-<i>294</i>&nbsp;    // Written methods
+<i>248</i>&nbsp;     *
+<i>249</i>&nbsp;     * @return a string that represents the station
+<i>250</i>&nbsp;     */
+<i>251</i>&nbsp;    @Override
+<i>252</i>&nbsp;    public String toString() {
+<b class="nc"><i>253</i>&nbsp;        return &quot;Station{&quot; +</b>
+<i>254</i>&nbsp;                &quot;id=&quot; + id +
+<i>255</i>&nbsp;                &quot;, coordinate=&quot; + coordinate +
+<i>256</i>&nbsp;                &quot;, onService=&quot; + onService +
+<i>257</i>&nbsp;                &quot;, parkingSlots=&quot; + parkingSlots +
+<i>258</i>&nbsp;                &quot;, terminal=&quot; + terminal +
+<i>259</i>&nbsp;                &quot;, money=&quot; + money +
+<i>260</i>&nbsp;                &quot;, numberOfDroppings=&quot; + numberOfDroppings +
+<i>261</i>&nbsp;                &quot;, numberOfRentings=&quot; + numberOfRentings +
+<i>262</i>&nbsp;                &#39;}&#39;;
+<i>263</i>&nbsp;    }
+<i>264</i>&nbsp;
+<i>265</i>&nbsp;    /**
+<i>266</i>&nbsp;     * equals method for Station
+<i>267</i>&nbsp;     *
+<i>268</i>&nbsp;     * @param o an object
+<i>269</i>&nbsp;     * @return true or false
+<i>270</i>&nbsp;     */
+<i>271</i>&nbsp;    @Override
+<i>272</i>&nbsp;    public boolean equals(Object o) {
+<b class="nc"><i>273</i>&nbsp;        if (this == o) return true;</b>
+<b class="nc"><i>274</i>&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
+<b class="nc"><i>275</i>&nbsp;        Station station = (Station) o;</b>
+<b class="nc"><i>276</i>&nbsp;        return id == station.id &amp;&amp;</b>
+<i>277</i>&nbsp;                onService == station.onService &amp;&amp;
+<b class="nc"><i>278</i>&nbsp;                Double.compare(station.money, money) == 0 &amp;&amp;</b>
+<i>279</i>&nbsp;                numberOfDroppings == station.numberOfDroppings &amp;&amp;
+<i>280</i>&nbsp;                numberOfRentings == station.numberOfRentings &amp;&amp;
+<b class="nc"><i>281</i>&nbsp;                Objects.equals(coordinate, station.coordinate) &amp;&amp;</b>
+<b class="nc"><i>282</i>&nbsp;                Objects.equals(parkingSlots, station.parkingSlots) &amp;&amp;</b>
+<b class="nc"><i>283</i>&nbsp;                Objects.equals(terminal, station.terminal);</b>
+<i>284</i>&nbsp;    }
+<i>285</i>&nbsp;
+<i>286</i>&nbsp;    /**
+<i>287</i>&nbsp;     * hashCode method for Station
+<i>288</i>&nbsp;     *
+<i>289</i>&nbsp;     * @return hash(id, coordinate, onService, parkingSlots, terminal, money, numberOfDroppings, numberOfRentings)
+<i>290</i>&nbsp;     */
+<i>291</i>&nbsp;    @Override
+<i>292</i>&nbsp;    public int hashCode() {
+<b class="nc"><i>293</i>&nbsp;        return Objects.hash(id, coordinate, onService, parkingSlots, terminal, money, numberOfDroppings, numberOfRentings);</b>
+<i>294</i>&nbsp;    }
 <i>295</i>&nbsp;
-<i>296</i>&nbsp;    /**
-<i>297</i>&nbsp;     * This method generates free parking slots and return all the parking slots (with memory allocation)
-<i>298</i>&nbsp;     *
-<i>299</i>&nbsp;     * @param parkingSlots a list of parking slots (that may be empty)
-<i>300</i>&nbsp;     * @return a complete list of parking slots (that has memory allocation)
-<i>301</i>&nbsp;     */
-<i>302</i>&nbsp;    private List&lt;ParkingSlot&gt; generateAllSlots(List&lt;ParkingSlot&gt; parkingSlots) {
-<b class="nc"><i>303</i>&nbsp;        for (int cpt = 0; cpt &lt; this.parkingSlots.size(); cpt++) {</b>
-<b class="nc"><i>304</i>&nbsp;            ParkingSlot slot = ParkingSlotsFactory.createFreeParkingSlot();</b>
-<b class="nc"><i>305</i>&nbsp;            parkingSlots.add(slot);</b>
-<i>306</i>&nbsp;        }
-<b class="nc"><i>307</i>&nbsp;        return parkingSlots;</b>
-<i>308</i>&nbsp;    }
-<i>309</i>&nbsp;
-<i>310</i>&nbsp;    /**
-<i>311</i>&nbsp;     * This method will return a boolean that represents the existence or not of give bicycle type
-<i>312</i>&nbsp;     *
-<i>313</i>&nbsp;     * @param bicycle a bicycle object, either electrical or mechanical bicycle
-<i>314</i>&nbsp;     * @return true, if the station has a bicycle of the same type. false, otherwise
-<i>315</i>&nbsp;     */
-<i>316</i>&nbsp;    public boolean getExistTypeBike(Bicycle bicycle) {
-<b class="fc"><i>317</i>&nbsp;        if (bicycle instanceof ElectricalBicycle) {</b>
-<b class="fc"><i>318</i>&nbsp;            return hasAvailableElectricalBicycle();</b>
-<b class="nc"><i>319</i>&nbsp;        } else if (bicycle instanceof MechanicalBicycle) {</b>
-<b class="nc"><i>320</i>&nbsp;            return hasAvailableMechanicalBicycle();</b>
-<i>321</i>&nbsp;        } else {
-<b class="nc"><i>322</i>&nbsp;            return false;</b>
-<i>323</i>&nbsp;        }
-<i>324</i>&nbsp;
-<i>325</i>&nbsp;    }
-<i>326</i>&nbsp;
-<i>327</i>&nbsp;    /**
-<i>328</i>&nbsp;     * This method is used to see if a station has an available electrical bicycle to be rented
-<i>329</i>&nbsp;     *
-<i>330</i>&nbsp;     * @return true, if the station has an available electrical bicycle. false, otherwise
-<i>331</i>&nbsp;     */
-<i>332</i>&nbsp;    public boolean hasAvailableElectricalBicycle() {
-<b class="fc"><i>333</i>&nbsp;        for (ParkingSlot slot : parkingSlots) {</b>
-<i>334</i>&nbsp;//            System.out.println(slot.getBicycle());
-<b class="fc"><i>335</i>&nbsp;            if (slot.getBicycle() instanceof ElectricalBicycle) {</b>
-<b class="fc"><i>336</i>&nbsp;                return true;</b>
-<i>337</i>&nbsp;            }
-<b class="fc"><i>338</i>&nbsp;        }</b>
-<b class="nc"><i>339</i>&nbsp;        return false;</b>
-<i>340</i>&nbsp;    }
-<i>341</i>&nbsp;
-<i>342</i>&nbsp;    /**
-<i>343</i>&nbsp;     * This method is used to see if a station has an available mechanical bicycle to be rented
-<i>344</i>&nbsp;     *
-<i>345</i>&nbsp;     * @return true, if the station has an available mechanical bicycle. false, otherwise
-<i>346</i>&nbsp;     */
-<i>347</i>&nbsp;    public boolean hasAvailableMechanicalBicycle() {
-<b class="fc"><i>348</i>&nbsp;        for (ParkingSlot slot : parkingSlots) {</b>
-<i>349</i>&nbsp;//            System.out.println(slot.getBicycle());
-<b class="fc"><i>350</i>&nbsp;            if (slot.getBicycle() instanceof MechanicalBicycle) {</b>
-<b class="fc"><i>351</i>&nbsp;                return true;</b>
-<i>352</i>&nbsp;            }
-<b class="nc"><i>353</i>&nbsp;        }</b>
-<b class="nc"><i>354</i>&nbsp;        return false;</b>
-<i>355</i>&nbsp;    }
-<i>356</i>&nbsp;
-<i>357</i>&nbsp;    /**
-<i>358</i>&nbsp;     * This method checks if a station has a free slot
-<i>359</i>&nbsp;     *
-<i>360</i>&nbsp;     * @return true, if the station has a free slot. false, otherwise
-<i>361</i>&nbsp;     */
-<i>362</i>&nbsp;    public boolean hasOneSlotFree() {
-<b class="fc"><i>363</i>&nbsp;        for (ParkingSlot slot : parkingSlots) {</b>
-<b class="fc"><i>364</i>&nbsp;            if (slot.getState() == 0) {</b>
-<b class="fc"><i>365</i>&nbsp;                return true;</b>
-<i>366</i>&nbsp;            }
-<b class="nc"><i>367</i>&nbsp;        }</b>
-<b class="nc"><i>368</i>&nbsp;        return false;</b>
-<i>369</i>&nbsp;    }
-<i>370</i>&nbsp;
-<i>371</i>&nbsp;    /**
-<i>372</i>&nbsp;     * This method is a getter for a free slot. If it has not a free slot, it returns null
-<i>373</i>&nbsp;     *
-<i>374</i>&nbsp;     * @return a free slot if the station has any. null, otherwise
-<i>375</i>&nbsp;     */
-<i>376</i>&nbsp;    public ParkingSlot getOneFreeSlot() {
-<b class="fc"><i>377</i>&nbsp;        for (ParkingSlot slot : parkingSlots</b>
-<i>378</i>&nbsp;        ) {
-<b class="fc"><i>379</i>&nbsp;            if (slot.getState() == 0) {</b>
-<b class="fc"><i>380</i>&nbsp;                return slot;</b>
-<i>381</i>&nbsp;            }
-<b class="nc"><i>382</i>&nbsp;        }</b>
-<b class="nc"><i>383</i>&nbsp;        return null;</b>
-<i>384</i>&nbsp;    }
-<i>385</i>&nbsp;
-<i>386</i>&nbsp;
-<i>387</i>&nbsp;    /**
-<i>388</i>&nbsp;     * This method gets a parking slot for the type of bicycle that is passed as argument
-<i>389</i>&nbsp;     *
-<i>390</i>&nbsp;     * @param bicycle any bicycle in the application (can be electrical or mechanical)
-<i>391</i>&nbsp;     * @return a slot of the give bicycle if there is any. null, otherwise
-<i>392</i>&nbsp;     */
-<i>393</i>&nbsp;    public ParkingSlot getParkingSlotTypeBicycle(Bicycle bicycle) {
-<i>394</i>&nbsp;        ParkingSlot slot;
-<b class="fc"><i>395</i>&nbsp;        if (bicycle instanceof ElectricalBicycle) {</b>
-<b class="fc"><i>396</i>&nbsp;            slot = getElectricalParkingSlot();</b>
-<b class="fc"><i>397</i>&nbsp;        } else if (bicycle instanceof MechanicalBicycle) {</b>
-<b class="fc"><i>398</i>&nbsp;            slot = getMechanicalParkingSlot();</b>
-<i>399</i>&nbsp;        } else {
-<b class="nc"><i>400</i>&nbsp;            slot = null;</b>
-<i>401</i>&nbsp;        }
-<i>402</i>&nbsp;
-<b class="fc"><i>403</i>&nbsp;        return slot;</b>
-<i>404</i>&nbsp;    }
+<i>296</i>&nbsp;
+<i>297</i>&nbsp;    // Written methods
+<i>298</i>&nbsp;
+<i>299</i>&nbsp;    /**
+<i>300</i>&nbsp;     * This method generates free parking slots and return all the parking slots (with memory allocation)
+<i>301</i>&nbsp;     *
+<i>302</i>&nbsp;     * @param parkingSlots a list of parking slots (that may be empty)
+<i>303</i>&nbsp;     * @return a complete list of parking slots (that has memory allocation)
+<i>304</i>&nbsp;     */
+<i>305</i>&nbsp;    private List&lt;ParkingSlot&gt; generateAllSlots(List&lt;ParkingSlot&gt; parkingSlots) {
+<b class="nc"><i>306</i>&nbsp;        for (int cpt = 0; cpt &lt; this.parkingSlots.size(); cpt++) {</b>
+<b class="nc"><i>307</i>&nbsp;            ParkingSlot slot = ParkingSlotsFactory.createFreeParkingSlot();</b>
+<b class="nc"><i>308</i>&nbsp;            parkingSlots.add(slot);</b>
+<i>309</i>&nbsp;        }
+<b class="nc"><i>310</i>&nbsp;        return parkingSlots;</b>
+<i>311</i>&nbsp;    }
+<i>312</i>&nbsp;
+<i>313</i>&nbsp;    /**
+<i>314</i>&nbsp;     * This method will return a boolean that represents the existence or not of give bicycle type
+<i>315</i>&nbsp;     *
+<i>316</i>&nbsp;     * @param bicycle a bicycle object, either electrical or mechanical bicycle
+<i>317</i>&nbsp;     * @return true, if the station has a bicycle of the same type. false, otherwise
+<i>318</i>&nbsp;     */
+<i>319</i>&nbsp;    public boolean getExistTypeBike(Bicycle bicycle) {
+<b class="fc"><i>320</i>&nbsp;        if (bicycle instanceof ElectricalBicycle) {</b>
+<b class="fc"><i>321</i>&nbsp;            return hasAvailableElectricalBicycle();</b>
+<b class="nc"><i>322</i>&nbsp;        } else if (bicycle instanceof MechanicalBicycle) {</b>
+<b class="nc"><i>323</i>&nbsp;            return hasAvailableMechanicalBicycle();</b>
+<i>324</i>&nbsp;        } else {
+<b class="nc"><i>325</i>&nbsp;            return false;</b>
+<i>326</i>&nbsp;        }
+<i>327</i>&nbsp;
+<i>328</i>&nbsp;    }
+<i>329</i>&nbsp;
+<i>330</i>&nbsp;    /**
+<i>331</i>&nbsp;     * This method is used to see if a station has an available electrical bicycle to be rented
+<i>332</i>&nbsp;     *
+<i>333</i>&nbsp;     * @return true, if the station has an available electrical bicycle. false, otherwise
+<i>334</i>&nbsp;     */
+<i>335</i>&nbsp;    public boolean hasAvailableElectricalBicycle() {
+<b class="fc"><i>336</i>&nbsp;        for (ParkingSlot slot : parkingSlots) {</b>
+<i>337</i>&nbsp;//            System.out.println(slot.getBicycle());
+<b class="fc"><i>338</i>&nbsp;            if (slot.getBicycle() instanceof ElectricalBicycle) {</b>
+<b class="fc"><i>339</i>&nbsp;                return true;</b>
+<i>340</i>&nbsp;            }
+<b class="fc"><i>341</i>&nbsp;        }</b>
+<b class="nc"><i>342</i>&nbsp;        return false;</b>
+<i>343</i>&nbsp;    }
+<i>344</i>&nbsp;
+<i>345</i>&nbsp;    /**
+<i>346</i>&nbsp;     * This method is used to see if a station has an available mechanical bicycle to be rented
+<i>347</i>&nbsp;     *
+<i>348</i>&nbsp;     * @return true, if the station has an available mechanical bicycle. false, otherwise
+<i>349</i>&nbsp;     */
+<i>350</i>&nbsp;    public boolean hasAvailableMechanicalBicycle() {
+<b class="fc"><i>351</i>&nbsp;        for (ParkingSlot slot : parkingSlots) {</b>
+<i>352</i>&nbsp;//            System.out.println(slot.getBicycle());
+<b class="fc"><i>353</i>&nbsp;            if (slot.getBicycle() instanceof MechanicalBicycle) {</b>
+<b class="fc"><i>354</i>&nbsp;                return true;</b>
+<i>355</i>&nbsp;            }
+<b class="nc"><i>356</i>&nbsp;        }</b>
+<b class="nc"><i>357</i>&nbsp;        return false;</b>
+<i>358</i>&nbsp;    }
+<i>359</i>&nbsp;
+<i>360</i>&nbsp;    /**
+<i>361</i>&nbsp;     * This method checks if a station has a free slot
+<i>362</i>&nbsp;     *
+<i>363</i>&nbsp;     * @return true, if the station has a free slot. false, otherwise
+<i>364</i>&nbsp;     */
+<i>365</i>&nbsp;    public boolean hasOneSlotFree() {
+<b class="fc"><i>366</i>&nbsp;        for (ParkingSlot slot : parkingSlots) {</b>
+<b class="fc"><i>367</i>&nbsp;            if (slot.getState() == 0) {</b>
+<b class="fc"><i>368</i>&nbsp;                return true;</b>
+<i>369</i>&nbsp;            }
+<b class="nc"><i>370</i>&nbsp;        }</b>
+<b class="nc"><i>371</i>&nbsp;        return false;</b>
+<i>372</i>&nbsp;    }
+<i>373</i>&nbsp;
+<i>374</i>&nbsp;    /**
+<i>375</i>&nbsp;     * This method is a getter for a free slot. If it has not a free slot, it returns null
+<i>376</i>&nbsp;     *
+<i>377</i>&nbsp;     * @return a free slot if the station has any. null, otherwise
+<i>378</i>&nbsp;     */
+<i>379</i>&nbsp;    public ParkingSlot getOneFreeSlot() {
+<b class="fc"><i>380</i>&nbsp;        for (ParkingSlot slot : parkingSlots</b>
+<i>381</i>&nbsp;        ) {
+<b class="fc"><i>382</i>&nbsp;            if (slot.getState() == 0) {</b>
+<b class="fc"><i>383</i>&nbsp;                return slot;</b>
+<i>384</i>&nbsp;            }
+<b class="nc"><i>385</i>&nbsp;        }</b>
+<b class="nc"><i>386</i>&nbsp;        return null;</b>
+<i>387</i>&nbsp;    }
+<i>388</i>&nbsp;
+<i>389</i>&nbsp;
+<i>390</i>&nbsp;    /**
+<i>391</i>&nbsp;     * This method gets a parking slot for the type of bicycle that is passed as argument
+<i>392</i>&nbsp;     *
+<i>393</i>&nbsp;     * @param bicycle any bicycle in the application (can be electrical or mechanical)
+<i>394</i>&nbsp;     * @return a slot of the give bicycle if there is any. null, otherwise
+<i>395</i>&nbsp;     */
+<i>396</i>&nbsp;    public ParkingSlot getParkingSlotTypeBicycle(Bicycle bicycle) {
+<i>397</i>&nbsp;        ParkingSlot slot;
+<b class="fc"><i>398</i>&nbsp;        if (bicycle instanceof ElectricalBicycle) {</b>
+<b class="fc"><i>399</i>&nbsp;            slot = getElectricalParkingSlot();</b>
+<b class="fc"><i>400</i>&nbsp;        } else if (bicycle instanceof MechanicalBicycle) {</b>
+<b class="fc"><i>401</i>&nbsp;            slot = getMechanicalParkingSlot();</b>
+<i>402</i>&nbsp;        } else {
+<b class="nc"><i>403</i>&nbsp;            slot = null;</b>
+<i>404</i>&nbsp;        }
 <i>405</i>&nbsp;
-<i>406</i>&nbsp;    /**
-<i>407</i>&nbsp;     * This method get an electrical parking slot (that is a parking slot that has an electrical bicycle) if there is any
-<i>408</i>&nbsp;     *
-<i>409</i>&nbsp;     * @return an electrical parking slot if there is any in the station. null, otherwise
-<i>410</i>&nbsp;     */
-<i>411</i>&nbsp;    public ParkingSlot getElectricalParkingSlot() {
-<b class="fc"><i>412</i>&nbsp;        ParkingSlot slot = null;</b>
-<b class="fc"><i>413</i>&nbsp;        for (ParkingSlot slot_i : parkingSlots) {</b>
-<b class="fc"><i>414</i>&nbsp;            if (slot_i.getBicycle() instanceof ElectricalBicycle) {</b>
-<b class="fc"><i>415</i>&nbsp;                slot = slot_i;</b>
-<b class="fc"><i>416</i>&nbsp;                break;</b>
-<i>417</i>&nbsp;            }
-<b class="fc"><i>418</i>&nbsp;        }</b>
-<b class="fc"><i>419</i>&nbsp;        return slot;</b>
-<i>420</i>&nbsp;    }
-<i>421</i>&nbsp;
-<i>422</i>&nbsp;    /**
-<i>423</i>&nbsp;     * This method get a mechanical parking slot (that is a parking slot that has an mechanical bicycle) if there is any
-<i>424</i>&nbsp;     *
-<i>425</i>&nbsp;     * @return a mechanical parking slot if there is any in the station. null, otherwise
-<i>426</i>&nbsp;     */
-<i>427</i>&nbsp;    public ParkingSlot getMechanicalParkingSlot() {
-<b class="fc"><i>428</i>&nbsp;        ParkingSlot slot = null;</b>
-<b class="fc"><i>429</i>&nbsp;        for (ParkingSlot slot_i : parkingSlots) {</b>
-<b class="fc"><i>430</i>&nbsp;            if (slot_i.getBicycle() instanceof MechanicalBicycle) {</b>
-<b class="fc"><i>431</i>&nbsp;                slot = slot_i;</b>
-<b class="fc"><i>432</i>&nbsp;                break;</b>
-<i>433</i>&nbsp;            }
-<b class="nc"><i>434</i>&nbsp;        }</b>
-<b class="fc"><i>435</i>&nbsp;        return slot;</b>
-<i>436</i>&nbsp;    }
-<i>437</i>&nbsp;
-<i>438</i>&nbsp;    /**
-<i>439</i>&nbsp;     * This methods adds money in the station
-<i>440</i>&nbsp;     *
-<i>441</i>&nbsp;     * @param money The amount of money to be added to the station
-<i>442</i>&nbsp;     */
-<i>443</i>&nbsp;    public void addMoney(double money) {
-<b class="fc"><i>444</i>&nbsp;        this.money += money;</b>
-<b class="fc"><i>445</i>&nbsp;    }</b>
-<i>446</i>&nbsp;
-<i>447</i>&nbsp;    /**
-<i>448</i>&nbsp;     * This methods removes money in the station
-<i>449</i>&nbsp;     *
-<i>450</i>&nbsp;     * @param money The amount of money to be removed from the station
-<i>451</i>&nbsp;     */
-<i>452</i>&nbsp;    public void removeMoney(double money) {
-<b class="fc"><i>453</i>&nbsp;        if (this.money - money &lt; 0) {</b>
-<b class="nc"><i>454</i>&nbsp;            System.out.println(&quot;ERROR! You don&#39;t have the money bro.&quot;);</b>
-<i>455</i>&nbsp;        } else {
-<b class="fc"><i>456</i>&nbsp;            this.money -= money;</b>
-<i>457</i>&nbsp;        }
-<b class="fc"><i>458</i>&nbsp;    }</b>
-<i>459</i>&nbsp;
-<i>460</i>&nbsp;    /**
-<i>461</i>&nbsp;     * This methods adds the number of droppings
-<i>462</i>&nbsp;     *
-<i>463</i>&nbsp;     * @param number The number that will be used to increase the number of droppings
-<i>464</i>&nbsp;     */
-<i>465</i>&nbsp;    public void addNumberOfDroppings(int number) {
-<b class="fc"><i>466</i>&nbsp;        this.numberOfDroppings += number;</b>
-<b class="fc"><i>467</i>&nbsp;    }</b>
-<i>468</i>&nbsp;
-<i>469</i>&nbsp;    /**
-<i>470</i>&nbsp;     * This methods adds the number of rentings
-<i>471</i>&nbsp;     *
-<i>472</i>&nbsp;     * @param number The number that will be used to increase the number of rentings
-<i>473</i>&nbsp;     */
-<i>474</i>&nbsp;    public void addNumberOfRentings(int number) {
-<b class="fc"><i>475</i>&nbsp;        this.numberOfRentings += number;</b>
-<b class="fc"><i>476</i>&nbsp;    }</b>
-<i>477</i>&nbsp;}
+<b class="fc"><i>406</i>&nbsp;        return slot;</b>
+<i>407</i>&nbsp;    }
+<i>408</i>&nbsp;
+<i>409</i>&nbsp;    /**
+<i>410</i>&nbsp;     * This method get an electrical parking slot (that is a parking slot that has an electrical bicycle) if there is any
+<i>411</i>&nbsp;     *
+<i>412</i>&nbsp;     * @return an electrical parking slot if there is any in the station. null, otherwise
+<i>413</i>&nbsp;     */
+<i>414</i>&nbsp;    public ParkingSlot getElectricalParkingSlot() {
+<b class="fc"><i>415</i>&nbsp;        ParkingSlot slot = null;</b>
+<b class="fc"><i>416</i>&nbsp;        for (ParkingSlot slot_i : parkingSlots) {</b>
+<b class="fc"><i>417</i>&nbsp;            if (slot_i.getBicycle() instanceof ElectricalBicycle) {</b>
+<b class="fc"><i>418</i>&nbsp;                slot = slot_i;</b>
+<b class="fc"><i>419</i>&nbsp;                break;</b>
+<i>420</i>&nbsp;            }
+<b class="fc"><i>421</i>&nbsp;        }</b>
+<b class="fc"><i>422</i>&nbsp;        return slot;</b>
+<i>423</i>&nbsp;    }
+<i>424</i>&nbsp;
+<i>425</i>&nbsp;    /**
+<i>426</i>&nbsp;     * This method get a mechanical parking slot (that is a parking slot that has an mechanical bicycle) if there is any
+<i>427</i>&nbsp;     *
+<i>428</i>&nbsp;     * @return a mechanical parking slot if there is any in the station. null, otherwise
+<i>429</i>&nbsp;     */
+<i>430</i>&nbsp;    public ParkingSlot getMechanicalParkingSlot() {
+<b class="fc"><i>431</i>&nbsp;        ParkingSlot slot = null;</b>
+<b class="fc"><i>432</i>&nbsp;        for (ParkingSlot slot_i : parkingSlots) {</b>
+<b class="fc"><i>433</i>&nbsp;            if (slot_i.getBicycle() instanceof MechanicalBicycle) {</b>
+<b class="fc"><i>434</i>&nbsp;                slot = slot_i;</b>
+<b class="fc"><i>435</i>&nbsp;                break;</b>
+<i>436</i>&nbsp;            }
+<b class="nc"><i>437</i>&nbsp;        }</b>
+<b class="fc"><i>438</i>&nbsp;        return slot;</b>
+<i>439</i>&nbsp;    }
+<i>440</i>&nbsp;
+<i>441</i>&nbsp;    /**
+<i>442</i>&nbsp;     * This methods adds money in the station
+<i>443</i>&nbsp;     *
+<i>444</i>&nbsp;     * @param money The amount of money to be added to the station
+<i>445</i>&nbsp;     */
+<i>446</i>&nbsp;    public void addMoney(double money) {
+<b class="fc"><i>447</i>&nbsp;        this.money += money;</b>
+<b class="fc"><i>448</i>&nbsp;    }</b>
+<i>449</i>&nbsp;
+<i>450</i>&nbsp;    /**
+<i>451</i>&nbsp;     * This methods removes money in the station
+<i>452</i>&nbsp;     *
+<i>453</i>&nbsp;     * @param money The amount of money to be removed from the station
+<i>454</i>&nbsp;     */
+<i>455</i>&nbsp;    public void removeMoney(double money) {
+<b class="fc"><i>456</i>&nbsp;        if (this.money - money &lt; 0) {</b>
+<b class="nc"><i>457</i>&nbsp;            System.out.println(&quot;ERROR: You don&#39;t have the money.&quot;);</b>
+<i>458</i>&nbsp;        } else {
+<b class="fc"><i>459</i>&nbsp;            this.money -= money;</b>
+<i>460</i>&nbsp;        }
+<b class="fc"><i>461</i>&nbsp;    }</b>
+<i>462</i>&nbsp;
+<i>463</i>&nbsp;    /**
+<i>464</i>&nbsp;     * This methods adds the number of droppings
+<i>465</i>&nbsp;     *
+<i>466</i>&nbsp;     * @param number The number that will be used to increase the number of droppings
+<i>467</i>&nbsp;     */
+<i>468</i>&nbsp;    public void addNumberOfDroppings(int number) {
+<b class="fc"><i>469</i>&nbsp;        this.numberOfDroppings += number;</b>
+<b class="fc"><i>470</i>&nbsp;    }</b>
+<i>471</i>&nbsp;
+<i>472</i>&nbsp;    /**
+<i>473</i>&nbsp;     * This methods adds the number of rentings
+<i>474</i>&nbsp;     *
+<i>475</i>&nbsp;     * @param number The number that will be used to increase the number of rentings
+<i>476</i>&nbsp;     */
+<i>477</i>&nbsp;    public void addNumberOfRentings(int number) {
+<b class="fc"><i>478</i>&nbsp;        this.numberOfRentings += number;</b>
+<b class="fc"><i>479</i>&nbsp;    }</b>
+<i>480</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-04 12:06</div>
+    <div style="float:right;">generated on 2020-06-05 18:56</div>
 </div>
 </body>
 </html>

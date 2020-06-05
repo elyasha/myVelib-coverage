@@ -74,11 +74,11 @@
 
 <div class="sourceCode"><i>1</i>&nbsp;package core.components.factories;
 <i>2</i>&nbsp;
-<i>3</i>&nbsp;import core.components.*;
-<i>4</i>&nbsp;import core.system.MyVelibSystem;
-<i>5</i>&nbsp;
-<i>6</i>&nbsp;import java.awt.*;
-<i>7</i>&nbsp;import java.util.List;
+<i>3</i>&nbsp;import core.components.Card;
+<i>4</i>&nbsp;import core.components.User;
+<i>5</i>&nbsp;import core.components.Vlibre;
+<i>6</i>&nbsp;import core.components.Vmax;
+<i>7</i>&nbsp;import core.system.MyVelibSystem;
 <i>8</i>&nbsp;
 <i>9</i>&nbsp;/**
 <i>10</i>&nbsp; * The CardFactory class : This is the factory to create and add new cards to users
@@ -88,44 +88,46 @@
 <i>14</i>&nbsp;
 <i>15</i>&nbsp;    /**
 <i>16</i>&nbsp;     * This method is responsible to add a new Vmax card to a user
-<i>17</i>&nbsp;     * @param system the system in which the user is supposed to be in
-<i>18</i>&nbsp;     * @param user the supposed user that we want to add a new Vmax card (he may not be on the system)
-<i>19</i>&nbsp;     */
-<i>20</i>&nbsp;    public static void addVmax(MyVelibSystem system, User user) {
-<i>21</i>&nbsp;        // Check if the user is on the system and has no card
-<b class="fc"><i>22</i>&nbsp;        if (system.getUsers().contains(user) &amp;&amp; user.getCard() == null) {</b>
-<i>23</i>&nbsp;            // Add the Vmax card to user
-<b class="fc"><i>24</i>&nbsp;            Card vmax = new Vmax();</b>
-<b class="fc"><i>25</i>&nbsp;            user.setCard(vmax);</b>
-<i>26</i>&nbsp;
-<b class="fc"><i>27</i>&nbsp;        } else {</b>
-<b class="nc"><i>28</i>&nbsp;            System.out.println(&quot;User is not in the system or has already a card!&quot;);</b>
-<i>29</i>&nbsp;        }
-<b class="fc"><i>30</i>&nbsp;    }</b>
-<i>31</i>&nbsp;
-<i>32</i>&nbsp;    /**
-<i>33</i>&nbsp;     * This method is responsible to add a new Vlibre card to a user
-<i>34</i>&nbsp;     * @param system the system in which the user is supposed to be in
-<i>35</i>&nbsp;     * @param user the supposed user that we want to add a new Vlibre card (he may not be on the system)
-<i>36</i>&nbsp;     */
-<i>37</i>&nbsp;    public static void addVlibre(MyVelibSystem system, User user) {
-<i>38</i>&nbsp;        // Check if the user is on the system and has no card
-<b class="fc"><i>39</i>&nbsp;        if (system.getUsers().contains(user) &amp;&amp; user.getCard() == null) {</b>
-<i>40</i>&nbsp;            // Add the Vlibre card to user
-<b class="fc"><i>41</i>&nbsp;            Card vlibre = new Vlibre();</b>
-<b class="fc"><i>42</i>&nbsp;            user.setCard(vlibre);</b>
-<i>43</i>&nbsp;
-<b class="fc"><i>44</i>&nbsp;        } else {</b>
-<b class="nc"><i>45</i>&nbsp;            System.out.println(&quot;User is not in the system or has already a card!&quot;);</b>
-<i>46</i>&nbsp;        }
-<b class="fc"><i>47</i>&nbsp;    }</b>
-<i>48</i>&nbsp;}
+<i>17</i>&nbsp;     *
+<i>18</i>&nbsp;     * @param system the system in which the user is supposed to be in
+<i>19</i>&nbsp;     * @param user   the supposed user that we want to add a new Vmax card (he may not be on the system)
+<i>20</i>&nbsp;     */
+<i>21</i>&nbsp;    public static void addVmax(MyVelibSystem system, User user) {
+<i>22</i>&nbsp;        // Check if the user is on the system and has no card
+<b class="fc"><i>23</i>&nbsp;        if (system.getUsers().contains(user) &amp;&amp; user.getCard() == null) {</b>
+<i>24</i>&nbsp;            // Add the Vmax card to user
+<b class="fc"><i>25</i>&nbsp;            Card vmax = new Vmax();</b>
+<b class="fc"><i>26</i>&nbsp;            user.setCard(vmax);</b>
+<i>27</i>&nbsp;
+<b class="fc"><i>28</i>&nbsp;        } else {</b>
+<b class="nc"><i>29</i>&nbsp;            System.out.println(&quot;User is not in the system or has already a card&quot;);</b>
+<i>30</i>&nbsp;        }
+<b class="fc"><i>31</i>&nbsp;    }</b>
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    /**
+<i>34</i>&nbsp;     * This method is responsible to add a new Vlibre card to a user
+<i>35</i>&nbsp;     *
+<i>36</i>&nbsp;     * @param system the system in which the user is supposed to be in
+<i>37</i>&nbsp;     * @param user   the supposed user that we want to add a new Vlibre card (he may not be on the system)
+<i>38</i>&nbsp;     */
+<i>39</i>&nbsp;    public static void addVlibre(MyVelibSystem system, User user) {
+<i>40</i>&nbsp;        // Check if the user is on the system and has no card
+<b class="fc"><i>41</i>&nbsp;        if (system.getUsers().contains(user) &amp;&amp; user.getCard() == null) {</b>
+<i>42</i>&nbsp;            // Add the Vlibre card to user
+<b class="fc"><i>43</i>&nbsp;            Card vlibre = new Vlibre();</b>
+<b class="fc"><i>44</i>&nbsp;            user.setCard(vlibre);</b>
+<i>45</i>&nbsp;
+<b class="fc"><i>46</i>&nbsp;        } else {</b>
+<b class="nc"><i>47</i>&nbsp;            System.out.println(&quot;User is not in the system or has already a card&quot;);</b>
+<i>48</i>&nbsp;        }
+<b class="fc"><i>49</i>&nbsp;    }</b>
+<i>50</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-04 12:06</div>
+    <div style="float:right;">generated on 2020-06-05 18:56</div>
 </div>
 </body>
 </html>

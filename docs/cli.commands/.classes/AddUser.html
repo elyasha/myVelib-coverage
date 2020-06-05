@@ -58,10 +58,10 @@
 </td>
 <td class="coverageStat">
   <span class="percent">
-    22.9%
+    23.5%
   </span>
   <span class="absValue">
-    (8/ 35)
+    (8/ 34)
   </span>
 </td>
 </tr>
@@ -74,7 +74,7 @@
 
 <div class="sourceCode"><i>1</i>&nbsp;package cli.commands;
 <i>2</i>&nbsp;
-<i>3</i>&nbsp;import core.Main;
+<i>3</i>&nbsp;import core.CoreApp;
 <i>4</i>&nbsp;import core.components.User;
 <i>5</i>&nbsp;import core.components.factories.UserFactory;
 <i>6</i>&nbsp;import core.system.MyVelibSystem;
@@ -85,100 +85,104 @@
 <i>11</i>&nbsp; * This is the AddUser class that implements the addUser command of the CLI.
 <i>12</i>&nbsp; */
 <b class="nc"><i>13</i>&nbsp;public class AddUser implements Command {</b>
-<i>14</i>&nbsp;    private static final int DEFAULT_CREDIT_CARD_NUMBER = 0000;
-<i>15</i>&nbsp;
-<i>16</i>&nbsp;    /**
-<i>17</i>&nbsp;     * main() is the implementation of the command. It will interact with the core.Main application
-<i>18</i>&nbsp;     * addUser [userName,cardType, velibnetworkName] :
-<i>19</i>&nbsp;     * to add a user with name {userName} and card {cardType}
-<i>20</i>&nbsp;     * (i.e. ``none&#39;&#39; if the user has no card) to a myVelib network {velibnetworkName}
-<i>21</i>&nbsp;     *
-<i>22</i>&nbsp;     * @param args the arguments of the command
-<i>23</i>&nbsp;     */
-<i>24</i>&nbsp;    public static void main(String[] args) {
-<b class="nc"><i>25</i>&nbsp;        System.out.println(&quot;The addUser command!&quot;);</b>
-<b class="nc"><i>26</i>&nbsp;        if (!hasGoodInput(args)) {</b>
-<b class="nc"><i>27</i>&nbsp;            wrongArgumentHelp();</b>
-<i>28</i>&nbsp;        } else {
-<b class="nc"><i>29</i>&nbsp;            System.out.println(&quot;The addUser command!&quot;);</b>
-<i>30</i>&nbsp;            // Check if the system exists in the application
-<i>31</i>&nbsp;
-<b class="nc"><i>32</i>&nbsp;            List&lt;MyVelibSystem&gt; systems = Main.getSystems();</b>
-<b class="nc"><i>33</i>&nbsp;            MyVelibSystem currentSystem = null;</b>
-<b class="nc"><i>34</i>&nbsp;            for (MyVelibSystem system: systems){</b>
-<b class="nc"><i>35</i>&nbsp;                if (system.getName().equals(args[2])){</b>
-<b class="nc"><i>36</i>&nbsp;                    currentSystem = system;</b>
-<b class="nc"><i>37</i>&nbsp;                    break;</b>
-<i>38</i>&nbsp;                }
-<b class="nc"><i>39</i>&nbsp;            }</b>
-<b class="nc"><i>40</i>&nbsp;            if (currentSystem != null){</b>
-<b class="nc"><i>41</i>&nbsp;                User user = UserFactory.addUser(currentSystem,args[0],DEFAULT_CREDIT_CARD_NUMBER);</b>
-<b class="nc"><i>42</i>&nbsp;                user.addCard(args[1]);</b>
-<b class="nc"><i>43</i>&nbsp;            }</b>
-<i>44</i>&nbsp;            else{
-<b class="nc"><i>45</i>&nbsp;                System.out.println(&quot;The system does not exist&quot;);</b>
-<i>46</i>&nbsp;            }
-<i>47</i>&nbsp;
+<i>14</i>&nbsp;    /**
+<i>15</i>&nbsp;     * Default credit card number
+<i>16</i>&nbsp;     */
+<i>17</i>&nbsp;    private static final int DEFAULT_CREDIT_CARD_NUMBER = 0000;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    /**
+<i>20</i>&nbsp;     * main() is the implementation of the command. It will interact with the core.Main application
+<i>21</i>&nbsp;     * addUser [userName,cardType, velibnetworkName] :
+<i>22</i>&nbsp;     * to add a user with name {userName} and card {cardType}
+<i>23</i>&nbsp;     * (i.e. ``none&#39;&#39; if the user has no card) to a myVelib network {velibnetworkName}
+<i>24</i>&nbsp;     *
+<i>25</i>&nbsp;     * @param args the arguments of the command
+<i>26</i>&nbsp;     */
+<i>27</i>&nbsp;    public static void main(String[] args) {
+<b class="nc"><i>28</i>&nbsp;        System.out.println(&quot;The addUser command&quot;);</b>
+<b class="nc"><i>29</i>&nbsp;        if (!hasGoodInput(args)) {</b>
+<b class="nc"><i>30</i>&nbsp;            wrongArgumentHelp();</b>
+<i>31</i>&nbsp;        } else {
+<i>32</i>&nbsp;            // Check if the system exists in the application
+<i>33</i>&nbsp;
+<b class="nc"><i>34</i>&nbsp;            List&lt;MyVelibSystem&gt; systems = CoreApp.getSystems();</b>
+<b class="nc"><i>35</i>&nbsp;            MyVelibSystem currentSystem = null;</b>
+<b class="nc"><i>36</i>&nbsp;            for (MyVelibSystem system : systems) {</b>
+<b class="nc"><i>37</i>&nbsp;                if (system.getName().equals(args[2])) {</b>
+<b class="nc"><i>38</i>&nbsp;                    currentSystem = system;</b>
+<b class="nc"><i>39</i>&nbsp;                    break;</b>
+<i>40</i>&nbsp;                }
+<b class="nc"><i>41</i>&nbsp;            }</b>
+<b class="nc"><i>42</i>&nbsp;            if (currentSystem != null) {</b>
+<b class="nc"><i>43</i>&nbsp;                User user = UserFactory.addUser(currentSystem, args[0], DEFAULT_CREDIT_CARD_NUMBER);</b>
+<b class="nc"><i>44</i>&nbsp;                user.addCard(args[1]);</b>
+<b class="nc"><i>45</i>&nbsp;            } else {</b>
+<b class="nc"><i>46</i>&nbsp;                System.out.println(&quot;The system does not exist&quot;);</b>
+<i>47</i>&nbsp;            }
 <i>48</i>&nbsp;
-<i>49</i>&nbsp;        }
-<b class="nc"><i>50</i>&nbsp;    }</b>
-<i>51</i>&nbsp;
-<i>52</i>&nbsp;    /**
-<i>53</i>&nbsp;     * This is the help command: it displays a message to better explain the command itself
-<i>54</i>&nbsp;     *
-<i>55</i>&nbsp;     * @param args the arguments of the command
-<i>56</i>&nbsp;     */
-<i>57</i>&nbsp;
-<i>58</i>&nbsp;    public static void helpCommand(String[] args) {
-<b class="nc"><i>59</i>&nbsp;        System.out.println(&quot;The addUser command!&quot;);</b>
-<b class="nc"><i>60</i>&nbsp;        System.out.println(&quot;addUser &lt;userName,cardType, velibnetworkName&gt; :&quot;);</b>
-<b class="nc"><i>61</i>&nbsp;        System.out.println(&quot;to add a user with name {userName} and card {cardType: Vmax/Vlibre/none}&quot;);</b>
-<b class="nc"><i>62</i>&nbsp;        System.out.println(&quot;(i.e. ``none&#39;&#39; if the user has no card) to a myVelib network {velibnetworkName}&quot;);</b>
-<b class="nc"><i>63</i>&nbsp;    }</b>
-<i>64</i>&nbsp;
-<i>65</i>&nbsp;    /**
-<i>66</i>&nbsp;     * This method implements all the help that will be displayed to the user if he enters a wrong input
-<i>67</i>&nbsp;     */
-<i>68</i>&nbsp;    public static void wrongArgumentHelp() {
-<b class="nc"><i>69</i>&nbsp;        System.out.println(&quot;There is a problem with the arguments passed!&quot;);</b>
-<b class="nc"><i>70</i>&nbsp;        System.out.println(&quot;Please add some (consistent) argument! For help: myvelib help [COMMAND]&quot;);</b>
-<b class="nc"><i>71</i>&nbsp;    }</b>
-<i>72</i>&nbsp;
-<i>73</i>&nbsp;    /**
-<i>74</i>&nbsp;     * This methods is used to check if the command has good input from the user
-<i>75</i>&nbsp;     *
-<i>76</i>&nbsp;     * @param args the arguments of the command
-<i>77</i>&nbsp;     * @return true, if the command has good input. false, otherwise
-<i>78</i>&nbsp;     */
-<i>79</i>&nbsp;    public static boolean hasGoodInput(String[] args) {
-<i>80</i>&nbsp;        // Check the quantity of arguments in this command
-<b class="fc"><i>81</i>&nbsp;        if (args.length != 3) {</b>
-<b class="nc"><i>82</i>&nbsp;            return false;</b>
-<i>83</i>&nbsp;        } else {
-<i>84</i>&nbsp;            // Check if the cardType is well written
-<b class="fc"><i>85</i>&nbsp;            if (!args[1].equalsIgnoreCase(&quot;Vmax&quot;) &amp;&amp; !args[1].equalsIgnoreCase(&quot;Vlibre&quot;) &amp;&amp; !args[1].equalsIgnoreCase(&quot;None&quot;)) {</b>
-<b class="fc"><i>86</i>&nbsp;                CardTypeError();</b>
-<b class="fc"><i>87</i>&nbsp;                return false;</b>
-<i>88</i>&nbsp;            } else {
-<b class="fc"><i>89</i>&nbsp;                return true;</b>
-<i>90</i>&nbsp;            }
-<i>91</i>&nbsp;        }
-<i>92</i>&nbsp;    }
-<i>93</i>&nbsp;
-<i>94</i>&nbsp;    /**
-<i>95</i>&nbsp;     * This methods prints a message related to the card type error
-<i>96</i>&nbsp;     */
-<i>97</i>&nbsp;    private static void CardTypeError() {
-<b class="fc"><i>98</i>&nbsp;        System.out.println(&quot;There is an error in the card type!&quot;);</b>
-<b class="fc"><i>99</i>&nbsp;        System.out.println(&quot;Please, add a coherent card type (Vmax, Vlibre, none)&quot;);</b>
-<b class="fc"><i>100</i>&nbsp;    }</b>
-<i>101</i>&nbsp;}
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;        }
+<b class="nc"><i>51</i>&nbsp;    }</b>
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;    /**
+<i>54</i>&nbsp;     * This is the help command: it displays a message to better explain the command itself
+<i>55</i>&nbsp;     *
+<i>56</i>&nbsp;     * @param args the arguments of the command
+<i>57</i>&nbsp;     */
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;    public static void helpCommand(String[] args) {
+<b class="nc"><i>60</i>&nbsp;        System.out.println(&quot;The addUser command&quot;);</b>
+<b class="nc"><i>61</i>&nbsp;        System.out.println(&quot;addUser &lt;userName,cardType, velibnetworkName&gt; :&quot;);</b>
+<b class="nc"><i>62</i>&nbsp;        System.out.println(&quot;to add a user with name {userName} and card {cardType: Vmax/Vlibre/none}&quot;);</b>
+<b class="nc"><i>63</i>&nbsp;        System.out.println(&quot;(i.e. ``none&#39;&#39; if the user has no card) to a myVelib network {velibnetworkName}&quot;);</b>
+<b class="nc"><i>64</i>&nbsp;    }</b>
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;    /**
+<i>67</i>&nbsp;     * This method implements all the help that will be displayed to the user if he enters a wrong input
+<i>68</i>&nbsp;     */
+<i>69</i>&nbsp;    public static void wrongArgumentHelp() {
+<b class="nc"><i>70</i>&nbsp;        System.out.println(&quot;There is a problem with the arguments passed&quot;);</b>
+<b class="nc"><i>71</i>&nbsp;        System.out.println(&quot;Please add some (consistent) argument. For help: myvelib help [COMMAND]&quot;);</b>
+<b class="nc"><i>72</i>&nbsp;    }</b>
+<i>73</i>&nbsp;
+<i>74</i>&nbsp;    /**
+<i>75</i>&nbsp;     * This methods is used to check if the command has good input from the user
+<i>76</i>&nbsp;     *
+<i>77</i>&nbsp;     * @param args the arguments of the command
+<i>78</i>&nbsp;     * @return true, if the command has good input. false, otherwise
+<i>79</i>&nbsp;     */
+<i>80</i>&nbsp;    public static boolean hasGoodInput(String[] args) {
+<i>81</i>&nbsp;        // Check the quantity of arguments in this command
+<b class="fc"><i>82</i>&nbsp;        if (args.length != 3) {</b>
+<b class="nc"><i>83</i>&nbsp;            return false;</b>
+<i>84</i>&nbsp;        } else {
+<i>85</i>&nbsp;            // Check if the cardType is well written
+<b class="fc"><i>86</i>&nbsp;            switch (args[1]) {</b>
+<i>87</i>&nbsp;                case &quot;Vmax&quot;:
+<i>88</i>&nbsp;                case &quot;Vlibre&quot;:
+<i>89</i>&nbsp;                case &quot;None&quot;:
+<b class="fc"><i>90</i>&nbsp;                    return true;</b>
+<i>91</i>&nbsp;                default:
+<b class="fc"><i>92</i>&nbsp;                    CardTypeError();</b>
+<b class="fc"><i>93</i>&nbsp;                    return false;</b>
+<i>94</i>&nbsp;            }
+<i>95</i>&nbsp;        }
+<i>96</i>&nbsp;    }
+<i>97</i>&nbsp;
+<i>98</i>&nbsp;    /**
+<i>99</i>&nbsp;     * This methods prints a message related to the card type error
+<i>100</i>&nbsp;     */
+<i>101</i>&nbsp;    private static void CardTypeError() {
+<b class="fc"><i>102</i>&nbsp;        System.out.println(&quot;There is an error in the card type&quot;);</b>
+<b class="fc"><i>103</i>&nbsp;        System.out.println(&quot;Please, add a coherent card type (Vmax, Vlibre, None)&quot;);</b>
+<b class="fc"><i>104</i>&nbsp;    }</b>
+<i>105</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-04 12:06</div>
+    <div style="float:right;">generated on 2020-06-05 18:56</div>
 </div>
 </body>
 </html>

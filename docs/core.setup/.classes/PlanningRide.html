@@ -78,75 +78,76 @@
 <i>4</i>&nbsp;import core.components.User;
 <i>5</i>&nbsp;import core.components.factories.BicycleFactory;
 <i>6</i>&nbsp;import core.components.factories.PointFactory;
-<i>7</i>&nbsp;import core.rides.planning.Main;
+<i>7</i>&nbsp;import core.rides.planning.PlanningApp;
 <i>8</i>&nbsp;import core.system.MyVelibSystem;
-<i>9</i>&nbsp;import java.util.List;
-<i>10</i>&nbsp;
-<i>11</i>&nbsp;import java.awt.*;
-<i>12</i>&nbsp;
-<i>13</i>&nbsp;/**
-<i>14</i>&nbsp; * The PlanningRide class : This is the class to implement the planning simulations from the planning package when creating a new journey ride for a user
-<i>15</i>&nbsp; */
-<b class="nc"><i>16</i>&nbsp;public class PlanningRide {</b>
-<i>17</i>&nbsp;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import java.util.List;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;import java.awt.*;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;/**
+<i>15</i>&nbsp; * The PlanningRide class : This is the class to implement the planning simulations from the planning package when creating a new journey ride for a user
+<i>16</i>&nbsp; */
+<b class="nc"><i>17</i>&nbsp;public class PlanningRide {</b>
 <i>18</i>&nbsp;
-<i>19</i>&nbsp;    public static void main(String[] args) {
-<i>20</i>&nbsp;
-<i>21</i>&nbsp;        // Setup the system
-<i>22</i>&nbsp;
-<i>23</i>&nbsp;
-<i>24</i>&nbsp;//        Simulation of a planning ride
-<i>25</i>&nbsp;//        1. a user at a given position require a ride planning to reach a destination position
-<b class="nc"><i>26</i>&nbsp;        String myVelibNetworkName = args[0];</b>
+<i>19</i>&nbsp;    /**
+<i>20</i>&nbsp;     * The main method for planning ride
+<i>21</i>&nbsp;     *
+<i>22</i>&nbsp;     * @param args arguments
+<i>23</i>&nbsp;     */
+<i>24</i>&nbsp;    public static void main(String[] args) {
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;        // Setup the system
 <i>27</i>&nbsp;
-<b class="nc"><i>28</i>&nbsp;        String[] setupArgs = {myVelibNetworkName, &quot;10&quot;, &quot;10&quot;, &quot;1010&quot;, &quot;5&quot;};</b>
-<b class="nc"><i>29</i>&nbsp;        MyVelibSystem system = InitialSetup.getInitialSetupSystem(setupArgs);</b>
-<i>30</i>&nbsp;
-<b class="nc"><i>31</i>&nbsp;        int userID = Integer.parseInt(args[1]);</b>
-<b class="nc"><i>32</i>&nbsp;        Point startPoint = PointFactory.addPoint(Integer.parseInt(args[2]), Integer.parseInt(args[3]));</b>
-<b class="nc"><i>33</i>&nbsp;        Point endPoint = PointFactory.addPoint(Integer.parseInt(args[4]), Integer.parseInt(args[5]));</b>
-<i>34</i>&nbsp;
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;//        Simulation of a planning ride
+<i>30</i>&nbsp;//        1. a user at a given position require a ride planning to reach a destination position
+<b class="nc"><i>31</i>&nbsp;        String myVelibNetworkName = args[0];</b>
+<i>32</i>&nbsp;
+<b class="nc"><i>33</i>&nbsp;        String[] setupArgs = {myVelibNetworkName, &quot;10&quot;, &quot;10&quot;, &quot;1010&quot;, &quot;5&quot;};</b>
+<b class="nc"><i>34</i>&nbsp;        MyVelibSystem system = InitialSetup.getInitialSetupSystem(setupArgs);</b>
 <i>35</i>&nbsp;
-<i>36</i>&nbsp;
-<i>37</i>&nbsp;//        2. the user receives the source and destination stations
-<b class="nc"><i>38</i>&nbsp;        List&lt;Station&gt; bestStations = Main.getBestStation(system, startPoint, endPoint, BicycleFactory.createMechanicalBicycle());</b>
-<b class="nc"><i>39</i>&nbsp;        System.out.println(bestStations);</b>
+<b class="nc"><i>36</i>&nbsp;        int userID = Integer.parseInt(args[1]);</b>
+<b class="nc"><i>37</i>&nbsp;        Point startPoint = PointFactory.addPoint(Integer.parseInt(args[2]), Integer.parseInt(args[3]));</b>
+<b class="nc"><i>38</i>&nbsp;        Point endPoint = PointFactory.addPoint(Integer.parseInt(args[4]), Integer.parseInt(args[5]));</b>
+<i>39</i>&nbsp;
 <i>40</i>&nbsp;
-<i>41</i>&nbsp;//        3. the user retrieve a bicycle from the source station of the planned ride at a given
-<i>42</i>&nbsp;//        instant of time
-<i>43</i>&nbsp;
-<b class="nc"><i>44</i>&nbsp;        User user = null;</b>
-<b class="nc"><i>45</i>&nbsp;        for (User user_i: system.getUsers()) {</b>
-<b class="nc"><i>46</i>&nbsp;            if (user_i.getId() == userID) {</b>
-<b class="nc"><i>47</i>&nbsp;                user = user_i;</b>
-<i>48</i>&nbsp;            }
-<b class="nc"><i>49</i>&nbsp;        }</b>
-<i>50</i>&nbsp;
-<b class="nc"><i>51</i>&nbsp;        if (user == null) {</b>
-<b class="nc"><i>52</i>&nbsp;            System.out.println(&quot;User does not exist in the system!&quot;);</b>
-<i>53</i>&nbsp;        }
-<i>54</i>&nbsp;        else {
-<b class="nc"><i>55</i>&nbsp;            user.rentBicyclePlanning(system, startPoint, endPoint, BicycleFactory.createMechanicalBicycle());</b>
-<i>56</i>&nbsp;        }
-<i>57</i>&nbsp;
-<i>58</i>&nbsp;
-<i>59</i>&nbsp;
+<i>41</i>&nbsp;//        2. the user receives the source and destination stations
+<b class="nc"><i>42</i>&nbsp;        List&lt;Station&gt; bestStations = PlanningApp.getBestStation(system, startPoint, endPoint, BicycleFactory.createMechanicalBicycle());</b>
+<b class="nc"><i>43</i>&nbsp;        System.out.println(bestStations);</b>
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;//        3. the user retrieve a bicycle from the source station of the planned ride at a given
+<i>46</i>&nbsp;//        instant of time
+<i>47</i>&nbsp;
+<b class="nc"><i>48</i>&nbsp;        User user = null;</b>
+<b class="nc"><i>49</i>&nbsp;        for (User user_i : system.getUsers()) {</b>
+<b class="nc"><i>50</i>&nbsp;            if (user_i.getId() == userID) {</b>
+<b class="nc"><i>51</i>&nbsp;                user = user_i;</b>
+<i>52</i>&nbsp;            }
+<b class="nc"><i>53</i>&nbsp;        }</b>
+<i>54</i>&nbsp;
+<b class="nc"><i>55</i>&nbsp;        if (user == null) {</b>
+<b class="nc"><i>56</i>&nbsp;            System.out.println(&quot;User does not exist in the system&quot;);</b>
+<i>57</i>&nbsp;        } else {
+<b class="nc"><i>58</i>&nbsp;            user.rentBicyclePlanning(system, startPoint, endPoint, BicycleFactory.createMechanicalBicycle());</b>
+<i>59</i>&nbsp;        }
 <i>60</i>&nbsp;
-<i>61</i>&nbsp;//        4. the user that is holding a bicycle returns it (in a given free slot) at a given station at
-<i>62</i>&nbsp;//        a given instant of time.
-<b class="nc"><i>63</i>&nbsp;          double INTERVAL_OF_TIME = Double.parseDouble(args[6]);</b>
-<i>64</i>&nbsp;
-<b class="nc"><i>65</i>&nbsp;        assert user != null;</b>
-<b class="nc"><i>66</i>&nbsp;        user.dropBicyclePlanningWithIntervalOfTime(system, startPoint, endPoint, INTERVAL_OF_TIME);</b>
-<i>67</i>&nbsp;
-<b class="nc"><i>68</i>&nbsp;    }</b>
-<i>69</i>&nbsp;}
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;//        4. the user that is holding a bicycle returns it (in a given free slot) at a given station at
+<i>63</i>&nbsp;//        a given instant of time.
+<b class="nc"><i>64</i>&nbsp;        double INTERVAL_OF_TIME = Double.parseDouble(args[6]);</b>
+<i>65</i>&nbsp;
+<b class="nc"><i>66</i>&nbsp;        assert user != null;</b>
+<b class="nc"><i>67</i>&nbsp;        user.dropBicyclePlanningWithIntervalOfTime(system, startPoint, endPoint, INTERVAL_OF_TIME);</b>
+<i>68</i>&nbsp;
+<b class="nc"><i>69</i>&nbsp;    }</b>
+<i>70</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-04 12:06</div>
+    <div style="float:right;">generated on 2020-06-05 18:56</div>
 </div>
 </body>
 </html>

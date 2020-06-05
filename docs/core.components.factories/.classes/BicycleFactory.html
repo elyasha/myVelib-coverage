@@ -85,71 +85,75 @@
 <i>11</i>&nbsp;
 <i>12</i>&nbsp;    /**
 <i>13</i>&nbsp;     * This method is responsible for creating an electrical bicycle given a station and a system
-<i>14</i>&nbsp;     * @param system the system
-<i>15</i>&nbsp;     * @param station the station
-<i>16</i>&nbsp;     */
-<i>17</i>&nbsp;    public static void addElectricalBicycle(MyVelibSystem system, Station station) {
-<i>18</i>&nbsp;
-<i>19</i>&nbsp;        // Check the station (parkingSlot available)
-<b class="nc"><i>20</i>&nbsp;        ParkingSlot freeSlot = station.getOneFreeSlot();</b>
-<b class="nc"><i>21</i>&nbsp;        if (freeSlot != null) {</b>
-<i>22</i>&nbsp;            // Creating the bicycle
-<b class="nc"><i>23</i>&nbsp;            ElectricalBicycle bicycle = new ElectricalBicycle();</b>
-<i>24</i>&nbsp;
-<i>25</i>&nbsp;            // Add to station
-<b class="nc"><i>26</i>&nbsp;            freeSlot.setState(1);</b>
-<b class="nc"><i>27</i>&nbsp;            freeSlot.setBicycle(bicycle);</b>
-<b class="nc"><i>28</i>&nbsp;        } else {</b>
-<b class="nc"><i>29</i>&nbsp;            System.out.println(&quot;There is no available slot!&quot;);</b>
-<i>30</i>&nbsp;        }
-<i>31</i>&nbsp;
+<i>14</i>&nbsp;     *
+<i>15</i>&nbsp;     * @param system  the system
+<i>16</i>&nbsp;     * @param station the station
+<i>17</i>&nbsp;     */
+<i>18</i>&nbsp;    public static void addElectricalBicycle(MyVelibSystem system, Station station) {
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;        // Check the station (parkingSlot available)
+<b class="nc"><i>21</i>&nbsp;        ParkingSlot freeSlot = station.getOneFreeSlot();</b>
+<b class="nc"><i>22</i>&nbsp;        if (freeSlot != null) {</b>
+<i>23</i>&nbsp;            // Creating the bicycle
+<b class="nc"><i>24</i>&nbsp;            ElectricalBicycle bicycle = new ElectricalBicycle();</b>
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;            // Add to station
+<b class="nc"><i>27</i>&nbsp;            freeSlot.setState(1);</b>
+<b class="nc"><i>28</i>&nbsp;            freeSlot.setBicycle(bicycle);</b>
+<b class="nc"><i>29</i>&nbsp;        } else {</b>
+<b class="nc"><i>30</i>&nbsp;            System.out.println(&quot;There is no available slot&quot;);</b>
+<i>31</i>&nbsp;        }
 <i>32</i>&nbsp;
-<b class="nc"><i>33</i>&nbsp;    }</b>
-<i>34</i>&nbsp;
-<i>35</i>&nbsp;    /**
-<i>36</i>&nbsp;     * This method is responsible for creating an electrical bicycle (just an instance).
-<i>37</i>&nbsp;     * It is important in some packages of the project
-<i>38</i>&nbsp;     * @return the new electrical bicycle instance
-<i>39</i>&nbsp;     */
-<i>40</i>&nbsp;    public static Bicycle createElectricalBicycle() {
-<b class="fc"><i>41</i>&nbsp;        return new ElectricalBicycle();</b>
-<i>42</i>&nbsp;    }
-<i>43</i>&nbsp;
-<i>44</i>&nbsp;    /**
-<i>45</i>&nbsp;     * This method is responsible for creating a mechanical bicycle given a station and a system
-<i>46</i>&nbsp;     * @param system the system
-<i>47</i>&nbsp;     * @param station the station
-<i>48</i>&nbsp;     */
-<i>49</i>&nbsp;    public static void addMechanicalBicycle(MyVelibSystem system, Station station) {
-<i>50</i>&nbsp;        // Check the station (parkingSlot available)
-<b class="nc"><i>51</i>&nbsp;        ParkingSlot freeSlot = station.getOneFreeSlot();</b>
-<b class="nc"><i>52</i>&nbsp;        if (freeSlot != null) {</b>
-<i>53</i>&nbsp;            // Creating the bicycle
-<b class="nc"><i>54</i>&nbsp;            MechanicalBicycle bicycle = new MechanicalBicycle();</b>
-<i>55</i>&nbsp;
-<i>56</i>&nbsp;            // Add to station
-<b class="nc"><i>57</i>&nbsp;            freeSlot.setState(1);</b>
-<b class="nc"><i>58</i>&nbsp;            freeSlot.setBicycle(bicycle);</b>
-<b class="nc"><i>59</i>&nbsp;        } else {</b>
-<b class="nc"><i>60</i>&nbsp;            System.out.println(&quot;There is no available slot!&quot;);</b>
-<i>61</i>&nbsp;        }
-<b class="nc"><i>62</i>&nbsp;    }</b>
-<i>63</i>&nbsp;
-<i>64</i>&nbsp;    /**
-<i>65</i>&nbsp;     * This method is responsible for creating a mechanical bicycle (just an instance).
-<i>66</i>&nbsp;     * It is important in some packages of the project
-<i>67</i>&nbsp;     * @return the new mechanical bicycle instance
-<i>68</i>&nbsp;     */
-<i>69</i>&nbsp;    public static Bicycle createMechanicalBicycle() {
-<b class="fc"><i>70</i>&nbsp;        return new MechanicalBicycle();</b>
-<i>71</i>&nbsp;    }
-<i>72</i>&nbsp;}
+<i>33</i>&nbsp;
+<b class="nc"><i>34</i>&nbsp;    }</b>
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    /**
+<i>37</i>&nbsp;     * This method is responsible for creating an electrical bicycle (just an instance).
+<i>38</i>&nbsp;     * It is important in some packages of the project
+<i>39</i>&nbsp;     *
+<i>40</i>&nbsp;     * @return the new electrical bicycle instance
+<i>41</i>&nbsp;     */
+<i>42</i>&nbsp;    public static Bicycle createElectricalBicycle() {
+<b class="fc"><i>43</i>&nbsp;        return new ElectricalBicycle();</b>
+<i>44</i>&nbsp;    }
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    /**
+<i>47</i>&nbsp;     * This method is responsible for creating a mechanical bicycle given a station and a system
+<i>48</i>&nbsp;     *
+<i>49</i>&nbsp;     * @param system  the system
+<i>50</i>&nbsp;     * @param station the station
+<i>51</i>&nbsp;     */
+<i>52</i>&nbsp;    public static void addMechanicalBicycle(MyVelibSystem system, Station station) {
+<i>53</i>&nbsp;        // Check the station (parkingSlot available)
+<b class="nc"><i>54</i>&nbsp;        ParkingSlot freeSlot = station.getOneFreeSlot();</b>
+<b class="nc"><i>55</i>&nbsp;        if (freeSlot != null) {</b>
+<i>56</i>&nbsp;            // Creating the bicycle
+<b class="nc"><i>57</i>&nbsp;            MechanicalBicycle bicycle = new MechanicalBicycle();</b>
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;            // Add to station
+<b class="nc"><i>60</i>&nbsp;            freeSlot.setState(1);</b>
+<b class="nc"><i>61</i>&nbsp;            freeSlot.setBicycle(bicycle);</b>
+<b class="nc"><i>62</i>&nbsp;        } else {</b>
+<b class="nc"><i>63</i>&nbsp;            System.out.println(&quot;There is no available slot&quot;);</b>
+<i>64</i>&nbsp;        }
+<b class="nc"><i>65</i>&nbsp;    }</b>
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;    /**
+<i>68</i>&nbsp;     * This method is responsible for creating a mechanical bicycle (just an instance).
+<i>69</i>&nbsp;     * It is important in some packages of the project
+<i>70</i>&nbsp;     *
+<i>71</i>&nbsp;     * @return the new mechanical bicycle instance
+<i>72</i>&nbsp;     */
+<i>73</i>&nbsp;    public static Bicycle createMechanicalBicycle() {
+<b class="fc"><i>74</i>&nbsp;        return new MechanicalBicycle();</b>
+<i>75</i>&nbsp;    }
+<i>76</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-04 12:06</div>
+    <div style="float:right;">generated on 2020-06-05 18:56</div>
 </div>
 </body>
 </html>

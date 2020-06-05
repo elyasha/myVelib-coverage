@@ -151,14 +151,14 @@
 <i>77</i>&nbsp;
 <i>78</i>&nbsp;        // A user can only rent 1 bicycle
 <b class="fc"><i>79</i>&nbsp;        if (user.getBicycle() != null) {</b>
-<b class="nc"><i>80</i>&nbsp;            System.out.println(&quot;You cannot rent another bicycle! Please drop your bicycle first.&quot;);</b>
+<b class="nc"><i>80</i>&nbsp;            System.out.println(&quot;You cannot rent another bicycle. Please drop your bicycle first.&quot;);</b>
 <i>81</i>&nbsp;        } else {
 <i>82</i>&nbsp;            // If there is a bicycle available
-<b class="fc"><i>83</i>&nbsp;            System.out.println(&quot;Here you go!&quot; + user);</b>
+<b class="fc"><i>83</i>&nbsp;            System.out.println(&quot;Here you go. &quot; + user.getName());</b>
 <b class="fc"><i>84</i>&nbsp;            if (bicycle instanceof ElectricalBicycle) {</b>
-<b class="fc"><i>85</i>&nbsp;                System.out.println(&quot;A electrical bicycle!&quot;);</b>
+<b class="fc"><i>85</i>&nbsp;                System.out.println(&quot;A electrical bicycle&quot;);</b>
 <b class="nc"><i>86</i>&nbsp;            } else if (bicycle instanceof MechanicalBicycle) {</b>
-<b class="nc"><i>87</i>&nbsp;                System.out.println(&quot;A mechanical bicycle!&quot;);</b>
+<b class="nc"><i>87</i>&nbsp;                System.out.println(&quot;A mechanical bicycle&quot;);</b>
 <i>88</i>&nbsp;            }
 <i>89</i>&nbsp;
 <i>90</i>&nbsp;            // Save rentTime
@@ -199,10 +199,10 @@
 <b class="nc"><i>125</i>&nbsp;        intervalOfTimeTIME = new Time(0, (int) intervalOfTime, 0);</b>
 <b class="nc"><i>126</i>&nbsp;        System.out.println(intervalOfTimeTIME);</b>
 <i>127</i>&nbsp;        // Compute the rent cost for the user
-<b class="nc"><i>128</i>&nbsp;        double rentCost = Main.getCostWithTimeCredit(bicycle, user.getCard(), intervalOfTimeTIME, user.getTimeCreditBalance(), user);</b>
+<b class="nc"><i>128</i>&nbsp;        double rentCost = RentingApp.getCostWithTimeCredit(bicycle, user.getCard(), intervalOfTimeTIME, user.getTimeCreditBalance(), user);</b>
 <i>129</i>&nbsp;
-<i>130</i>&nbsp;        // Take the money of the user !!!!
-<b class="nc"><i>131</i>&nbsp;        Main.chargingUser(user, rentCost, station);</b>
+<i>130</i>&nbsp;        // Take the money of the user
+<b class="nc"><i>131</i>&nbsp;        RentingApp.chargingUser(user, rentCost, station);</b>
 <i>132</i>&nbsp;
 <i>133</i>&nbsp;        // Add user spent time to the type of bicycle
 <b class="nc"><i>134</i>&nbsp;        if (bicycle instanceof ElectricalBicycle) {</b>
@@ -210,7 +210,7 @@
 <b class="nc"><i>136</i>&nbsp;        } else if (bicycle instanceof MechanicalBicycle) {</b>
 <b class="nc"><i>137</i>&nbsp;            user.addSpentTimeOnMechanicalBicycle(intervalOfTime);</b>
 <i>138</i>&nbsp;        } else {
-<b class="nc"><i>139</i>&nbsp;            System.out.println(&quot;ERROR!&quot;);</b>
+<b class="nc"><i>139</i>&nbsp;            System.out.println(&quot;ERROR&quot;);</b>
 <i>140</i>&nbsp;        }
 <i>141</i>&nbsp;
 <i>142</i>&nbsp;        // Changer rentTime
@@ -221,14 +221,14 @@
 <b class="nc"><i>147</i>&nbsp;        user.setRentStationID(-1); // an impossible id</b>
 <i>148</i>&nbsp;
 <i>149</i>&nbsp;        // Change the state of parkingSlot
-<b class="nc"><i>150</i>&nbsp;        ParkingSlot slot = station.getParkingSlotTypeBicycle(bicycle);</b>
+<b class="nc"><i>150</i>&nbsp;        ParkingSlot slot = station.getOneFreeSlot();</b>
 <b class="nc"><i>151</i>&nbsp;        slot.setState(1);</b>
 <b class="nc"><i>152</i>&nbsp;        slot.setBicycle(bicycle);</b>
 <i>153</i>&nbsp;
 <i>154</i>&nbsp;        // Return bicycle
 <b class="nc"><i>155</i>&nbsp;        System.out.println();</b>
 <b class="nc"><i>156</i>&nbsp;        System.out.println(user);</b>
-<b class="nc"><i>157</i>&nbsp;        System.out.println(&quot;You rent is finalized!&quot;);</b>
+<b class="nc"><i>157</i>&nbsp;        System.out.println(&quot;You rent is finalized&quot;);</b>
 <b class="nc"><i>158</i>&nbsp;        System.out.println(&quot;Your ride cost : &quot; + rentCost);</b>
 <i>159</i>&nbsp;
 <b class="nc"><i>160</i>&nbsp;        station.addNumberOfDroppings(1);</b>
@@ -244,53 +244,52 @@
 <i>170</i>&nbsp;     */
 <i>171</i>&nbsp;    public void dropBicycle(Bicycle bicycle, User user, Station station) {
 <i>172</i>&nbsp;
-<b class="fc"><i>173</i>&nbsp;        if(user.getBicycle()==null){</b>
+<b class="fc"><i>173</i>&nbsp;        if (user.getBicycle() == null) {</b>
 <b class="nc"><i>174</i>&nbsp;            System.out.println(&quot;You don&#39;t have a bicycle to return&quot;);</b>
-<i>175</i>&nbsp;        }
-<i>176</i>&nbsp;        else{
-<i>177</i>&nbsp;            // Compute the time of the journey
-<i>178</i>&nbsp;            double intervalOfTime; // [minutes]
-<b class="fc"><i>179</i>&nbsp;            intervalOfTime = Main.computeRentTime(user);</b>
-<b class="fc"><i>180</i>&nbsp;            System.out.println(intervalOfTime);</b>
-<i>181</i>&nbsp;            Time intervalOfTimeTIME;
-<b class="fc"><i>182</i>&nbsp;            intervalOfTimeTIME = new Time(0, (int) intervalOfTime, 0);</b>
-<b class="fc"><i>183</i>&nbsp;            System.out.println(intervalOfTimeTIME);</b>
-<i>184</i>&nbsp;            // Compute the rent cost for the user
-<b class="fc"><i>185</i>&nbsp;            double rentCost = Main.getCostWithTimeCredit(bicycle, user.getCard(), intervalOfTimeTIME, user.getTimeCreditBalance(), user);</b>
-<i>186</i>&nbsp;
-<i>187</i>&nbsp;            // Take the money of the user !!!!
-<b class="fc"><i>188</i>&nbsp;            Main.chargingUser(user, rentCost, station);</b>
-<i>189</i>&nbsp;
-<i>190</i>&nbsp;            // Changer rentTime
-<b class="fc"><i>191</i>&nbsp;            user.setRentTime(null);</b>
-<i>192</i>&nbsp;
-<i>193</i>&nbsp;            // Set hasBicycle = true and rentStationID in User
-<b class="fc"><i>194</i>&nbsp;            user.setBicycle(null);</b>
-<b class="fc"><i>195</i>&nbsp;            user.setRentStationID(-1); // an impossible id</b>
-<i>196</i>&nbsp;
-<i>197</i>&nbsp;            // Change the state of parkingSlot
-<b class="fc"><i>198</i>&nbsp;            ParkingSlot slot = station.getParkingSlotTypeBicycle(bicycle);</b>
-<b class="fc"><i>199</i>&nbsp;            slot.setState(1);</b>
-<b class="fc"><i>200</i>&nbsp;            slot.setBicycle(bicycle);</b>
-<i>201</i>&nbsp;
-<i>202</i>&nbsp;            // Return bicycle
-<b class="fc"><i>203</i>&nbsp;            System.out.println();</b>
-<b class="fc"><i>204</i>&nbsp;            System.out.println(user + &quot;You rent is finalized!&quot;);</b>
-<b class="fc"><i>205</i>&nbsp;            System.out.println();</b>
-<b class="fc"><i>206</i>&nbsp;            System.out.println(rentCost);</b>
-<i>207</i>&nbsp;
-<b class="fc"><i>208</i>&nbsp;            station.addNumberOfDroppings(1);</b>
-<i>209</i>&nbsp;        }
-<i>210</i>&nbsp;
-<b class="fc"><i>211</i>&nbsp;    }</b>
-<i>212</i>&nbsp;
-<i>213</i>&nbsp;}
+<i>175</i>&nbsp;        } else {
+<i>176</i>&nbsp;            // Compute the time of the journey
+<i>177</i>&nbsp;            double intervalOfTime; // [minutes]
+<b class="fc"><i>178</i>&nbsp;            intervalOfTime = RentingApp.computeRentTime(user);</b>
+<b class="fc"><i>179</i>&nbsp;            System.out.println(intervalOfTime);</b>
+<i>180</i>&nbsp;            Time intervalOfTimeTIME;
+<b class="fc"><i>181</i>&nbsp;            intervalOfTimeTIME = new Time(0, (int) intervalOfTime, 0);</b>
+<b class="fc"><i>182</i>&nbsp;            System.out.println(intervalOfTimeTIME);</b>
+<i>183</i>&nbsp;            // Compute the rent cost for the user
+<b class="fc"><i>184</i>&nbsp;            double rentCost = RentingApp.getCostWithTimeCredit(bicycle, user.getCard(), intervalOfTimeTIME, user.getTimeCreditBalance(), user);</b>
+<i>185</i>&nbsp;
+<i>186</i>&nbsp;            // Take the money of the user
+<b class="fc"><i>187</i>&nbsp;            RentingApp.chargingUser(user, rentCost, station);</b>
+<i>188</i>&nbsp;
+<i>189</i>&nbsp;            // Changer rentTime
+<b class="fc"><i>190</i>&nbsp;            user.setRentTime(null);</b>
+<i>191</i>&nbsp;
+<i>192</i>&nbsp;            // Set hasBicycle = true and rentStationID in User
+<b class="fc"><i>193</i>&nbsp;            user.setBicycle(null);</b>
+<b class="fc"><i>194</i>&nbsp;            user.setRentStationID(-1); // an impossible id</b>
+<i>195</i>&nbsp;
+<i>196</i>&nbsp;            // Change the state of parkingSlot
+<b class="fc"><i>197</i>&nbsp;            ParkingSlot slot = station.getParkingSlotTypeBicycle(bicycle);</b>
+<b class="fc"><i>198</i>&nbsp;            slot.setState(1);</b>
+<b class="fc"><i>199</i>&nbsp;            slot.setBicycle(bicycle);</b>
+<i>200</i>&nbsp;
+<i>201</i>&nbsp;            // Return bicycle
+<b class="fc"><i>202</i>&nbsp;            System.out.println();</b>
+<b class="fc"><i>203</i>&nbsp;            System.out.println(user + &quot;You rent is finalized.&quot;);</b>
+<b class="fc"><i>204</i>&nbsp;            System.out.println();</b>
+<b class="fc"><i>205</i>&nbsp;            System.out.println(rentCost);</b>
+<i>206</i>&nbsp;
+<b class="fc"><i>207</i>&nbsp;            station.addNumberOfDroppings(1);</b>
+<i>208</i>&nbsp;        }
+<i>209</i>&nbsp;
+<b class="fc"><i>210</i>&nbsp;    }</b>
+<i>211</i>&nbsp;
+<i>212</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2020-06-04 12:06</div>
+    <div style="float:right;">generated on 2020-06-05 18:56</div>
 </div>
 </body>
 </html>
